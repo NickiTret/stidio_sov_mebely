@@ -10,7 +10,6 @@
                 <div class="swiper-slide">
                     <img src="{{ $slider->getImage() }}"  alt="{{ $slider->title }}"/>
                     <div class="swiper-slide__description">
-                        <h4>Группа: {{ $slider->group->title }}</h4>
                         <h3>{{ $slider->title }}</h3>
                         <p>{{ $slider->description }}</p>
                     </div>

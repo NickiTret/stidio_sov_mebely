@@ -50,10 +50,7 @@
                                         <td>
                                             <img width="200" src="{{ $slider->getImage() }}" alt="{{ $slider->title }}">
                                         </td>
-
-                                        <td> {{ $slider->group }}</td>
-                                        {{-- <td>{{ $slider->group->title }}</td> --}}
-                                        {{-- {{ dd($slider) }} --}}
+                                        <td>{{ $slider->group->title }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

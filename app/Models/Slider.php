@@ -20,8 +20,7 @@ class Slider extends Model
     {
         if ($request->hasFile('image_src')) {
 
-            if ($image_src)
-            {
+            if ($image_src) {
                 Storage::delete($image_src);
             }
             $folder = date('Y-m-d');
@@ -34,15 +33,16 @@ class Slider extends Model
 
     public function getImage()
     {
-        if(!$this->image_src)
-        {
+        if (!$this->image_src) {
             return asset("assets/admin/image/no_photo.png");
         }
 
-        return asset( 'storage/' . $this->image_src);
+        return asset('storage/' . $this->image_src);
     }
 
-    public function group() {
-        return $this->belongsTo(Group::class);
+    //связь один ко многим с таблицей группы
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id', 'id');
     }
 }

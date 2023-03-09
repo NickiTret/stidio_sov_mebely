@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('image_src');
-            $table->string('group_id')->nullable();
             $table->timestamps();
+            //связь один ко многим с таблицей группы
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->index('group_id', 'slide_group_idx');
+            $table->foreign('group_id', 'slide_group_fk')->on('groups')->references('id');
         });
     }
 

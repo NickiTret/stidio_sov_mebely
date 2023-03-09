@@ -46,7 +46,7 @@
                                         <td>{{ $item->title }}</td>
                                         <td>
                                             @foreach ($item->slides as $slide)
-                                            {{ $slide->title }}
+                                                <span>{{ $slide->title }}</span>
                                             @endforeach
 
                                         </td>

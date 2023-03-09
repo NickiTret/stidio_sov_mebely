@@ -12,7 +12,8 @@ class Group extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['title'];
 
+    //связь один ко многим с таблицей группы
     public function slides() {
-        return $this->hasMany(Slider::class);
+        return $this->hasMany(Slider::class, 'group_id', 'id');
     }
 }

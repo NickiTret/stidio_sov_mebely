@@ -14,8 +14,8 @@ class StoreController extends Controller
 
         $data = $request->validated();
         $data['image_src'] = Slider::uploadImage($request);
-        $group = $data['group_id'];
-        unset($data['group_id']);
+        // $group = $data['group_id'];
+        // unset($data['group_id']);
 
 
         $slider = Slider::create($data);
