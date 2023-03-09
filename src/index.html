@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+  @include('partials/head.html')
+
+  <body class="page__body">
+    <div class="site-container">
+      @include('partials/header.html')
+      <main class="main">
+        <section class="hero">
+          <div class="container hero-container">
+            <h1>Создаем дизайн-проекты для жизни в комфорте и красоте!</h1>
+            <h4>от 300 руб/м2</h4>
+            <p>Бесплатная консультация с дизайнером по вашему проекту</p>
+          </div>
+        </section>
+        <section class="individual">
+          <div class="container individual-container">
+            <div class="individual__item">
+              <div class="individual__image">
+                <img src="./img/partials.png" alt="фото" />
+              </div>
+              <div class="individual__text">
+                <h2 class="individual__title">
+                  <span class="mark">Индивидуальность</span> в каждом метре
+                </h2>
+                <p>
+                  Чем отличается пространство, в котором сразу ощущаешь стиль и
+                  органичность деталей,
+                </p>
+                <p><b>Концепция. Дизайн. Профессиональный взгляд.</b></p>
+                <p>
+                  По нашему опыту 95% обращений не требуют сложной проектной
+                  работы. Для создания уютного и функционального пространства
+                  прежде всего нужна грамотная планировка и опытный взгляд в
+                  выборе сочетаний и материалов.
+                </p>
+              </div>
+            </div>
+            <div class="individual__item">
+              <div class="individual__image">
+                <img src="./img/partials2.png" alt="фото" />
+              </div>
+              <div class="individual__text">
+                <h2 class="individual__title">
+                  <span class="mark">80% людей,</span> решивших делать ремонт
+                  без дизайн-проекта
+                  <span class="mark">остаются недовольны</span> результатом
+                </h2>
+                <p>
+                  При этом времени и денег в результате уходит больше, чем при
+                  работе с дизайнером
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+            @include('partials/slider.html')
+
+
+
+
+        <section class="realish">
+          <div class="container realish-container">
+            <h2><span class="mark">Реализация дизайн-проекта</span> на выгодных условиях</h2>
+            <div class="realish__wrapper">
+              <div class="realish__image">
+                <img src="img/photo__main.jpg" alt="Фото">
+              </div>
+              <div class="realish__text">
+                <p>Для юр.лиц наша компания предлагает услугу "офис под ключ". Команда специалистов под управлением главного дизайнера подготовит Ваше помещение к работе. Мы берем на себя поставку:</p>
+                <ul class="list-reset">
+                  <li>Офисной мебели</li>
+                  <li>Мебели для зон ожидания</li>
+                  <li>Приемных</li>
+                  <li>Офисных кухонь</li>
+                  <li>Светотехнического оборудования (светильники настенные, потолочные)</li>
+                  <li>Стеклянных перегородок </li>
+                  <li>Специальных офисных напольных покрытий</li>
+                </ul>
+                <p>С дальнейшим обустройством офиса согласно дизайн-проекту.</p>
+                <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Получить консультацию </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="posts">
+          <div class="container post-container">
+
+            <h2><a href="posts.html">Наши <span class="mark"> новости и статьи</span></a></h2>
+            <ul class="list-reset posts__list">
+              <li class="posts__item">
+               <div class="posts__item-top">
+                <img src="img/post-1.jpg" alt="Пост фото">
+               </div>
+               <div class="posts__item-bottom">
+                <span class="posts__date">May 10, 2022</span>
+                <h3 class="posts__title">The 9 best homes in New York</h3>
+                <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                <a href="#">Read more
+                  <svg class="posts__arrow">
+                    <use xlink:href="img/sprite.svg#arrow"></use>
+                  </svg>
+                </a>
+               </div>
+              </li>
+              <li class="posts__item">
+                <div class="posts__item-top">
+                 <img src="img/post-2.jpg" alt="Пост фото">
+                </div>
+                <div class="posts__item-bottom">
+                 <span class="posts__date">May 10, 2022</span>
+                 <h3 class="posts__title">The 9 best homes in New York</h3>
+                 <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                 <a href="#">Read more
+                   <svg class="posts__arrow">
+                     <use xlink:href="img/sprite.svg#arrow"></use>
+                   </svg>
+                 </a>
+                </div>
+               </li>
+               <li class="posts__item">
+                <div class="posts__item-top">
+                 <img src="img/post-3.jpg" alt="Пост фото">
+                </div>
+                <div class="posts__item-bottom">
+                 <span class="posts__date">May 10, 2022</span>
+                 <h3 class="posts__title">The 9 best homes in New York</h3>
+                 <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                 <a href="#">Read more
+                   <svg class="posts__arrow">
+                     <use xlink:href="img/sprite.svg#arrow"></use>
+                   </svg>
+                 </a>
+                </div>
+               </li>
+            </ul>
+            <a class="posts__all" href="posts.html">Смотреть все</a>
+          </div>
+        </section>
+      </main>
+
+      @include('partials/footer.html')
+      @include('partials/modal.html')
+    </div>
+  </body>
+</html>

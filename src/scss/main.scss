@@ -1,0 +1,42 @@
+// базовые подключения
+@import "vars";
+
+@import "mixins";
+@import "grid";
+@import "grid_block";
+@import "fonts";
+@import "settings";
+@import "btn";
+
+
+// подключения компонентов страницы
+@import "./components/header";
+@import "./components/hero";
+@import "./components/individual";
+@import "./components/sliders";
+@import "./components/design-prod";
+@import "./components/realish";
+@import "./components/posts";
+@import "./components/post";
+@import "./components/modal";
+@import "./components/footer";
+
+.mark {
+  position: relative;
+  &::after {
+    height: 5px;
+    width: 100%;
+    background-color: #FFBF00;
+    bottom: 0;
+    left: 0;
+    content: '';
+    position: absolute;
+    filter: blur(2px);
+    transition: all .2s ease;
+  }
+}
+
+
+.page__main {
+  padding-top: 72px;
+}

@@ -1,0 +1,24 @@
+.design-prod {
+  position: relative;
+  padding-top: 60px !important;
+  h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 55px;
+    color: #242424;
+    text-align: center;
+    @media (max-width: $tabled) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+  h4 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #242424;
+    text-align: center;
+  }
+}

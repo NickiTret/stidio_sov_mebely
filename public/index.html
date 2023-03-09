@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#111111" />
+  <title>New Example</title>
+  <link
+    rel="preload"
+    href="fonts/MullerRegular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+
+
+  <body class="page__body">
+    <div class="site-container">
+      <header class="header">
+  <div class="container header-container">
+    <div class="header__logo">
+      Студия Современной Мебели
+    </div>
+    <div class="header-right__nav">
+      <a href="#" class="header__phone">
+        <svg class="svg-site">
+          <use xlink:href="img/sprite.svg#phone"></use>
+        </svg>
+      </a>
+      <a href="#" class="header__telegramm">
+        <svg class="svg-site">
+          <use xlink:href="img/sprite.svg#telegramm"></use>
+        </svg>
+      </a>
+      <a href="tel:89172870154" class="header__number">8 (917) 287-01-54</a>
+      <button  class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
+    </div>
+  </div>
+</header>
+
+      <main class="main">
+        <section class="hero">
+          <div class="container hero-container">
+            <h1>Создаем дизайн-проекты для жизни в комфорте и красоте!</h1>
+            <h4>от 300 руб/м2</h4>
+            <p>Бесплатная консультация с дизайнером по вашему проекту</p>
+          </div>
+        </section>
+        <section class="individual">
+          <div class="container individual-container">
+            <div class="individual__item">
+              <div class="individual__image">
+                <img src="./img/partials.png" alt="фото" />
+              </div>
+              <div class="individual__text">
+                <h2 class="individual__title">
+                  <span class="mark">Индивидуальность</span> в каждом метре
+                </h2>
+                <p>
+                  Чем отличается пространство, в котором сразу ощущаешь стиль и
+                  органичность деталей,
+                </p>
+                <p><b>Концепция. Дизайн. Профессиональный взгляд.</b></p>
+                <p>
+                  По нашему опыту 95% обращений не требуют сложной проектной
+                  работы. Для создания уютного и функционального пространства
+                  прежде всего нужна грамотная планировка и опытный взгляд в
+                  выборе сочетаний и материалов.
+                </p>
+              </div>
+            </div>
+            <div class="individual__item">
+              <div class="individual__image">
+                <img src="./img/partials2.png" alt="фото" />
+              </div>
+              <div class="individual__text">
+                <h2 class="individual__title">
+                  <span class="mark">80% людей,</span> решивших делать ремонт
+                  без дизайн-проекта
+                  <span class="mark">остаются недовольны</span> результатом
+                </h2>
+                <p>
+                  При этом времени и денег в результате уходит больше, чем при
+                  работе с дизайнером
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+            <section class="design-prod">
+    <div class="design-prod-container container">
+        <h2>Наши <span class="mark">проекты</span></h2>
+        <h4>Совершенство комфорта в вашем распоряжении</h4>
+        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff;" class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    <div class="swiper-slide__description">
+                        <h3>Заголовок описание</h3>
+                        <p>Заголовок описание описания</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                    <div class="swiper-slide__description">
+                        <h3>Заголовок описание</h3>
+                        <p>Заголовок описание описания</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div thumbsSlider="" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <section class="realish">
+          <div class="container realish-container">
+            <h2><span class="mark">Реализация дизайн-проекта</span> на выгодных условиях</h2>
+            <div class="realish__wrapper">
+              <div class="realish__image">
+                <img src="img/photo__main.jpg" alt="Фото">
+              </div>
+              <div class="realish__text">
+                <p>Для юр.лиц наша компания предлагает услугу "офис под ключ". Команда специалистов под управлением главного дизайнера подготовит Ваше помещение к работе. Мы берем на себя поставку:</p>
+                <ul class="list-reset">
+                  <li>Офисной мебели</li>
+                  <li>Мебели для зон ожидания</li>
+                  <li>Приемных</li>
+                  <li>Офисных кухонь</li>
+                  <li>Светотехнического оборудования (светильники настенные, потолочные)</li>
+                  <li>Стеклянных перегородок </li>
+                  <li>Специальных офисных напольных покрытий</li>
+                </ul>
+                <p>С дальнейшим обустройством офиса согласно дизайн-проекту.</p>
+                <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Получить консультацию </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="posts">
+          <div class="container post-container">
+
+            <h2><a href="posts.html">Наши <span class="mark"> новости и статьи</span></a></h2>
+            <ul class="list-reset posts__list">
+              <li class="posts__item">
+               <div class="posts__item-top">
+                <img src="img/post-1.jpg" alt="Пост фото">
+               </div>
+               <div class="posts__item-bottom">
+                <span class="posts__date">May 10, 2022</span>
+                <h3 class="posts__title">The 9 best homes in New York</h3>
+                <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                <a href="#">Read more
+                  <svg class="posts__arrow">
+                    <use xlink:href="img/sprite.svg#arrow"></use>
+                  </svg>
+                </a>
+               </div>
+              </li>
+              <li class="posts__item">
+                <div class="posts__item-top">
+                 <img src="img/post-2.jpg" alt="Пост фото">
+                </div>
+                <div class="posts__item-bottom">
+                 <span class="posts__date">May 10, 2022</span>
+                 <h3 class="posts__title">The 9 best homes in New York</h3>
+                 <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                 <a href="#">Read more
+                   <svg class="posts__arrow">
+                     <use xlink:href="img/sprite.svg#arrow"></use>
+                   </svg>
+                 </a>
+                </div>
+               </li>
+               <li class="posts__item">
+                <div class="posts__item-top">
+                 <img src="img/post-3.jpg" alt="Пост фото">
+                </div>
+                <div class="posts__item-bottom">
+                 <span class="posts__date">May 10, 2022</span>
+                 <h3 class="posts__title">The 9 best homes in New York</h3>
+                 <p class="posts__text">Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.</p>
+                 <a href="#">Read more
+                   <svg class="posts__arrow">
+                     <use xlink:href="img/sprite.svg#arrow"></use>
+                   </svg>
+                 </a>
+                </div>
+               </li>
+            </ul>
+            <a class="posts__all" href="posts.html">Смотреть все</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+  <div class="container footer-container">
+    <h2>Остались <span class="mark">вопросы?</span></h2>
+    <h3>Будем рады ответить</h3>
+    <div class="footer__wrapper">
+      <div class="footer-contact">
+        <a href="tel:89172870154" class="footer__phone"
+          ><svg class="">
+            <use xlink:href="img/sprite.svg#phone__number"></use>
+          </svg>
+          8 (917) 287-01-54</a
+        >
+        <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
+        <ul class="list-reset footer-social__list">
+          <li class="footer-social__item">
+            <a href="#">
+              <svg class="">
+                <use xlink:href="img/sprite.svg#whatsapp"></use>
+              </svg>
+              WhatsApp
+            </a>
+          </li>
+          <li class="footer-social__item">
+            <a href="#">
+              <svg class="">
+                <use xlink:href="img/sprite.svg#telegramm__foo"></use>
+              </svg>
+              Telegram
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-map">
+        <script
+          type="text/javascript"
+          charset="utf-8"
+          async
+          src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac45a179216bb33cde6670ce2669e7c6ff2ff3debe5d88539ded686529313033a&amp;width=754&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
+        ></script>
+      </div>
+    </div>
+    <p class="footer__copyright">
+      © 2022 Студия Современной Мебели
+    </p>
+  </div>
+</footer>
+
+      <div class="modal overlay" id="modal-contacts">
+    <div class="modal__wrapper">
+        <h2>Напишите нам</h2>
+        <button class="btn btn-close" aria-label="Close modal" data-custom-close>
+        </button>
+        <form action="#" id="form" method="post" class="form">
+          <label class="form__label">
+            <input type="text" name="name" id="name" class="input-reset form__input" placeholder="Имя">
+          </label>
+          <label class="form__label">
+            <input type="tel" name="phone" id="tel" class="input-reset form__input" placeholder="Телефон">
+          </label>
+          <label class="form__label">
+            <input type="email" name="email" id="email" class="input-reset form__input" placeholder="Почта">
+          </label>
+          <label class="form__label">
+            <textarea type="text" name="message" class="input-reset form__input" placeholder="Сообщение"></textarea>
+          </label>
+          <button class="btn-reset btn btn-main form__btn" type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+    </div>
+  </body>
+</html>

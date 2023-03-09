@@ -1,0 +1,59 @@
+.grid-help-block {
+    @include grid;
+
+    position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99999999999;
+
+    height: 100%;
+	
+	display: flex;
+	justify-content: space-between;
+	
+	user-select: none;
+	pointer-events: none;
+	
+	opacity: 0.15;
+	
+	& > div.column
+	{
+		position: relative;
+		
+		display: block;
+		
+		box-sizing: border-box;
+		flex-shrink: 0;
+		width: $column_abs;
+		height: 100%;
+		
+		background-color: purple;
+		
+		@media(max-width: 1600px)
+		{
+			width: $column_abs_maxW_1600;
+		}
+		
+		@media(max-width: 1440px)
+		{
+			width: $column_abs_maxW_1440;
+		}
+		
+		@media(max-width: 1280)
+		{
+			width: $column_abs_maxW_1280;
+		}
+		
+		@media(max-width: 1024px)
+		{
+			width: $column_abs_maxW_1024;
+		}
+		
+		@media(max-width: 768px)
+		{
+			width: $column_abs_maxW_768;
+		}
+	}
+  }

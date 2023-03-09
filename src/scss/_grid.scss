@@ -1,0 +1,109 @@
+
+
+//////////////////////////////////////////////
+$maxW_1600: screen and ( max-width: "1599px" );
+$maxW_1440: screen and ( max-width: "1439px" );
+$maxW_1280: screen and ( max-width: "1279px" );
+$maxW_1024: screen and ( max-width: "1023px" );
+$maxW_768: screen and ( max-width: "767px" );
+$maxW_320: screen and ( max-width: "319px" );
+
+$minW_1600: screen and ( min-width: "1600px" );
+$minW_1440: screen and ( min-width: "1440px" );
+$minW_1280: screen and ( min-width: "1280px" );
+$minW_1024: screen and ( min-width: "1024px" );
+$minW_768: screen and ( min-width: "768px" );
+$minW_320: screen and ( min-width: "320px" );
+
+//////////////////////////////////////////////
+$unit: 4px;
+
+$min_width: 320px;
+
+$header_height: 76;
+$header_height_px: calc( $header_height * 1px );
+
+$border_radius: 8px;
+
+$default_component_margin_px: 96px;
+$default_component_margin_px_maxW_1600: 96px;
+$default_component_margin_px_maxW_1440: 96px;
+$default_component_margin_px_maxW_1280: 72px;
+$default_component_margin_px_maxW_1024: 60px;
+$default_component_margin_px_maxW_768: 56px;
+
+$header_side_offset_px: 56px;
+$header_side_offset_px_maxW_1600: 56px;
+$header_side_offset_px_maxW_1440: 28px;
+$header_side_offset_px_maxW_1280: 44px;
+$header_side_offset_px_maxW_1024: 44px;
+$header_side_offset_px_maxW_768: 18px;
+
+$column_count: 12;
+$gutter_count: calc( $column_count - 1 );
+$column: 88;
+$gutter: 40;
+$column_abs: calc( $column * 1px );
+$gutter_abs: calc( $gutter * 1px );
+$margin: 52;
+$width_content: calc( ( $column * $column_count ) + ( $gutter * $gutter_count ) );
+$width_content_px: calc( $width_content * 1px );
+$margin_px: calc( $margin * 1px );
+$width: calc( ( $column_abs * 12 ) + ( $gutter_abs * ( 12 - 1 ) ) );
+
+$column_maxW_1600: 64;
+$gutter_maxW_1600: 40;
+$column_abs_maxW_1600: calc( $column_maxW_1600 / ( $column_maxW_1600 * 12 + $gutter_maxW_1600 * ( 12 - 1 ) ) * 100% );
+$gutter_abs_maxW_1600: calc( $gutter_maxW_1600 / ( $column_maxW_1600 * 12 + $gutter_maxW_1600 * ( 12 - 1 ) ) * 100% );
+$margin_maxW_1600: 116;
+$margin_px_maxW_1600: calc( $margin_maxW_1600 * 1px );
+$width_maxW_1600: calc( 100% - $margin_px_maxW_1600 * 2 );
+
+$column_maxW_1440: 64;
+$gutter_maxW_1440: 32;
+$column_abs_maxW_1440: calc( $column_maxW_1440 / ( $column_maxW_1440 * 12 + $gutter_maxW_1440 * ( 12 - 1 ) ) * 100% );
+$gutter_abs_maxW_1440: calc( $gutter_maxW_1440 / ( $column_maxW_1440 * 12 + $gutter_maxW_1440 * ( 12 - 1 ) ) * 100% );
+$margin_maxW_1440: 80;
+$margin_px_maxW_1440: calc( $margin_maxW_1440 * 1px );
+$width_maxW_1440: calc( 100% - $margin_px_maxW_1440 * 2 );
+
+$column_maxW_1280: 56;
+$gutter_maxW_1280: 24;
+$column_abs_maxW_1280: calc( $column_maxW_1280 / ( $column_maxW_1280 * 12 + $gutter_maxW_1280 * ( 12 - 1 ) ) * 100% );
+$gutter_abs_maxW_1280: calc( $gutter_maxW_1280 / ( $column_maxW_1280 * 12 + $gutter_maxW_1280 * ( 12 - 1 ) ) * 100% );
+$margin_maxW_1280: 44;
+$margin_px_maxW_1280: calc( $margin_maxW_1280 * 1px );
+$width_maxW_1280: calc( 100% - $margin_px_maxW_1280 * 2 );
+
+$column_maxW_1024: 64;
+$gutter_maxW_1024: 24;
+$column_abs_maxW_1024: calc( $column_maxW_1024 / ( $column_maxW_1024 * 8 + $gutter_maxW_1024 * ( 8 - 1 ) ) * 100% );
+$gutter_abs_maxW_1024: calc( $gutter_maxW_1024 / ( $column_maxW_1024 * 8 + $gutter_maxW_1024 * ( 8 - 1 ) ) * 100% );
+$margin_maxW_1024: 44;
+$margin_px_maxW_1024: calc( $margin_maxW_1024 * 1px );
+$width_maxW_1024: calc( 100% - $margin_px_maxW_1024 * 2 );
+
+$column_maxW_768: 56;
+$gutter_maxW_768: 20;
+$column_abs_maxW_768: calc( $column_maxW_768 / ( $column_maxW_768 * 4 + $gutter_maxW_768 * ( 4 - 1 ) ) * 100% );
+$gutter_abs_maxW_768: calc( $gutter_maxW_768 / ( $column_maxW_768 * 4 + $gutter_maxW_768 * ( 4 - 1 ) ) * 100% );
+$margin_maxW_768: 18;
+$margin_px_maxW_768: calc( $margin_maxW_768 * 1px );
+$width_maxW_768: calc( 100% - $margin_px_maxW_768 * 2 );
+
+// $maxW_1920: screen and ( max-width: 1920px );
+// $maxW_1440: screen and ( max-width: 1440px );
+// $maxW_1280: screen and ( max-width: 1280px );
+// $maxW_1024: screen and ( max-width: 1024px );
+// $maxW_768: screen and ( max-width: 768px );
+// $maxW_480: screen and ( max-width: 480px );
+// $maxW_320: screen and ( max-width: 320px );
+
+// $minW_1921: screen and ( min-width: $global.media.minW_1920 );
+// $minW_1440: screen and ( min-width: $global.media.minW_1440 );
+// $minW_1280: screen and ( min-width: $global.media.minW_1280 );
+// $minW_1024: screen and ( min-width: $global.media.minW_1024 );
+// $minW_768: screen and ( min-width: $global.media.minW_768 );
+// $minW_320: screen and ( min-width: $global.media.minW_320 );
+
+

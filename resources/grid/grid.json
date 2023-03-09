@@ -1,0 +1,50 @@
+{
+	"w_1920": {
+		"full_width": 1920,
+		"content_width": 1768,
+		"column_count": 12,
+		"column": 96,
+		"gutter": 56,
+		"margin": 76
+	},
+	"w_1440": {
+		"full_width": 1440,
+		"content_width": 1344,
+		"column_count": 12,
+		"column": 68,
+		"gutter": 48,
+		"margin": 48
+	},
+	"w_1280": {
+		"full_width": 1280,
+		"content_width": 1164,
+		"column_count": 12,
+		"column": 64,
+		"gutter": 36,
+		"margin": 58
+	},
+	"w_1024": {
+		"full_width": 1024,
+		"content_width": 980,
+		"column_count": 12,
+		"column": 56,
+		"gutter": 28,
+		"margin": 22
+	},
+	"w_768": {
+		"full_width": 768,
+		"content_width": 716,
+		"column_count": 6,
+		"column": 96,
+		"gutter": 28,
+		"margin": 26
+	},
+	"w_320": {
+		"full_width": 320,
+		"content_width": 288,
+		"column_count": 4,
+		"column": 60,
+		"gutter": 16,
+		"margin": 16
+	}
+}
