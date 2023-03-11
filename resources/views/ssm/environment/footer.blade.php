@@ -1,7 +1,6 @@
 <footer class="footer">
     <div class="container footer-container">
-      <h2>Остались <span class="mark">вопросы?</span></h2>
-      <h3>Будем рады ответить</h3>
+      <h2>Звоните или оставляйте заявку. Будем рады  <span class="mark">ответить</span></h2>
       <div class="footer__wrapper">
         <div class="footer-contact">
           <a href="tel:{{ $mainset->tel }}" class="footer__phone"
@@ -10,7 +9,7 @@
             </svg>
             {{ $mainset->tel }}</a
           >
-          <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
+          {{-- <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button> --}}
           <ul class="list-reset footer-social__list">
             <li class="footer-social__item">
               <a href="{{ $mainset->watsap }}" rel="noopener" target="_blank">
