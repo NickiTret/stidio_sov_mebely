@@ -14,7 +14,7 @@ Route::group(['prefix' => 'message'], function() {
 
 ///////////////
 
-Route::middleware(['guest'])->group(function () {
+Route::group(function () {
     Route::get('/register', [App\Http\Controllers\UserController::class, 'create'])->name('register.create');
     Route::post('/register', [App\Http\Controllers\UserController::class, 'store'])->name('register.store');
     Route::get('/login', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login.create');
