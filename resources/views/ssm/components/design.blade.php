@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
                 @foreach ($sliders as $slider )
                 <div class="swiper-slide">
-                    <a href="{{ $slider->getImage() }}" data-fancybox data-caption="{{ $slider->title }}">
+                    <a href="{{ $slider->getImage() }}" data-fancybox="{{ $slider->group->title }}" data-caption="{{ $slider->title }}">
                         <img src="{{ $slider->getImage() }}"  alt="{{ $slider->title }}"/>
                     </a>
                     <div class="swiper-slide__description">
