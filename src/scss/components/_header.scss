@@ -19,8 +19,8 @@
   &-container {
     display: flex;
     align-items: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     z-index: 10000000;
     position: relative;
   }
@@ -66,7 +66,7 @@
       width: 25px;
       height: 25px;
       transition: all 0.2s ease;
-      fill: #ffffff;
+      fill: #c2c2c2;
       &:hover {
         fill: #ffbf00;
       }

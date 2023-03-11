@@ -37,6 +37,7 @@
                                         <th>#</th>
                                         <th>Наименование группы</th>
                                         <th>Слайды группы</th>
+                                        <th>Удалить</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,6 +50,13 @@
                                                 <span>{{ $slide->title }}</span>
                                             @endforeach
 
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('group.delete', $item->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

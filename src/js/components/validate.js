@@ -65,8 +65,9 @@ validate
       }
     };
 
-    xhr.open("POST", "mail.php", true);
+    xhr.open("POST", "/", true);
     xhr.send(formData);
     alert('Сообщение отправлено! Спасибо, мы с вами свяжемся.')
     event.target.reset();
+    const close = document.querySelector('.btn-close').click();
   });

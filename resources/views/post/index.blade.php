@@ -30,6 +30,7 @@
                                         <th>Заголовок</th>
                                         <th>Описание</th>
                                         <th>Фотография</th>
+                                        <th>Удалить</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,6 +41,13 @@
                                         <td>{{ $post->description }}</td>
                                         <td>
                                             <img width="200" src="{{ $post->getImage() }}" alt="{{ $post->title }}">
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('post.delete', $post->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

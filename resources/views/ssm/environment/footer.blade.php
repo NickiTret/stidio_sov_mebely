@@ -13,15 +13,15 @@
           <button type="button" class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
           <ul class="list-reset footer-social__list">
             <li class="footer-social__item">
-              <a href="{{ $mainset->watsap }}">
+              <a href="{{ $mainset->watsap }}" rel="noopener" target="_blank">
                 <svg class="">
                   <use xlink:href="/img/sprite.svg#whatsapp"></use>
                 </svg>
-                WhatsApp
+                Instagram
               </a>
             </li>
             <li class="footer-social__item">
-              <a href="{{ $mainset->telegram }}">
+              <a href="{{ $mainset->telegram }}" rel="noopener" target="_blank">
                 <svg class="">
                   <use xlink:href="/img/sprite.svg#telegramm__foo"></use>
                 </svg>
@@ -31,12 +31,9 @@
           </ul>
         </div>
         <div class="footer-map">
-          <script
-            type="text/javascript"
-            charset="utf-8"
-            async
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac45a179216bb33cde6670ce2669e7c6ff2ff3debe5d88539ded686529313033a&amp;width=754&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
-          ></script>
+            <div data-map="{{ $mainset->map }}" data-icon="{{ $seting->getImage() }}" id="map-test" class="map"></div>
+            <script src="https://api-maps.yandex.ru/2.1/?apikey=f7db7337-3ada-4e38-9eb9-336c076d79ba&lang=ru_RU">
+            </script>
         </div>
       </div>
       <p class="footer__copyright">

@@ -37,7 +37,7 @@ const rootFolder = path.basename(path.resolve());
 
 // paths
 const srcFolder = './src';
-const buildFolder = './public_new';
+const buildFolder = './public';
 const paths = {
   srcSvg: `${srcFolder}/img/svg/**.svg`,
   srcImgFolder: `${srcFolder}/img`,
@@ -53,9 +53,9 @@ const paths = {
 
 let isProd = false; // dev by default
 
-const clean = () => {
-  return del([buildFolder])
-}
+// const clean = () => {
+//   return del([buildFolder])
+// }
 
 //svg sprite
 const svgSprites = () => {
@@ -324,11 +324,11 @@ const toProd = (done) => {
   done();
 };
 
-exports.default = series(clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, watchFiles);
+exports.default = series( htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, watchFiles);
 
-exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages, avifImages, svgSprites)
+exports.backend = series( htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages, avifImages, svgSprites)
 
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, htmlMinify);
+exports.build = series(toProd,  htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, htmlMinify);
 
 exports.cache = series(cache, rewrite);
 

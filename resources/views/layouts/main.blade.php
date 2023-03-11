@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }} ">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -27,7 +28,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
@@ -35,7 +36,7 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <a href="#" class="dropdown-item">
                             <div class="media">
-                                {{-- <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle"> --}}
+                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -49,7 +50,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <div class="media">
-                                {{-- <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> --}}
+                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -63,7 +64,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <div class="media">
-                                {{-- <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> --}}
+                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
@@ -78,8 +79,8 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li> --}}
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
                         <span class="badge badge-warning navbar-badge">15</span>
@@ -104,7 +105,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -155,22 +156,15 @@
                                 </p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('color.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tint"></i>
+
+                        <li class="nav-item">
+                            <a href="{{ route('message.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-envelope"></i>
                                 <p>
-                                    Цвета
+                                    Заявки
                                 </p>
                             </a>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('user.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Пользователи
-                                </p>
-                            </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -180,7 +174,8 @@
             @yield('content')
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ now()->year }} <a href="{{ route('main.index') }}">Студия Совеременной Мебели</a>.</strong>
+            <strong>Copyright &copy; {{ now()->year }} <a href="{{ route('home') }}">Студия Совеременной
+                    Мебели</a>.</strong>
             Все права защищены.
         </footer>
         <aside class="control-sidebar control-sidebar-dark">
@@ -197,6 +192,8 @@
     <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
+    <script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
     <script>
         $(function() {
             if ($('.tags')) {
@@ -206,8 +203,17 @@
             if ($('.colors')) {
                 $('.colors').select2()
             }
+
             bsCustomFileInput.init();
+            if ($('.redactor')) {
+                $('.redactor').summernote()
+            }
+
+            if ($('.redactor2')) {
+                $('.redactor2').summernote()
+            }
         })
+
     </script>
 
 </body>

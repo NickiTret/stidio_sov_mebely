@@ -34,7 +34,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/modal.js */ "./src/js/components/modal.js");
 /* harmony import */ var _components_animate_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/animate.js */ "./src/js/components/animate.js");
 /* harmony import */ var _components_validate_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/validate.js */ "./src/js/components/validate.js");
-/* harmony import */ var _components_grid_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/grid.js */ "./src/js/components/grid.js");
+/* harmony import */ var _components_ymap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ymap.js */ "./src/js/components/ymap.js");
+/* harmony import */ var _components_ymap_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_ymap_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_grid_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/grid.js */ "./src/js/components/grid.js");
+
 
 
 
@@ -520,11 +523,47 @@ validate.addField("#name", [{
       }
     }
   };
-  xhr.open("POST", "mail.php", true);
+  xhr.open("POST", "/", true);
   xhr.send(formData);
   alert('Сообщение отправлено! Спасибо, мы с вами свяжемся.');
   event.target.reset();
+  const close = document.querySelector('.btn-close').click();
 });
+
+/***/ }),
+
+/***/ "./src/js/components/ymap.js":
+/*!***********************************!*\
+  !*** ./src/js/components/ymap.js ***!
+  \***********************************/
+/***/ (() => {
+
+let map = document.querySelector("div.map").getAttribute("data-map");
+let imageSrc = document.querySelector("div.map").getAttribute("data-icon");
+let center = [43.517431, 43.664865];
+console.log(center);
+function init() {
+  let map = new ymaps.Map("map-test", {
+    center: center,
+    zoom: 17
+  });
+  let placemark = new ymaps.Placemark(center, {}, {
+    iconLayout: "default#image",
+    iconImageHref: imageSrc,
+    iconImageSize: [40, 40],
+    iconImageOffset: [-19, -44]
+  });
+  map.controls.remove("geolocationControl"); // удаляем геолокацию
+  map.controls.remove("searchControl"); // удаляем поиск
+  map.controls.remove("trafficControl"); // удаляем контроль трафика
+  map.controls.remove("typeSelector"); // удаляем тип
+  map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
+  map.controls.remove("zoomControl"); // удаляем контрол зуммирования
+  map.controls.remove("rulerControl"); // удаляем контрол правил
+  // map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
+  map.geoObjects.add(placemark);
+}
+ymaps.ready(init);
 
 /***/ }),
 

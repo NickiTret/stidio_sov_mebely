@@ -91,3 +91,15 @@ text-align: center;
     color: #242424;
   }
 }
+
+
+.map {
+    width: 100vw;
+	max-width: 986px;
+	height: 500px;
+	background-color: #333;
+}
+
+[class*="copyrights-pane"] {
+	display: none !important;
+}

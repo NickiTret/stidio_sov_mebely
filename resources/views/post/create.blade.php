@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" placeholder="Наименование" name="title">
                         </div>
                         <div class="form-group">
-                            <textarea type="text" rows="50" class="form-control" placeholder="Описание" name="description"></textarea>
+                            <textarea type="text" rows="50" class="form-control redactor" placeholder="Описание" name="description"></textarea>
                         </div>
                         <div class="form-group">
                             <div class="custom-file">
