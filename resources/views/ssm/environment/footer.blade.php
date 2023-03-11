@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container footer-container">
-      <h2>Звоните или оставляйте заявку. Будем рады  <span class="mark">ответить</span></h2>
+      <h3>Звоните или оставляйте заявку. Будем рады  <span class="mark">ответить</span></h3>
       <div class="footer__wrapper">
         <div class="footer-contact">
           <a href="tel:{{ $mainset->tel }}" class="footer__phone"
