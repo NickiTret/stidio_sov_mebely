@@ -1,33 +1,49 @@
 .swiper {
     width: 100%;
     height: 100%;
-  }
+}
 
-  .swiper-slide {
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .swiper-slide img {
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-  }
+    object-fit: cover;
+}
 
-  .swiper {
+.swiper-slide > a > img {
+    @media (max-width: 766px) {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.swiper {
     width: 100%;
-    height: 780px;
+    height: 480px;
     margin-left: auto;
     margin-right: auto;
     cursor: grab;
-  }
 
-  .swiper-slide {
+    @media (max-width: 766px) {
+        height: 320px;
+    }
+
+    @media (max-width: 520px) {
+        height: 200px;
+    }
+}
+
+.swiper-slide {
     position: relative;
     background-size: cover;
     background-position: center;
@@ -45,49 +61,64 @@
         padding-left: 14px;
         transition: all 0.3s ease-in-out;
 
+        & h3 {
+            margin-bottom: 5px;
+        }
+        & p {
+            margin: 5px;
+        }
+
+        @media (max-width: 52px) {
+            & h3 {
+                font-size: 18px;
+            }
+            & p {
+                font-size: 16px;
+            }
+        }
+
     }
     &:hover {
-        & >.swiper-slide__description {
+        & > .swiper-slide__description {
             opacity: 0;
             width: 0;
         }
     }
-  }
+}
 
-  .mySwiper2 {
+.mySwiper2 {
     width: 100%;
-  }
+}
 
-  .mySwiper {
+.mySwiper {
     height: 200px;
     box-sizing: border-box;
     padding: 10px 0;
-  }
+}
 
-  @media(max-width: 620px) {
+@media (max-width: 620px) {
     .mySwiper {
         height: 100px;
-      }
-  }
+    }
+}
 
-  .mySwiper .swiper-slide {
+.mySwiper .swiper-slide {
     width: 25%;
     height: 100%;
     opacity: 0.4;
-  }
+}
 
-  .mySwiper .swiper-slide-thumb-active {
+.mySwiper .swiper-slide-thumb-active {
     opacity: 1;
-  }
+}
 
-  .swiper-slide img {
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
-
-  .fancybox__container {
+.fancybox__container {
     z-index: 10000001 !important;
-  }
+}
