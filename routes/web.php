@@ -14,25 +14,18 @@ Route::group(['prefix' => 'message'], function() {
 
 ///////////////
 
-Route::group(function () {
+Route::middleware(['guest'])->group(function () {
     Route::get('/register', [App\Http\Controllers\UserController::class, 'create'])->name('register.create');
     Route::post('/register', [App\Http\Controllers\UserController::class, 'store'])->name('register.store');
     Route::get('/login', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login.create');
     Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 });
 
-// Route::middleware(['guest'])->group(function () {
-//     Route::get('/register', [App\Http\Controllers\UserController::class, 'create'])->name('register.create');
-//     Route::post('/register', [App\Http\Controllers\UserController::class, 'store'])->name('register.store');
-//     Route::get('/login', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login.create');
-//     Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
-// });
-
 
 Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['admin'])->prefix('admin')->group(function () {
 
     Route::get('/', App\Http\Controllers\IndexController::class)->name('admin');
 
@@ -44,19 +37,6 @@ Route::prefix('admin')->group(function () {
         Route::patch('/{seting}', App\Http\Controllers\Seting\UpdateController::class)->name('seting.update');
         Route::delete('/{seting}', App\Http\Controllers\Seting\DeleteController::class)->name('seting.delete');
     });
-
-    // Route::middleware(['admin'])->prefix('admin')->group(function () {
-
-    //     Route::get('/', App\Http\Controllers\IndexController::class)->name('admin');
-
-    //     Route::group(['prefix' => 'setings'], function() {
-    //         Route::get('/', App\Http\Controllers\Seting\IndexController::class)->name('seting.index');
-    //         Route::get('/create', App\Http\Controllers\Seting\CreateController::class)->name('seting.create');
-    //         Route::post('/', App\Http\Controllers\Seting\StoreController::class)->name('seting.store');
-    //         Route::get('/{seting}/edit', App\Http\Controllers\Seting\EditController::class)->name('seting.edit');
-    //         Route::patch('/{seting}', App\Http\Controllers\Seting\UpdateController::class)->name('seting.update');
-    //         Route::delete('/{seting}', App\Http\Controllers\Seting\DeleteController::class)->name('seting.delete');
-    //     });
 
     Route::group(['prefix' => 'slider'], function() {
         Route::get('/', App\Http\Controllers\Slider\IndexController::class)->name('slider.index');
