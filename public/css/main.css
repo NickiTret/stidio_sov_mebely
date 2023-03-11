@@ -653,6 +653,10 @@ a {
   object-fit: cover;
 }
 
+.fancybox__container {
+  z-index: 10000001;
+}
+
 .design-prod {
   position: relative;
   padding-top: 60px !important;
