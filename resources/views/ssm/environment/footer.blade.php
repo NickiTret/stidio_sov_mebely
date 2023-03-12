@@ -36,7 +36,7 @@
         </div>
       </div>
       <p class="footer__copyright">
-        © 2000 - 2023 | {{ $mainset->footer }}
+        © 2000 - 2023 | {{ $mainset->footer }} | Разоработка сайта <a target="_blank" href="https://nickdesignweb.ru/">NickWeb</a>
       </p>
     </div>
   </footer>
