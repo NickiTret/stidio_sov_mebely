@@ -15,12 +15,15 @@
           </svg>
         </a>
         <a href="tel:{{ $mainset->tel }}" class="header__number">{{ $mainset->tel }}</a>
-        {{-- @if (auth()->check())
-            <a>{{ user()->name }}</a>
-            <a href="{{ route('logout') }}" class="header__number">Выйти</a>
-        @else --}}
+        @if (auth()->check())
+            <a href="@if (auth()->user()->is_admin)
+                {{ route('admin') }}
+            @else
+                {{ route('logout') }}
+            @endif" class="header__number">{{ auth()->user()->name }}</a>
+        @else
         <a href="{{ route('login') }}" class="header__number">Войти</a>
-        {{-- @endif --}}
+        @endif
         <button  class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
       </div>
     </div>

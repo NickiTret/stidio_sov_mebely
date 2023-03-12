@@ -21,9 +21,6 @@ class AdminMiddleware
         {
             return $next($request);
         }
-
-        return redirect()->route('login')
-        // abort(404);
-
+        abort(404);
     }
 }
