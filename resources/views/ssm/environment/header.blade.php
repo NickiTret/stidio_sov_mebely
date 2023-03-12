@@ -20,7 +20,7 @@
             <a href="{{ route('logout') }}" class="header__number">Выйти</a>
         @else --}}
         <a href="{{ route('login') }}" class="header__number">Войти</a>
-        @endif
+        {{-- @endif --}}
         <button  class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
       </div>
     </div>
