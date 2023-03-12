@@ -5,3 +5,4 @@ import './components/animate.js';
 import './components/validate.js';
 import './components/ymap.js';
 import './components/grid.js';
+import './components/factoids.js';

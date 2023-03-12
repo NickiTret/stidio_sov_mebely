@@ -1,0 +1,69 @@
+.factoid {
+    &-container {
+        & > ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+            & > li {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-top: 94px;
+                width: 200px;
+                @media(max-width: 768px) {
+                    padding-top: 64px;
+                    width: 150px;
+                }
+                @media(max-width: 536px) {
+                    padding-top: 43px;
+                    width: 150px;
+                }
+                & > svg {
+                    position: absolute;
+                    top: -20px;
+                    & > circle {
+                        stroke: $clr_yellow;
+                        background-color: $clr_yellow;
+                    }
+                }
+                & > span {
+                    position: absolute;
+                    font-size: 82px;
+                    font-weight: 900;
+                    color: $clr_yellow2;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-shadow: 1px 1px 2px $clr_text;
+                    @media(max-width: 768px) {
+                        font-size: 56px;
+                    }
+                    @media(max-width: 536px) {
+                        font-size: 38px;
+                    }
+                }
+                & > p {
+                    @include font_p1($font-family, $clr_text, 900);
+                    text-transform: uppercase;
+                    @media(max-width: 480px) {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.text {
+    max-width: 1000px;
+    font-size: 25px;
+    line-height: 1.5;
+  }
+
+  .text div {
+    display: inline-block;
+  }

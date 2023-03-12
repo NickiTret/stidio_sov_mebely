@@ -1136,6 +1136,103 @@ section {
   }
 }
 
+.factoid-container > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+.factoid-container > ul > li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 94px;
+  width: 200px;
+}
+@media (max-width: 768px) {
+  .factoid-container > ul > li {
+    padding-top: 64px;
+    width: 150px;
+  }
+}
+@media (max-width: 536px) {
+  .factoid-container > ul > li {
+    padding-top: 43px;
+    width: 150px;
+  }
+}
+.factoid-container > ul > li > svg {
+  position: absolute;
+  top: -20px;
+}
+.factoid-container > ul > li > svg > circle {
+  stroke: #d7a100;
+  background-color: #d7a100;
+}
+.factoid-container > ul > li > span {
+  position: absolute;
+  font-size: 82px;
+  font-weight: 900;
+  color: #ffbf00;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-shadow: 1px 1px 2px #242424;
+}
+@media (max-width: 768px) {
+  .factoid-container > ul > li > span {
+    font-size: 56px;
+  }
+}
+@media (max-width: 536px) {
+  .factoid-container > ul > li > span {
+    font-size: 38px;
+  }
+}
+.factoid-container > ul > li > p {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+  text-transform: uppercase;
+}
+@media (max-width: 480px) {
+  .factoid-container > ul > li > p {
+    font-size: 12px;
+  }
+}
+
+.text {
+  max-width: 1000px;
+  font-size: 25px;
+  line-height: 1.5;
+}
+
+.text div {
+  display: inline-block;
+}
+
 .overlay {
   position: fixed;
   width: 100%;

@@ -37,6 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ymap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ymap.js */ "./src/js/components/ymap.js");
 /* harmony import */ var _components_ymap_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_ymap_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_grid_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/grid.js */ "./src/js/components/grid.js");
+/* harmony import */ var _components_factoids_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/factoids.js */ "./src/js/components/factoids.js");
+
 
 
 
@@ -261,6 +263,56 @@ newsItem.forEach(el => {
     y: "-100%",
     opacity: 0
   });
+});
+
+/***/ }),
+
+/***/ "./src/js/components/factoids.js":
+/*!***************************************!*\
+  !*** ./src/js/components/factoids.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
+
+
+
+const texts = Array.from(document.querySelectorAll('.text'));
+const items = document.querySelectorAll(".data");
+const circles = document.querySelectorAll('.circle-anim');
+const splitText = el => {
+  el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
+    return `<div class="word">` + m.replace(/(-|#|@)?\S(-|#|@)?/g, "<div class='letter'>$&</div>") + `</div>`;
+  });
+  return el;
+};
+const split = texts.forEach(el => {
+  const split = splitText(el);
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+    gsap__WEBPACK_IMPORTED_MODULE_0__.TweenLite.from(el, 2.5, {
+      opacity: 0,
+      scale: .3,
+      x: random(-500, 500),
+      y: random(-500, 500),
+      z: random(-500, 500),
+      delay: idx * 0.05,
+      repeat: 0
+    });
+  });
+});
+gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.from(items, {
+  textContent: 0,
+  duration: 4,
+  snap: {
+    textContent: 1
+  },
+  stagger: 1
 });
 
 /***/ }),
