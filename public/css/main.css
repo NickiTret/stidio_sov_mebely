@@ -364,7 +364,7 @@ section {
   color: #d7a100;
   text-transform: uppercase;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1074px) {
   .header__logo {
     font-size: 20px;
   }
@@ -1276,7 +1276,7 @@ textarea.form__input {
   text-align: left;
   margin-bottom: 50px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1074px) {
   .footer h3 {
     font-size: 20px;
   }
