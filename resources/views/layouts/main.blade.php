@@ -109,7 +109,7 @@
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
+            <a href="/" target="_blank" class="brand-link">
                 <span class="brand-text font-weight-light">Студия Современной Мебели</span>
             </a>
             <div class="sidebar">
