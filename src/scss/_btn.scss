@@ -1,24 +1,21 @@
 .btn {
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  display: block;
-  transition: all .2s ease;
-  border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: block;
+    transition: all 0.2s ease;
+    border: none;
 }
 
 .btn-main {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  text-align: center;
-  color: #242424;
-  padding: 12px 40px;
-  background: #FFBF00;
-  opacity: 1;
-  &:hover {
-    opacity: .8;
-    color: #fff;
-  }
+    @include font_small($font-family, $clr_text, 600);
+    text-align: center;
+    color: #242424;
+    padding: 12px 40px;
+    background: #ffbf00;
+    opacity: 1;
+    &:hover {
+        opacity: 0.8;
+        color: #fff;
+    }
 }

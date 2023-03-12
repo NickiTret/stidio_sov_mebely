@@ -10,7 +10,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     @media (max-width: $tabled) {
-        height: 100%;
+        height: 100vh;
         padding-top: 100px;
         padding-bottom: 50px;
         background-size: cover;
@@ -27,33 +27,18 @@
         left: 0;
     }
     h1 {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 60px;
-        color: #242424;
+        @include font_h1($font-family, $clr_text, 900);
         @media (max-width: $tabled) {
             max-width: none;
-            font-size: 30px;
             line-height: 40px;
         }
     }
     h4 {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 18px;
-        color: #242424;
+        @include font_h2($font-family, $clr_text, 700);
     }
     p {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 22px;
-        color: #000000;
-        max-width: 294px;
+        @include font_p1($font-family, $clr_text, 400);
         margin: 0 auto;
-        margin-bottom: 30px;
     }
     button {
         margin: 0 auto;

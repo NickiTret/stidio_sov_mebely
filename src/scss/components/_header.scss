@@ -25,15 +25,14 @@
     position: relative;
   }
   &__logo {
+    @include font_h3($font-family, $clr_text, 700);
+    margin: 0;
     display: flex;
     align-items: center;
     font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 21px;
     display: flex;
     align-items: center;
-    color: #d7a100;
+    color: $clr_yellow;
     text-transform: uppercase;
   }
   &__logo svg {
@@ -68,7 +67,7 @@
       transition: all 0.2s ease;
       fill: #c2c2c2;
       &:hover {
-        fill: #ffbf00;
+        fill: $clr_yellow2;
       }
     }
   }
@@ -83,7 +82,7 @@
       transition: all 0.2s ease;
       fill: #ffffff;
       &:hover {
-        fill: #ffbf00;
+        fill: $clr_yellow2;
       }
     }
   }

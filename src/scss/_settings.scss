@@ -10,7 +10,7 @@ html {
 
 .page {
   height: 100%;
-  font-family: var(--font-family, sans-serif);
+  font-family: $font-family, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -29,6 +29,11 @@ img {
 
 a {
   text-decoration: none;
+  color: $clr_yellow2;
+}
+
+section {
+    padding-top: 70px;
 }
 
 .site-container {
@@ -57,7 +62,7 @@ a {
   appearance: none;
   border: none;
   border-radius: 0;
-  background-color: #fff;
+  background-color: $clr_white;
 
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,
@@ -79,14 +84,6 @@ a {
 }
 
 .container {
-//   margin: 0 auto;
-//   padding: 0 var(--container-offset);
-//   max-width: var(--container-width);
-//   padding-top: 60px;
-//   padding-bottom: 60px;
-//   @media (max-width: $tabled) {
-//     padding: 0 15px;
-//   }
     @include grid();
 }
 

@@ -62,19 +62,11 @@
         transition: all 0.3s ease-in-out;
 
         & h3 {
-            margin-bottom: 5px;
+            @include font_p1($font-family, $clr_text, 700);
         }
         & p {
+            @include font_small($font-family, $clr_text, 700);
             margin: 5px;
-        }
-
-        @media (max-width: 52px) {
-            & h3 {
-                font-size: 18px;
-            }
-            & p {
-                font-size: 16px;
-            }
         }
 
     }

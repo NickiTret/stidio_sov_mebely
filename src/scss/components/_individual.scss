@@ -28,26 +28,17 @@
     width: 100%;
     max-width: 620px;
   }
-  &__text {
-  }
   h2 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 55px;
-    color: #242424;
-    @media (max-width: $tabled) { 
+    @include font_h1($font-family, $clr_text, 700);
+    @media (max-width: $tabled) {
       font-size: 30px;
       line-height: 40px;
     }
   }
   p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 30px;
-    color: #000000;
-    @media (max-width: $tabled) { 
+    @include font_p1($font-family, $clr_text, 700);
+    line-height: 1.5;
+    @media (max-width: $tabled) {
       font-size: 18px;
     }
   }

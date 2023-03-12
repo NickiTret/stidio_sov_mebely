@@ -3,8 +3,6 @@ let imageSrc = document.querySelector("div.map").getAttribute("data-icon");
 
 let center = [43.517431,43.664865];
 
-console.log(center);
-
 function init() {
     let map = new ymaps.Map("map-test", {
         center: center,

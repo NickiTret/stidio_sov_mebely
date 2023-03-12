@@ -20,5 +20,3 @@ const swiper2 = new Swiper(".mySwiper2", {
         swiper: swiper,
     },
 });
-
-console.log(swiper);

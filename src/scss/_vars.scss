@@ -1,18 +1,17 @@
-// если вы хотите использовать sass-переменные - удалите root
-// colors
-:root {
-  // base
-  --font-family: "Muller", sans-serif;
-  --content-width: 1920px;
-  --container-offset: 30px;
-  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
 
-  // colors
-  --light-color: #fff;
-}
-
+$font-family: 'Montserrat';
 $mobile: 480px;
 $mobilePre: 557px;
 $tabled: 777px;
 $desktop: 1024px;
 $desktopFull: 1366px;
+
+
+//цвета
+$clr_yellow:#d7a100;
+$clr_yellow2: #ffbf00;
+$clr_white:#ffffff;
+$clr_blue:#007aff;
+$clr_black:#000000;
+$clr_grey:#c2c2c2;
+$clr_text:#242424;
