@@ -1136,6 +1136,9 @@ section {
   }
 }
 
+.factoid {
+  margin-bottom: 40px;
+}
 .factoid-container > ul {
   display: -webkit-box;
   display: -ms-flexbox;
