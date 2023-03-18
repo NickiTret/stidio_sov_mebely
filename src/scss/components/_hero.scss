@@ -9,6 +9,11 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    & > .container {
+        position: relative;
+        z-index: 2;
+    }
     @media (max-width: $tabled) {
         height: 100vh;
         padding-top: 100px;
@@ -39,6 +44,7 @@
     p {
         @include font_p1($font-family, $clr_text, 400);
         margin: 0 auto;
+        font-weight: 700;
     }
     button {
         margin: 0 auto;

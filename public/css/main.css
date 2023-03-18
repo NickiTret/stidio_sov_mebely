@@ -463,6 +463,10 @@ section {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.hero > .container {
+  position: relative;
+  z-index: 2;
+}
 @media (max-width: 777px) {
   .hero {
     height: 100vh;
@@ -529,6 +533,7 @@ section {
   line-height: 1.5;
   margin: 0 0 14px 0;
   margin: 0 auto;
+  font-weight: 700;
 }
 .hero button {
   margin: 0 auto;
@@ -1176,7 +1181,7 @@ section {
 @media (max-width: 536px) {
   .factoid-container > ul > li {
     padding-top: 43px;
-    width: 150px;
+    width: 111px;
   }
 }
 .factoid-container > ul > li > svg {
