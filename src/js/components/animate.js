@@ -10,8 +10,8 @@ let tl_4 = gsap.timeline();
 let tl_5 = gsap.timeline();
 
 
-
-tl_1
+if ( window.screen.width > 480 ) {
+  tl_1
   .from(".header", { duration: 1, opacity: 0 })
   .from(".hero h1", { duration: 1, x: "100%", opacity: 0 })
   .from(".hero h4", { duration: 1, x: "100%", opacity: 0 }, '-=.75')
@@ -54,4 +54,9 @@ let newsItem = document.querySelectorAll(".posts__item");
 newsItem.forEach((el) => {
   tl_5.from(el, { duration: .1 , y: "-100%", opacity: 0 });
 });
+
+}
+
+
+
 
