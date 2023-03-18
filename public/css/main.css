@@ -166,9 +166,6 @@ html {
   min-height: 100%;
   font-size: 16px;
 }
-.page__body > .is-using-mouse .header {
-  display: none;
-}
 
 img {
   height: auto;
@@ -759,7 +756,7 @@ section {
 }
 
 .fancybox__container {
-  z-index: 10000001 !important;
+  z-index: 100000010000 !important;
 }
 
 .design-prod {
