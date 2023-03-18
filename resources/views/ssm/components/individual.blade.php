@@ -6,7 +6,7 @@
             </div>
             <div class="individual__text">
                 <h2 class="individual__title">
-                    Современная и надежная<span class="mark">мебель</span>
+                    Современная и надежная <span class="mark"> мебель</span>
                 </h2>
                 <p>
                     Чем отличается пространство, в котором сразу ощущаешь стиль и
