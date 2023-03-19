@@ -15,7 +15,7 @@
                             <svg class="">
                                 <use xlink:href="/img/sprite.svg#whatsapp"></use>
                             </svg>
-                            Instagram
+                            WhatsApp
                         </a>
                     </li>
                     <li class="footer-social__item">
