@@ -8,7 +8,7 @@ const sliders = Array.from(document.querySelectorAll('.swiper'));
 if (sliders) {
     sliders.forEach((slider) => {
         new Swiper(slider, {
-            spaceBetween: 10,
+            spaceBetween: 0,
             autoHeight: true,
             navigation: {
                 nextEl: ".swiper-button-next",

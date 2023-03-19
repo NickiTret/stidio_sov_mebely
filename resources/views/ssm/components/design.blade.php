@@ -26,11 +26,11 @@
                                                     data-caption="{{ $slider->title }}">
                                                     <img src="{{ $item_slide->getImage() }}"
                                                         alt="{{ $item_slide->title }}" />
+                                                        <div class="swiper-slide__description">
+                                                            <h3>{{ $item_slide->title }}</h3>
+                                                            <p>{{ $item_slide->description }}</p>
+                                                        </div>
                                                 </a>
-                                                <div class="swiper-slide__description">
-                                                    <h3>{{ $item_slide->title }}</h3>
-                                                    <p>{{ $item_slide->description }}</p>
-                                                </div>
                                             </div>
                                         @endforeach
                                     </div>

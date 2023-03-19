@@ -809,7 +809,10 @@ section {
   background-position: center;
   max-height: 90vh;
 }
-.swiper-slide > .swiper-slide__description {
+.swiper-slide > a {
+  position: relative;
+}
+.swiper-slide .swiper-slide__description {
   position: absolute;
   opacity: 1;
   bottom: 0;
@@ -825,14 +828,14 @@ section {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.swiper-slide > .swiper-slide__description h3 {
+.swiper-slide .swiper-slide__description h3 {
   font-family: "Montserrat";
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
   margin: 0 0 14px 0;
 }
-.swiper-slide > .swiper-slide__description p {
+.swiper-slide .swiper-slide__description p {
   font-family: "Montserrat";
   font-size: 12px;
   font-weight: 700;
