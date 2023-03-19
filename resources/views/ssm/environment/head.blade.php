@@ -19,10 +19,10 @@
     <link rel="preload" href="fonts/Montserrat-SemiBold.woff" as="font" type="font/woff" crossorigin />
 
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?{{$expenses->date->format('j F, Y')}}" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script defer src="{{ asset('js/main.js') }}?{{$expenses->date->format('j F, Y')}}"></script>
+    <script defer src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript">
         (function(m, e, t, r, i, k, a) {
             m[i] = m[i] || function() {
