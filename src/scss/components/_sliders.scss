@@ -47,6 +47,7 @@
     position: relative;
     background-size: cover;
     background-position: center;
+    max-height: 90vh;
     & > .swiper-slide__description {
         position: absolute;
         opacity: 1;
