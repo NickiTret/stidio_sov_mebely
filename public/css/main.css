@@ -803,17 +803,6 @@ section {
   cursor: -webkit-grab;
   cursor: grab;
 }
-@media (max-width: 766px) {
-  .swiper {
-    height: 480px;
-  }
-}
-@media (max-width: 520px) {
-  .swiper {
-    height: 320px;
-  }
-}
-
 .swiper-slide {
   position: relative;
   background-size: cover;
