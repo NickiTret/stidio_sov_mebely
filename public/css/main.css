@@ -891,6 +891,34 @@ section {
   border: 1px solid #fff;
 }
 
+.swiper-slide__description {
+  padding-top: 20px;
+}
+.swiper-slide__description > h3 {
+  font-family: "Montserrat";
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+}
+@media (max-width: 1074px) {
+  .swiper-slide__description > h3 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .swiper-slide__description > h3 {
+    font-size: 18px;
+  }
+}
+.swiper-slide__description > p {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+}
+
 .design-prod {
   position: relative;
   padding-top: 60px !important;

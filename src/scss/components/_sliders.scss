@@ -120,3 +120,15 @@
     background-color: $clr_yellow;
     border: 1px solid #fff;
 }
+
+
+.swiper-slide__description {
+    padding-top: 20px;
+
+    & > h3 {
+        @include font_h3($font-family, $clr_white, 700)
+    }
+    & > p {
+        @include font_p1($font-family, $clr_white, 700);
+    }
+}
