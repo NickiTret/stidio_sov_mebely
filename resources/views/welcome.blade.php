@@ -19,7 +19,6 @@
             </div>
             @include('ssm.components.hero')
             @include('ssm.components.factoid')
-            {{-- @include('ssm.components.design', ['sliders' => $sliders]) --}}
             @include('ssm.components.individual')
             @include('ssm.components.realish')
             @include('ssm.components.posts', ['posts' => $posts])

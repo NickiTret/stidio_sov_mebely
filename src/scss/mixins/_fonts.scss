@@ -15,6 +15,23 @@
 
 }
 
+@mixin font_header ($fontfam, $color, $fontW) {
+    font-family: $fontfam;
+    font-size: 48px;
+    font-weight: $fontW;
+    line-height: 1.5;
+    margin: 0 0 14px 0;
+
+    @media(max-width: 1024px) {
+        font-size: 38px;
+    }
+
+    @media(max-width: 768px) {
+        font-size: 27px;
+    }
+
+}
+
 
 @mixin font_h2 ($fontfam, $color, $fontW) {
     font-family: $fontfam;

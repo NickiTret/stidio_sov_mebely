@@ -1,5 +1,8 @@
-<section class="factoid">
+<section class="factoid" id="factiod">
     <div class="container factoid-container">
+        <h2>
+            О <span class="mark"> нас</span>
+        </h2>
         <ul>
             <li>
                 <svg class="circle-anim" viewBox="-10 -10 300 300">
