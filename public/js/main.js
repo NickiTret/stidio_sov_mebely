@@ -567,6 +567,7 @@ if (sliders) {
   sliders.forEach(slider => {
     new Swiper(slider, {
       spaceBetween: 10,
+      autoHeight: true,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
