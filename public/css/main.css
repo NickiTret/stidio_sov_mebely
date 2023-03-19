@@ -387,9 +387,9 @@ section {
   -ms-flex-align: center;
   align-items: center;
   margin-left: auto;
+  gap: 8px;
 }
 .header__number {
-  margin-right: 20px;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
@@ -400,9 +400,6 @@ section {
   .header__number {
     display: none;
   }
-}
-.header__phone {
-  margin-right: 20px;
 }
 @media (max-width: 777px) {
   .header__phone {
@@ -665,7 +662,7 @@ section {
 
 .swiper {
   width: 100%;
-  height: 480px;
+  height: 740px;
   margin-left: auto;
   margin-right: auto;
   cursor: -webkit-grab;
@@ -673,12 +670,12 @@ section {
 }
 @media (max-width: 766px) {
   .swiper {
-    height: 320px;
+    height: 480px;
   }
 }
 @media (max-width: 520px) {
   .swiper {
-    height: 200px;
+    height: 320px;
   }
 }
 
@@ -757,6 +754,30 @@ section {
 
 .fancybox__container {
   z-index: 100000010000 !important;
+}
+
+.tabs__nav {
+  padding: 0;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 5px;
+}
+
+.tabs__nav-btn {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.tabs__nav-btn:focus {
+  background-color: #ffbf00;
+}
+
+.tabs__nav-btn--active {
+  background-color: #d7a100;
+  border: 1px solid #fff;
 }
 
 .design-prod {

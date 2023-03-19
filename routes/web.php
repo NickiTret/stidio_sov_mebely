@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', App\Http\Controllers\MainController::class)->name('home');
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('home');
+
+Route::get('/gallery', [App\Http\Controllers\MainController::class, 'gallery'])->name('gallery');
 
 // message ///////////////////
 Route::post('/', App\Http\Controllers\Message\StoreController::class)->name('message.store');

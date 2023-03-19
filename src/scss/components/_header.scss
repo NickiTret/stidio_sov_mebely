@@ -44,9 +44,13 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    gap: 8px;
+  }
+  &__link {
+    // margin-right: 20px;
   }
   &__number {
-    margin-right: 20px;
+    // margin-right: 20px;
     font-style: normal;
     font-weight: 700;
     font-size: 15px;
@@ -57,7 +61,7 @@
     }
   }
   &__phone {
-    margin-right: 20px;
+    // margin-right: 20px;
     @media (max-width: $tabled) {
       display: none;
     }

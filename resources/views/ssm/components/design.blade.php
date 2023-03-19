@@ -1,35 +1,47 @@
 @if (!$sliders->isEmpty())
-<section class="design-prod">
-    <div class="design-prod-container container">
-        <h2>Наши <span class="mark">проекты</span></h2>
-        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff;"
-            class="swiper mySwiper2">
-            <div class="swiper-wrapper">
-                @foreach ($sliders as $slider )
-                <div class="swiper-slide">
-                    <a href="{{ $slider->getImage() }}" data-fancybox="{{ $slider->group->title }}" data-caption="{{ $slider->title }}">
-                        <img src="{{ $slider->getImage() }}"  alt="{{ $slider->title }}"/>
-                    </a>
-                    <div class="swiper-slide__description">
-                        <h3>{{ $slider->title }}</h3>
-                        <p>{{ $slider->description }}</p>
-                    </div>
+    <section class="design-prod">
+        <div class="design-prod-container container">
+            <h2>Наши <span class="mark">проекты</span></h2>
+            <div class="tabs" data-tabs="tab">
+                <ul class="tabs__nav">
+                    @foreach ($groups as $item)
+                        @if (count($item->slides))
+                            <li class="tabs__nav-item"><button class="tabs__nav-btn  btn-main"
+                                    type="button">{{ $item->title }}</button></li>
+                            {{-- {{ dd($item->slides) }} --}}
+                        @endif
+                    @endforeach
+                </ul>
+                <div class="tabs__content">
+                    @foreach ($groups as $slider)
+                        @if (count($slider->slides))
+                            <div class="tabs__panel">
+                                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff;"
+                                    class="swiper mySwiper-{{ $slider->id }}">
+                                    <div class="swiper-wrapper">
+                                        @foreach ($slider->slides as $item_slide)
+                                            <div class="swiper-slide">
+                                                <a href="{{ $item_slide->getImage() }}"
+                                                    data-fancybox="{{ $item_slide->group->title }}"
+                                                    data-caption="{{ $slider->title }}">
+                                                    <img src="{{ $item_slide->getImage() }}"
+                                                        alt="{{ $item_slide->title }}" />
+                                                </a>
+                                                <div class="swiper-slide__description">
+                                                    <h3>{{ $item_slide->title }}</h3>
+                                                    <p>{{ $item_slide->description }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-        <div thumbsSlider="" class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                @foreach ($sliders as $slider )
-                <div class="swiper-slide">
-                    <img src="{{ $slider->getImage() }}"  alt="{{ $slider->title }}"/>
-                </div>
-                @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endif
-

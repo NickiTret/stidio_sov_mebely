@@ -4,6 +4,9 @@
         Студия Современной Мебели
       </div>
       <div class="header-right__nav">
+        <a class="header__link" href="{{ route('gallery') }}">
+            Галерея
+          </a>
         <a href="{{ $mainset->watsap }}" rel="noopener" target="_blank" class="header__phone">
           <svg class="svg-site">
             <use xlink:href="/img/sprite.svg#whatsapp"></use>
