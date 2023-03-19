@@ -125,6 +125,7 @@
     border: none;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    white-space: nowrap;
     &:focus {
         background-color: $clr_yellow2;
     }
