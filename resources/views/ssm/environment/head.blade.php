@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#111111" />
     <meta name="format-detection" content="telephone=no">
+    <meta name="yandex-verification" content="40880704fc80f5a4" />
     <link rel="icon" href="{{ $seting->getImage() }}" type="image/svg+xml">
     <title>Студия Современной Мебели | {{ $seting->title }}</title>
     <meta property="og:description" content="{{ $seting->descriptions }}">
