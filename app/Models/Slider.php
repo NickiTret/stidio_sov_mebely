@@ -16,7 +16,7 @@ class Slider extends Model
     protected $fillable = ['title', 'description', 'image_src', 'group_id'];
     protected $guarded = [];
 
-    public static function uploadImage(Request $request, $image_src)
+    public static function uploadImage(Request $request, $image_src = null)
     {
         // dd($image_src);
         if ($request->hasFile('image_src')) {
@@ -28,6 +28,7 @@ class Slider extends Model
 
             return $request->file('image_src')->store("images/{$folder}", "public");
         }
+
         return $image_src;
     }
 
