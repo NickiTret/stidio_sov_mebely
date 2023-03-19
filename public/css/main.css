@@ -374,6 +374,11 @@ section {
     font-size: 18px;
   }
 }
+@media (max-width: 398px) {
+  .header__logo {
+    font-size: 13px;
+  }
+}
 .header__logo svg {
   width: 32px;
   height: 32px;
@@ -388,6 +393,42 @@ section {
   align-items: center;
   margin-left: auto;
   gap: 8px;
+}
+@media (max-width: 1144px) {
+  .header-right__nav > a {
+    padding: 5px;
+    text-shadow: 10px 5px 5px black;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+.header-right__nav > a:hover {
+  color: #ffffff;
+}
+.header-right__nav > a:hover::after {
+  width: 100%;
+}
+.header__link {
+  position: relative;
+  -webkit-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.header__link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #ffbf00;
+  -webkit-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
 }
 .header__number {
   font-style: normal;
@@ -420,11 +461,6 @@ section {
 .header__telegramm {
   margin-right: 20px;
 }
-@media (max-width: 777px) {
-  .header__telegramm {
-    display: none;
-  }
-}
 .header__telegramm svg {
   width: 25px;
   height: 25px;
@@ -436,12 +472,111 @@ section {
 .header__telegramm svg:hover {
   fill: #ffbf00;
 }
-@media (max-width: 557px) {
-  .header .btn-main {
+@media (max-width: 1144px) {
+  .menu-btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .header-right__nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .menu-btn span {
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #d7a100;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .menu-btn span:nth-of-type(2) {
+    top: calc(50% - 5px);
+  }
+  .menu-btn span:nth-of-type(3) {
+    top: calc(50% + 5px);
+  }
+  .menu-btn.active span:nth-of-type(1) {
+    display: none;
+  }
+  .menu-btn.active span:nth-of-type(2) {
+    top: 50%;
+    -webkit-transform: translate(-50%, 0%) rotate(45deg);
+    -ms-transform: translate(-50%, 0%) rotate(45deg);
+    transform: translate(-50%, 0%) rotate(45deg);
+    background-color: #ffffff;
+  }
+  .menu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    -webkit-transform: translate(-50%, 0%) rotate(-45deg);
+    -ms-transform: translate(-50%, 0%) rotate(-45deg);
+    transform: translate(-50%, 0%) rotate(-45deg);
+    background-color: #ffffff;
+  }
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    padding: 15px;
+    background: #d7a100;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+  }
+}
+@media (max-width: 1144px) and (max-width: 600px) {
+  .menu {
+    width: 100%;
+  }
+}
+@media (max-width: 1144px) {
+  .header__number {
+    color: #242424;
+  }
+}
+@media (max-width: 1144px) {
+  .menu.active {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@media (max-width: 1144px) {
+  .menu li {
+    list-style-type: none;
+  }
+}
+@media (max-width: 600px) {
+  .fs {
     display: none;
   }
 }
-
 .hero {
   position: relative;
   height: 100vh;

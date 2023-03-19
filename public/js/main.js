@@ -38,6 +38,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ymap_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_ymap_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_grid_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/grid.js */ "./src/js/components/grid.js");
 /* harmony import */ var _components_factoids_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/factoids.js */ "./src/js/components/factoids.js");
+/* harmony import */ var _components_scroll_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/scroll.js */ "./src/js/components/scroll.js");
+
 
 
 
@@ -58,7 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/mobile-check */ "./src/js/functions/mobile-check.js");
-/* harmony import */ var graph_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graph-tabs */ "./node_modules/graph-tabs/src/graph-tabs.js");
 // Данный файл - лишь собрание подключений готовых компонентов.
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
 
@@ -95,8 +96,10 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 // const modal = new GraphModal();
 
 // Реализация табов
-
-const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_1__["default"]('tab');
+// import GraphTabs from 'graph-tabs';
+// if (document.querySelectorAll('.tabs')) {
+//     const tabs = new GraphTabs('tab');
+// }
 
 // Получение высоты шапки сайта (не забудьте вызвать функцию)
 // import { getHeaderHeight } from './functions/header-height';
@@ -509,6 +512,42 @@ micromodal__WEBPACK_IMPORTED_MODULE_0__["default"].init({
   awaitCloseAnimation: false,
   // [9]
   debugMode: true // [10]
+});
+
+/***/ }),
+
+/***/ "./src/js/components/scroll.js":
+/*!*************************************!*\
+  !*** ./src/js/components/scroll.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var graph_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graph-tabs */ "./node_modules/graph-tabs/src/graph-tabs.js");
+const smoothScrool = () => {
+  const smoothScrollElems = document.querySelectorAll('a[href^="#"]:not(a[href=""])');
+  smoothScrollElems === null || smoothScrollElems === void 0 ? void 0 : smoothScrollElems.forEach(link => {
+    link.addEventListener('click', event => {
+      var _document$getElementB;
+      event.preventDefault();
+      const id = link === null || link === void 0 ? void 0 : link.getAttribute('href').slice(1);
+      (_document$getElementB = document.getElementById(id)) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+};
+smoothScrool();
+
+if (document.querySelectorAll('.tabs')) {
+  const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_0__["default"]('tab');
+}
+let menuBtn = document.querySelector('.menu-btn');
+let menu = document.querySelector('.menu');
+menuBtn.addEventListener('click', function () {
+  menu.classList.toggle('active');
+  menuBtn.classList.toggle('active');
 });
 
 /***/ }),
