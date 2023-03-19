@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" value="{{ $slider->image_src }}" name="image_src" id="image_src">
+                                <input type="file" class="custom-file-input" value="{{ $slider->getImage() }}" name="image_src" id="image_src">
                                 <label class="custom-file-label" for="image_src">Выбрать</label>
                             </div>
                             <div><img src="{{ $slider->getImage() }}" alt="" class="img-thumbnail mt-2"

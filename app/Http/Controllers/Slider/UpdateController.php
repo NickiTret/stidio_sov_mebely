@@ -13,12 +13,8 @@ class UpdateController extends Controller
 
         $data = $request->validated();
 
-        // if ($request->hasFile('image_src')) {
-        //     Storage::delete($slider->image_src);
-        //     $folder = date('Y-m-d');
-        //     $data['image_src'] = $request->file('image_src')->store("images/{$folder}");
-        // }
-        $data['image_src'] = Slider::uploadImage($request);
+
+        $data['image_src'] = Slider::uploadImage($request, $slider->image_src);
 
         $slider->update($data);
 
