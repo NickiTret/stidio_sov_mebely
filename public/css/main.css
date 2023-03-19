@@ -918,6 +918,7 @@ section {
 .design-prod {
   position: relative;
   padding-top: 60px !important;
+  margin-bottom: 60px;
 }
 .design-prod h2 {
   font-family: "Montserrat";

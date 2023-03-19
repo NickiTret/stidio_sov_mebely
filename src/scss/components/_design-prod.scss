@@ -1,6 +1,7 @@
 .design-prod {
   position: relative;
   padding-top: 60px !important;
+  margin-bottom: 60px;
   h2 {
     @include font_h1($font-family, $clr_text, 700);
     text-align: center;
