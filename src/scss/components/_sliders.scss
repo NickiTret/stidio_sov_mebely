@@ -111,6 +111,10 @@
     object-fit: cover;
 }
 
+.swiper-button-next, .swiper-button-prev {
+    color: $clr_yellow2;
+}
+
 .fancybox__container {
     z-index: 100000010000 !important;
 }
