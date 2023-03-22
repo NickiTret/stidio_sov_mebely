@@ -11,6 +11,7 @@
     <link rel="icon" href="{{ $seting->getImage() }}" type="image/svg+xml">
     <title>Студия Современной Мебели | {{ $seting->title }}</title>
     <meta property="og:description" content="{{ $seting->descriptions }}">
+    <meta name="description" content="{{ $seting->descriptions }}">
     <meta name="keywords" content="{{ $seting->keywords }}" />
     <link rel="preload" href="fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin />
 
