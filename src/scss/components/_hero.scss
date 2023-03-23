@@ -76,6 +76,9 @@
         @media (max-width: 600px) {
             gap: 12px;
         }
+        @media (max-width: 480px) {
+            flex-wrap: wrap;
+        }
         & > li {
             width: 340px;
             & > a {

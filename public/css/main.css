@@ -700,6 +700,12 @@ section {
     gap: 12px;
   }
 }
+@media (max-width: 480px) {
+  .hero ul {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
 .hero ul > li {
   width: 340px;
 }
