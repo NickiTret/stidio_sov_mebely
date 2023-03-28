@@ -1,6 +1,6 @@
 <section class="individual">
     <div class="container individual-container">
-        <div class="individual__item">
+        <div class="individual__item" data-aos="slide-right" data-aos-dalay="50" data-aos-duration="1000">
             <div class="individual__image">
                 <img src="/img/partials.png" alt="фото" />
             </div>
@@ -19,7 +19,7 @@
                 </p>
             </div>
         </div>
-        <div class="individual__item">
+        <div class="individual__item" data-aos="slide-left" data-aos-dalay="250" data-aos-duration="1000">
             <div class="individual__image">
                 <img src="/img/partials2.png" alt="фото" />
             </div>

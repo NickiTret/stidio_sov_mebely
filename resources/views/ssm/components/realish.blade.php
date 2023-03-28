@@ -1,5 +1,5 @@
 <section class="realish">
-    <div class="container realish-container">
+    <div  data-aos="zoom-down" data-aos-dalay="50" data-aos-duration="1000" class="container realish-container">
         <h2><span class="mark">От реализация дизайн-проекта</span> до <span>готовой сборки</span> </h2>
         <div class="realish__wrapper">
             <div class="realish__image">

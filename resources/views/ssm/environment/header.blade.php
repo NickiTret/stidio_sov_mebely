@@ -1,4 +1,4 @@
-<header class="header">
+<header data-aos="fade-down" class="header">
     <div class="container header-container">
         <div class="header__logo">
             Студия Современной Мебели

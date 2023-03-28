@@ -1,5 +1,5 @@
 <section class="factoid" id="factiod">
-    <div class="container factoid-container">
+    <div data-aos="slide-up" data-aos-duration="800" class="container factoid-container">
         <h2>
             О <span class="mark"> нас</span>
         </h2>
