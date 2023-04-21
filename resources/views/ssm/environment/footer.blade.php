@@ -1,11 +1,11 @@
 <section class="news">
     <div class="container">
-        <!-- Yandex Native Ads C-A-2349463-4 -->
-<div id="yandex_rtb_C-A-2349463-4"></div>
+<!-- Yandex Native Ads C-A-2349467-1 -->
+<div id="yandex_rtb_C-A-2349467-1"></div>
 <script>window.yaContextCb.push(()=>{
   Ya.Context.AdvManager.renderWidget({
-    renderTo: 'yandex_rtb_C-A-2349463-4',
-    blockId: 'C-A-2349463-4'
+    renderTo: 'yandex_rtb_C-A-2349467-1',
+    blockId: 'C-A-2349467-1'
   })
 })</script>
     </div>
