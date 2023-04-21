@@ -1,3 +1,15 @@
+<section class="news">
+    <div class="container">
+        <!-- Yandex Native Ads C-A-2349463-4 -->
+<div id="yandex_rtb_C-A-2349463-4"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.renderWidget({
+    renderTo: 'yandex_rtb_C-A-2349463-4',
+    blockId: 'C-A-2349463-4'
+  })
+})</script>
+    </div>
+</section>
 <footer class="footer" id="footer">
     <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>

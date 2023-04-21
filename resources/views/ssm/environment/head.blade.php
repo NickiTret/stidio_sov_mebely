@@ -52,4 +52,9 @@
         <div><img src="https://mc.yandex.ru/watch/92774377" style="position:absolute; left:-9999px;" alt="" />
         </div>
     </noscript>
+    <!-- Yandex Native Ads -->
+    <script>
+        window.yaContextCb = window.yaContextCb || []
+    </script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
 </head>

@@ -41,6 +41,9 @@ class Slider extends Model
         return asset('storage/' . $this->image_src);
     }
 
+
+
+
     //связь один ко многим с таблицей группы
     public function group()
     {
