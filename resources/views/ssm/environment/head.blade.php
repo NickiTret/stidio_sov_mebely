@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script defer src="{{ asset('js/main.js') }}?v=1"></script>
+    <script defer src="{{ asset('js/main.js') }}?01"></script>
     <script type="text/javascript">
         (function(m, e, t, r, i, k, a) {
             m[i] = m[i] || function() {
