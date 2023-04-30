@@ -28,8 +28,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Заголовок</th>
-                                        <th>Описание</th>
                                         <th>Фотография</th>
+                                        <th>Описание</th>
                                         <th>Удалить</th>
                                     </tr>
                                 </thead>
@@ -38,10 +38,10 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td><a href="{{ route('post.edit', $post->id) }}"> {{ $post->title }}</a></td>
-                                        <td>{{ $post->description }}</td>
                                         <td>
                                             <img width="200" src="{{ $post->getImage() }}" alt="{{ $post->title }}">
                                         </td>
+                                        <td>{{ $post->description }}</td>
                                         <td>
                                             <form action="{{ route('post.delete', $post->id) }}" method="post">
                                                 @csrf

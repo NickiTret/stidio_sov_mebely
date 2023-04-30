@@ -1,3 +1,15 @@
+<section class="news">
+    <div class="container">
+<!-- Yandex Native Ads C-A-2349467-1 -->
+<div id="yandex_rtb_C-A-2349467-1"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.renderWidget({
+    renderTo: 'yandex_rtb_C-A-2349467-1',
+    blockId: 'C-A-2349467-1'
+  })
+})</script>
+    </div>
+</section>
 <footer class="footer" id="footer">
     <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>
@@ -44,7 +56,7 @@
         </div>
         <p class="footer__copyright">
             © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
-                href="https://nickdesignweb.ru/">NickWeb</a>
+                href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>
 </footer>
