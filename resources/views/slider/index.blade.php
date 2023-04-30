@@ -35,9 +35,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Фотография</th>
                                         <th>Заголовок</th>
                                         <th>Описание</th>
-                                        <th>Фотография</th>
                                         <th>Группа</th>
                                         <th>Удалить</th>
                                     </tr>
@@ -46,11 +46,12 @@
                                     @foreach ($sliders as $slider)
                                     <tr>
                                         <td>{{ $slider->id }}</td>
-                                        <td><a href="{{ route('slider.edit', $slider->id) }}"> {{ $slider->title }}</a></td>
-                                        <td>{{ $slider->description }}</td>
                                         <td>
                                             <img width="200" src="{{ $slider->getImage() }}" alt="{{ $slider->title }}">
                                         </td>
+                                        <td><a href="{{ route('slider.edit', $slider->id) }}"> {{ $slider->title }}</a></td>
+                                        <td>{{ $slider->description }}</td>
+                                        
                                         <td>{{ $slider->group->title }}</td>
                                         <td>
                                             <form action="{{ route('slider.delete', $slider->id) }}" method="post">
