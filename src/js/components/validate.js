@@ -67,7 +67,6 @@ validate
   ])
   .onSuccess((event) => {
     console.log("Validation passes and form submitted", event);
-
     let formData = new FormData(event.target);
 
     console.log(...formData);
