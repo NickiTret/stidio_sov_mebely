@@ -1,13 +1,15 @@
 <section class="news">
     <div class="container">
-<!-- Yandex Native Ads C-A-2349467-1 -->
-<div id="yandex_rtb_C-A-2349467-1"></div>
-<script>window.yaContextCb.push(()=>{
-  Ya.Context.AdvManager.renderWidget({
-    renderTo: 'yandex_rtb_C-A-2349467-1',
-    blockId: 'C-A-2349467-1'
-  })
-})</script>
+        <!-- Yandex.RTB R-A-2349467-2 -->
+        <div id="yandex_rtb_R-A-2349467-2"></div>
+        <script>
+            window.yaContextCb.push(() => {
+                Ya.Context.AdvManager.renderFeed({
+                    "blockId": "R-A-2349467-2",
+                    "renderTo": "yandex_rtb_R-A-2349467-2"
+                })
+            })
+        </script>
     </div>
 </section>
 <footer class="footer" id="footer">
@@ -18,9 +20,9 @@
                 <ul class="list-reset footer-social__list">
                     <li class="footer-social__item">
                         <a href="tel:{{ $mainset->tel }}" class="footer__phone"><svg class="">
-                            <use xlink:href="/img/sprite.svg#phone__number"></use>
-                        </svg>
-                        {{ $mainset->tel }}</a>
+                                <use xlink:href="/img/sprite.svg#phone__number"></use>
+                            </svg>
+                            {{ $mainset->tel }}</a>
                     </li>
                     <li class="footer-social__item">
                         <a href="{{ $mainset->watsap }}" rel="noopener" target="_blank">
@@ -40,12 +42,12 @@
                     </li>
                     {{-- <li class="footer-social__item">
               <a href="{{ $mainset->telegram }}" rel="noopener" target="_blank">
-                <svg class="">
-                  <use xlink:href="/img/sprite.svg#telegramm__foo"></use>
-                </svg>
-                Telegram
-              </a>
-            </li> --}}
+                    <svg class="">
+                        <use xlink:href="/img/sprite.svg#telegramm__foo"></use>
+                    </svg>
+                    Telegram
+                    </a>
+                    </li> --}}
                 </ul>
             </div>
             <div class="footer-map">
@@ -55,8 +57,7 @@
             </div>
         </div>
         <p class="footer__copyright">
-            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
-                href="https://infonickweb.ru/">NickWeb</a>
+            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank" href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>
 </footer>
