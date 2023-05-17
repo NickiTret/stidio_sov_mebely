@@ -1,17 +1,4 @@
-<section class="news">
-    <div class="container">
-        <!-- Yandex.RTB R-A-2349467-2 -->
-        <div id="yandex_rtb_R-A-2349467-2"></div>
-        <script>
-            window.yaContextCb.push(() => {
-                Ya.Context.AdvManager.renderFeed({
-                    "blockId": "R-A-2349467-2",
-                    "renderTo": "yandex_rtb_R-A-2349467-2"
-                })
-            })
-        </script>
-    </div>
-</section>
+
 <footer class="footer" id="footer">
     <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>
