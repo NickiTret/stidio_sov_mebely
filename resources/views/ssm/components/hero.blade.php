@@ -1,7 +1,7 @@
 <section class="hero">
     <div class="container hero-container">
-        <h4 data-aos="slide-right" data-aos-duration="1000">СТУДИЯ СОВРЕМЕННОЙ МЕБЕЛИ</h4>
         <h1 data-aos="slide-right" data-aos-duration="1000" data-aos-delay="1000">МЕБЕЛЬ ИЗ НАТУРАЛЬНОГО ШПОНА НА ЗАКАЗ В Г. НАЛЬЧИК </h1>
+        <h4 data-aos="slide-right" data-aos-duration="1000">СТУДИЯ СОВРЕМЕННОЙ МЕБЕЛИ</h4>
         <ul class="list-reset">
             <li>
                 <a href="#factiod">
