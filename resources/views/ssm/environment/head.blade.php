@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="yandex-verification" content="40880704fc80f5a4" />
     <link rel="icon" href="{{ $seting->getImage() }}" type="image/svg+xml">
-    <title>Студия Современной Мебели - Заказать шпонированную мебель на заказ | {{ $seting->title }}</title>
+    <title>Заказать шпонированную мебель на заказ в г. Нальчик| {{ $seting->title }}</title>
     <meta property="og:description" content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
     <meta name="description" content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
     <meta name="keywords" content="{{ $seting->keywords }}" />
