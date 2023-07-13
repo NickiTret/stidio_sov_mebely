@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'tel' => 'required',
             'mail' => 'required',
             'content' => 'required',
+            // 'secret' => 'required',
         ];
     }
 }

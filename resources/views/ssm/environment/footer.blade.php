@@ -1,15 +1,4 @@
-<section class="news">
-    <div class="container">
-<!-- Yandex Native Ads C-A-2349467-1 -->
-<div id="yandex_rtb_C-A-2349467-1"></div>
-<script>window.yaContextCb.push(()=>{
-  Ya.Context.AdvManager.renderWidget({
-    renderTo: 'yandex_rtb_C-A-2349467-1',
-    blockId: 'C-A-2349467-1'
-  })
-})</script>
-    </div>
-</section>
+
 <footer class="footer" id="footer">
     <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>
@@ -18,9 +7,9 @@
                 <ul class="list-reset footer-social__list">
                     <li class="footer-social__item">
                         <a href="tel:{{ $mainset->tel }}" class="footer__phone"><svg class="">
-                            <use xlink:href="/img/sprite.svg#phone__number"></use>
-                        </svg>
-                        {{ $mainset->tel }}</a>
+                                <use xlink:href="/img/sprite.svg#phone__number"></use>
+                            </svg>
+                            {{ $mainset->tel }}</a>
                     </li>
                     <li class="footer-social__item">
                         <a href="{{ $mainset->watsap }}" rel="noopener" target="_blank">
@@ -38,14 +27,19 @@
                             {{ $mainset->email }}
                         </a>
                     </li>
+                    <li class="footer-social__item">
+                        <a href="https://www.liveinternet.ru/click" target="_blank"><img id="licnt1D19"
+                            width="31" height="31" style="border:0" title="LiveInternet"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7" alt="" /></a>
+                    </li>
                     {{-- <li class="footer-social__item">
               <a href="{{ $mainset->telegram }}" rel="noopener" target="_blank">
-                <svg class="">
-                  <use xlink:href="/img/sprite.svg#telegramm__foo"></use>
-                </svg>
-                Telegram
-              </a>
-            </li> --}}
+                    <svg class="">
+                        <use xlink:href="/img/sprite.svg#telegramm__foo"></use>
+                    </svg>
+                    Telegram
+                    </a>
+                    </li> --}}
                 </ul>
             </div>
             <div class="footer-map">
@@ -55,8 +49,7 @@
             </div>
         </div>
         <p class="footer__copyright">
-            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
-                href="https://infonickweb.ru/">NickWeb</a>
+            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank" href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>
 </footer>

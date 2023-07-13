@@ -4,7 +4,18 @@ import Inputmask from "inputmask";
 const validate = new JustValidate("#form");
 const inputMask = new Inputmask('+7 (999) 999-99-99');
 const telSelector = document.querySelector('input[type="tel"]')
+const secret = document.querySelector('#secret');
+const btnSend = document.querySelector('.btn-send');
+
 inputMask.mask(telSelector);
+
+if(secret) {
+  btnSend.addEventListener('click', () => {
+    secret.value = 'secretkey';
+  });
+  
+}
+
 
 validate
   .addField("#name", [
@@ -38,6 +49,12 @@ validate
       errorMessage: "Введите корректный телефон",
     },
   ])
+  .addField("#secret", [
+    {
+      rule: "required",
+      value: true,
+    },
+  ])
   .addField("#email", [
     {
       rule: "required",
@@ -50,7 +67,6 @@ validate
   ])
   .onSuccess((event) => {
     console.log("Validation passes and form submitted", event);
-
     let formData = new FormData(event.target);
 
     console.log(...formData);
@@ -65,7 +81,7 @@ validate
       }
     };
 
-    xhr.open("POST", "/", true);
+    xhr.open("POST", "tel.php", true);
     xhr.send(formData);
     alert('Сообщение отправлено! Спасибо, мы с вами свяжемся.')
     event.target.reset();
