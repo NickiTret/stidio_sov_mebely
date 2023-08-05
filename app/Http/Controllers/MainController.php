@@ -14,7 +14,7 @@ class MainController extends Controller
 {
     public function index() {
         $mainset = MainSet::first();
-        $seting = Seting::first();
+        $seting = Seting::where('page', 'Главная')->first();
         $sliders = Slider::all();
         $posts = Post::all();
         return view('welcome', compact('mainset', 'seting', 'sliders', 'posts'));
@@ -22,7 +22,7 @@ class MainController extends Controller
 
     public function gallery() {
         $mainset = MainSet::first();
-        $seting = Seting::first();
+        $seting = Seting::where('page', 'Галерея')->first();
         $sliders = Slider::all();
         $groups = Group::all();
         return view('gallery', compact('mainset', 'groups', 'seting', 'sliders'));
