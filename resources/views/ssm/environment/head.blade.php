@@ -10,8 +10,10 @@
     <meta name="yandex-verification" content="40880704fc80f5a4" />
     <link rel="icon" href="{{ $seting->getImage() }}" type="image/svg+xml">
     <title>Заказать шпонированную мебель на заказ в г. Нальчик | {{ $seting->title }}</title>
-    <meta property="og:description" content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
-    <meta name="description" content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
+    <meta property="og:description"
+        content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
+    <meta name="description"
+        content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
     <meta name="keywords" content="{{ $seting->keywords }}" />
     <link rel="preload" href="fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin />
 
@@ -52,4 +54,8 @@
         <div><img src="https://mc.yandex.ru/watch/92774377" style="position:absolute; left:-9999px;" alt="" />
         </div>
     </noscript>
+    <script>
+        window.yaContextCb = window.yaContextCb || []
+    </script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
 </head>

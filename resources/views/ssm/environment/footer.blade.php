@@ -1,4 +1,3 @@
-
 <footer class="footer" id="footer">
     <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>
@@ -28,9 +27,10 @@
                         </a>
                     </li>
                     <li class="footer-social__item">
-                        <a href="https://www.liveinternet.ru/click" target="_blank"><img id="licnt1D19"
-                            width="31" height="31" style="border:0" title="LiveInternet"
-                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7" alt="" /></a>
+                        <a href="https://www.liveinternet.ru/click" target="_blank"><img id="licnt1D19" width="31"
+                                height="31" style="border:0" title="LiveInternet"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                                alt="" /></a>
                     </li>
                     {{-- <li class="footer-social__item">
               <a href="{{ $mainset->telegram }}" rel="noopener" target="_blank">
@@ -49,7 +49,18 @@
             </div>
         </div>
         <p class="footer__copyright">
-            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank" href="https://infonickweb.ru/">NickWeb</a>
+            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
+                href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>
+    <!-- Yandex.RTB R-A-2586498-1 -->
+    <script>
+        window.yaContextCb.push(() => {
+            Ya.Context.AdvManager.render({
+                "blockId": "R-A-2586498-1",
+                "type": "fullscreen",
+                "platform": "touch"
+            })
+        })
+    </script>
 </footer>
