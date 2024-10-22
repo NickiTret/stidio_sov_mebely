@@ -49,18 +49,8 @@
             </div>
         </div>
         <p class="footer__copyright">
-            © 2000 - 2023 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
+            © 2000 - 2024 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
                 href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>
-    <!-- Yandex.RTB R-A-2586498-1 -->
-    <script>
-        window.yaContextCb.push(() => {
-            Ya.Context.AdvManager.render({
-                "blockId": "R-A-2586498-1",
-                "type": "fullscreen",
-                "platform": "touch"
-            })
-        })
-    </script>
 </footer>
