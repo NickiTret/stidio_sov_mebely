@@ -19,8 +19,10 @@
                 {{ route('logout') }} @endif"
                     class="header__number">Настроить сайт</a>
             @else
-                <a href="{{ route('login') }}" class="header__number">Войти</a>
+                {{-- <a href="{{ route('login') }}" class="header__number">Войти</a> --}}
+
             @endif
+            <a href="tel:+79280782894" class="header__number">+7 (928) 078 28 94</a>
             <button class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
         </div>
         <div class="menu-btn">

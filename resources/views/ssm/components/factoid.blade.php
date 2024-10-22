@@ -1,8 +1,8 @@
 <section class="factoid" id="factiod">
-    <div data-aos="slide-up" data-aos-duration="800" class="container factoid-container">
-        <h2>
+    <div class="container factoid-container">
+        {{-- <h2>
             О <span class="mark"> нас</span>
-        </h2>
+        </h2> --}}
         <ul>
             <li>
                 <svg class="circle-anim" viewBox="-10 -10 300 300">

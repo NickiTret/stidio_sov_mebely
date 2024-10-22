@@ -1,5 +1,6 @@
 <footer class="footer" id="footer">
-    <div data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" class="container footer-container">
+    {{-- data-aos="slide-up" data-aos-dalay="50" data-aos-duration="1000" --}}
+    <div  class="container footer-container">
         <h2>Звоните или оставляйте заявку. Будем рады <span class="mark">ответить</span></h2>
         <div class="footer__wrapper">
             <div class="footer-contact">
