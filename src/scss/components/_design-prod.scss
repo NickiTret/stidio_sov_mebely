@@ -1,13 +1,99 @@
 .design-prod {
-  position: relative;
-  padding-top: 60px !important;
-  margin-bottom: 60px;
-  h2 {
-    @include font_h1($font-family, $clr_text, 700);
+    position: relative;
+    padding-top: 60px !important;
+    margin-bottom: 60px;
+    h2 {
+        @include font_h1($font-family, $clr_text, 700);
+        text-align: center;
+    }
+    h4 {
+        @include font_h2($font-family, $clr_text, 700);
+        text-align: center;
+    }
+}
+
+.tabs__panel__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    gap: 40px; /* Отступы между элементами */
+    margin-top: 40px;
+}
+
+.tabs__panel__item {
+    background-color: #f9f9f9; /* Фон каждого элемента */
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
     text-align: center;
-  }
-  h4 {
-    @include font_h2($font-family, $clr_text, 700);
-    text-align: center;
-  }
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Высота блока будет одинаковой */
+}
+
+.tabs__panel__image {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .tabs__panel__item:hover {
+        & img {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        background-color: rgba($color: #d7a100, $alpha: 0.3);
+    }
+}
+
+.tabs__panel__item img {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    max-width: 100%; /* Изображения не выходят за пределы блока */
+    height: auto; /* Задаем фиксированную высоту картинок */
+    object-fit: cover; /* Обрезаем изображения, чтобы они вписывались */
+
+    transition: transform 0.3s ease-in-out;
+}
+
+.tabs__panel__item h2 {
+    margin: 10px 0 5px;
+    @include font_h4($font-family, $clr_text, 700);
+    color: $clr_text;
+}
+
+.tabs__panel__item p {
+    @include font_small($font-family, $clr_text, 500);
+    color: $clr_text;
+
+    padding: 0 10px;
+
+    display: -webkit-box; /* Для создания блока с ограничением строк */
+    -webkit-box-orient: vertical; /* Ориентация блоков по вертикали */
+    -webkit-line-clamp: 3; /* Обрезать текст после 3 строк */
+    overflow: hidden; /* Скрывать текст, который выходит за пределы */
+    text-overflow: ellipsis; /* Добавить троеточие */
+}
+
+/* Для мобильных устройств - сетка перестраивается */
+@media (max-width: 1024px) {
+    .tabs__panel__grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+        gap: 20px; /* Отступы между элементами */
+    }
+}
+
+@media (max-width: 768px) {
+    .tabs__panel__grid {
+        grid-template-columns: 1fr; /* 1 колонка на мобильных устройствах */
+    }
 }
