@@ -126,6 +126,20 @@
 }
 
 
+@media(max-width: 1024px) {
+    .tabs__nav {
+        padding: 0;
+        flex-wrap: wrap;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .tabs__nav-item  .btn-main {
+        padding: 6px 20px;
+    }
+}
+
+
 .swiper-slide__description {
     padding-top: 20px;
 

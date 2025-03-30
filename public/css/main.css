@@ -977,6 +977,18 @@ section {
   border: 1px solid #fff;
 }
 
+@media (max-width: 1024px) {
+  .tabs__nav {
+    padding: 0;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    gap: 5px;
+  }
+  .tabs__nav-item .btn-main {
+    padding: 6px 20px;
+  }
+}
 .swiper-slide__description {
   padding-top: 20px;
 }
