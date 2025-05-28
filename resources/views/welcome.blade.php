@@ -3,7 +3,7 @@
 
 <body class="page__body">
     <!--LiveInternet counter-->
-    <script>
+    {{-- <script>
         (function(d, s) {
             d.getElementById("licnt1D19").src =
                 "https://counter.yadro.ru/hit?t44.6;r" + escape(d.referrer) +
@@ -12,7 +12,7 @@
                 ";h" + escape(d.title.substring(0, 150)) + ";" + Math.random()
         })
         (document, screen)
-    </script>
+    </script> --}}
     <!--/LiveInternet-->
 
     <div class="site-container">
