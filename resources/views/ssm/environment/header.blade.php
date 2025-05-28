@@ -23,7 +23,7 @@
 
             @endif
             <a href="tel:+79280782894" class="header__number">+7 (928) 078 28 94</a>
-            <button class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button>
+            {{-- <button class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button> --}}
         </div>
         <div class="menu-btn">
             <span></span>

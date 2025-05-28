@@ -1,4 +1,4 @@
-<div class="modal overlay" id="modal-contacts">
+{{-- <div class="modal overlay" id="modal-contacts">
     <div class="modal__wrapper">
         <h2>Напишите нам</h2>
         <button class="btn btn-close" aria-label="Close modal" data-custom-close>
@@ -22,4 +22,4 @@
             <button class="btn-reset btn btn-main btn-send" type="submit">Отправить</button>
         </form>
     </div>
-</div>
+</div> --}}
