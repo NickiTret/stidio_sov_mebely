@@ -13,7 +13,7 @@ if(secret) {
   btnSend.addEventListener('click', () => {
     secret.value = 'secretkey';
   });
-  
+
 }
 
 
@@ -81,8 +81,8 @@ validate
       }
     };
 
-    xhr.open("POST", "tel.php", true);
-    xhr.send(formData);
+    // xhr.open("POST", "tel.php", true);
+    // xhr.send(formData);
     alert('Сообщение отправлено! Спасибо, мы с вами свяжемся.')
     event.target.reset();
     const close = document.querySelector('.btn-close').click();
