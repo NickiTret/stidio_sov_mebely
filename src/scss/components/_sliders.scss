@@ -111,15 +111,32 @@
     overflow-x: auto;
     gap: 5px;
 }
+
+.tabs__nav--links {
+    flex-wrap: wrap;
+    overflow-x: visible;
+}
+
 .tabs__nav-btn {
     border: none;
     cursor: pointer;
     transition: all .2s ease-in-out;
     white-space: nowrap;
+    display: block;
+
     &:focus {
         background-color: $clr_yellow2;
     }
 }
+
+.tabs--links .tabs__nav-item {
+    list-style: none;
+}
+
+.tabs--links .tabs__nav-btn {
+    text-align: center;
+}
+
 .tabs__nav-btn--active {
     background-color: $clr_yellow;
     border: 1px solid #fff;
@@ -132,6 +149,10 @@
         flex-wrap: wrap;
         overflow-x: auto;
         gap: 5px;
+    }
+
+    .tabs__nav--links {
+        overflow-x: visible;
     }
 
     .tabs__nav-item  .btn-main {

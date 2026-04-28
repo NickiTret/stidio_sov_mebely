@@ -1,4 +1,4 @@
-@include('ssm.environment.head', ['setting' => $seting])
+@include('ssm.environment.head', ['setting' => $seting, 'mainset' => $mainset ?? null])
 
 
 <body class="page__body">

@@ -6,8 +6,9 @@
         $routeName = request()->route()?->getName();
         $defaultImage = $seting->getImage();
         $defaultKeywords = $seting->keywords;
+        $customSeoData = $seoData ?? null;
 
-        $seo = match ($routeName) {
+        $seo = $customSeoData ?? match ($routeName) {
             'home' => [
                 'title' => 'Мебель на заказ в Нальчике | Кухни, шкафы, гардеробные | KBR Mebel',
                 'description' => 'Изготавливаем мебель на заказ в Нальчике: кухни, шкафы-купе, гардеробные, спальни и детские. Шпон, МДФ, эмаль, индивидуальные размеры, установка под ключ.',
@@ -24,6 +25,37 @@
                 'keywords' => $defaultKeywords,
             ],
         };
+
+        $seoImage = $seo['image'] ?? $defaultImage;
+        $schemaBusiness = null;
+
+        if (!empty($mainset)) {
+            $schemaBusiness = [
+                '@context' => 'https://schema.org',
+                '@type' => 'FurnitureStore',
+                'name' => 'Студия Современной Мебели',
+                'url' => url('/'),
+                'image' => $seoImage,
+                'telephone' => $mainset->tel,
+                'email' => $mainset->email,
+                'areaServed' => [
+                    '@type' => 'City',
+                    'name' => 'Нальчик',
+                ],
+                'contactPoint' => [[
+                    '@type' => 'ContactPoint',
+                    'telephone' => $mainset->tel,
+                    'email' => $mainset->email,
+                    'contactType' => 'customer service',
+                    'areaServed' => 'RU-KB',
+                    'availableLanguage' => ['ru'],
+                ]],
+            ];
+
+            if (!empty($mainset->watsap)) {
+                $schemaBusiness['sameAs'] = [$mainset->watsap];
+            }
+        }
     @endphp
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +73,7 @@
     <meta property="og:description" content="{{ $seo['description'] }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ $defaultImage }}">
+    <meta property="og:image" content="{{ $seoImage }}">
     <meta property="og:locale" content="ru_RU">
     <link rel="preload" href="fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin />
 
@@ -82,4 +114,9 @@
         <div><img src="https://mc.yandex.ru/watch/92774377" style="position:absolute; left:-9999px;" alt="" />
         </div>
     </noscript>
+    @if (!empty($schemaBusiness))
+        <script type="application/ld+json">
+            {!! json_encode($schemaBusiness, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+        </script>
+    @endif
 </head>

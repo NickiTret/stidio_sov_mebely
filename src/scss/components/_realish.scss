@@ -68,3 +68,40 @@
     }
   }
 }
+
+.category-seo {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.category-seo__container {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 40px;
+}
+
+.category-seo__content h2,
+.category-seo__aside h3 {
+  @include font_h2($font-family, $clr_text, 700);
+}
+
+.category-seo__content p {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $clr_text;
+  margin-bottom: 18px;
+}
+
+.category-seo__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 1024px) {
+  .category-seo__container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

@@ -31,7 +31,18 @@ if (document.querySelectorAll('.tabs')) {
 
 let menuBtn = document.querySelector('.menu-btn');
 let menu = document.querySelector('.menu');
-menuBtn.addEventListener('click', function(){
-	menu.classList.toggle('active');
-    menuBtn.classList.toggle('active');
-})
+let menuLinks = document.querySelectorAll('.menu a');
+
+if (menuBtn && menu) {
+    menuBtn.addEventListener('click', function(){
+	    menu.classList.toggle('active');
+        menuBtn.classList.toggle('active');
+    });
+
+    menuLinks.forEach((link) => {
+        link.addEventListener('click', function() {
+            menu.classList.remove('active');
+            menuBtn.classList.remove('active');
+        });
+    });
+}

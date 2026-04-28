@@ -50,7 +50,7 @@
             </div>
         </div>
         <p class="footer__copyright">
-            © 2000 - 2024 | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
+            © 2000 - {{ \Carbon\Carbon::now()->year }} | {{ $mainset->footer }} | Разработка сайта <a target="_blank"
                 href="https://infonickweb.ru/">NickWeb</a>
         </p>
     </div>

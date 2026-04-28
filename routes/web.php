@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('home');
 
 Route::get('/gallery', [App\Http\Controllers\MainController::class, 'gallery'])->name('gallery');
+Route::get('/gallery/{slug}', [App\Http\Controllers\MainController::class, 'galleryCategory'])->name('gallery.category');
 
 // message ///////////////////
 Route::post('/', App\Http\Controllers\Message\StoreController::class)->name('message.store');
@@ -71,5 +72,4 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::patch('/edit', App\Http\Controllers\MainSet\MainSetEditController::class)->name('mainset.update');
     });
 });
-
 

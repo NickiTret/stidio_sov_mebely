@@ -1,4 +1,4 @@
-@include('ssm.environment.head', ['setting' => $seting])
+@include('ssm.environment.head', ['setting' => $seting, 'seoData' => $seoData ?? null, 'mainset' => $mainset ?? null])
 
 
 <body class="page__body">
@@ -17,7 +17,10 @@
                     </div>
                 </div>
             </div>
-            @include('ssm.components.design', ['sliders' => $sliders, 'groups' => $groups])
+            @include('ssm.components.design', ['sliders' => $sliders, 'groups' => $groups, 'selectedGroup' => $selectedGroup ?? null])
+            @if (!empty($selectedGroup))
+                @include('ssm.components.category-benefits', ['group' => $selectedGroup, 'groups' => $groups, 'mainset' => $mainset])
+            @endif
         </main>
 
         @include('ssm.environment.footer', ['mainset' => $mainset, 'setting' => $seting])
