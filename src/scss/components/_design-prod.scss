@@ -1,7 +1,7 @@
 .design-prod {
     position: relative;
     padding-top: 85px !important;
-    margin-bottom: 80px;
+    // margin-bottom: 80px;
 
     h1 {
         @include font_h1($font-family, $clr_text, 700);
@@ -18,13 +18,15 @@
 
 .design-prod__hero {
     display: block;
-    margin-bottom: 28px;
+    // margin-bottom: 28px;
 }
 
 .design-prod__hero-main {
     border: 1px solid rgba(36, 32, 25, 0.12);
     background: linear-gradient(180deg, rgba(255, 250, 241, 0.96) 0%, rgba(247, 240, 227, 0.98) 100%);
     padding: 28px;
+    // border-bottom: 0;
+    margin-bottom: 28px;
 }
 
 .design-prod__eyebrow {
@@ -56,6 +58,7 @@
     gap: 12px;
     margin: 0 0 30px;
     padding: 0;
+    margin-top: 30px;
 }
 
 .design-prod__nav .tabs__nav-item {
@@ -90,6 +93,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 28px;
+
 }
 
 .tabs__panel__item {
@@ -195,7 +199,7 @@
 
 @media (max-width: 1024px) {
     .design-prod {
-        margin-bottom: 75px;
+        // margin-bottom: 75px;
     }
 
     .tabs__panel__grid {
@@ -206,7 +210,7 @@
 
 @media (max-width: 768px) {
     .design-prod {
-        padding-top: 75px !important;
+        // padding-top: 75px !important;
     }
 
     .design-prod__hero-main,

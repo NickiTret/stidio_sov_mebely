@@ -1309,7 +1309,6 @@ section {
 .design-prod {
   position: relative;
   padding-top: 85px !important;
-  margin-bottom: 80px;
 }
 .design-prod h1 {
   font-family: "Montserrat";
@@ -1352,7 +1351,6 @@ section {
 
 .design-prod__hero {
   display: block;
-  margin-bottom: 28px;
 }
 
 .design-prod__hero-main {
@@ -1361,6 +1359,7 @@ section {
   background: -o-linear-gradient(top, rgba(255, 250, 241, 0.96) 0%, rgba(247, 240, 227, 0.98) 100%);
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.96) 0%, rgba(247, 240, 227, 0.98) 100%);
   padding: 28px;
+  margin-bottom: 28px;
 }
 
 .design-prod__eyebrow {
@@ -1399,6 +1398,7 @@ section {
   gap: 12px;
   margin: 0 0 30px;
   padding: 0;
+  margin-top: 30px;
 }
 
 .design-prod__nav .tabs__nav-item {
@@ -1582,9 +1582,6 @@ section {
   }
 }
 @media (max-width: 1024px) {
-  .design-prod {
-    margin-bottom: 75px;
-  }
   .tabs__panel__grid {
     -ms-grid-columns: (minmax(0, 1fr))[2];
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1592,9 +1589,6 @@ section {
   }
 }
 @media (max-width: 768px) {
-  .design-prod {
-    padding-top: 75px !important;
-  }
   .design-prod__hero-main,
 .design-prod__hero-main {
     padding: 22px 18px;
@@ -2738,7 +2732,7 @@ textarea.form__input {
 }
 
 .preview-hero {
-  padding: 50px 0 50px;
+  padding: 50px 0 16px;
 }
 
 .preview-hero__container {
@@ -2975,7 +2969,7 @@ textarea.form__input {
 .preview-categories,
 .preview-approach,
 .preview-showcase {
-  padding: 28px 0 72px;
+  padding: 28px 0 16px;
 }
 
 .preview-hero-lab__grid {
@@ -3449,7 +3443,7 @@ textarea.form__input {
   display: grid;
   -ms-grid-columns: (minmax(0, 1fr))[3];
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 22px;
   margin-top: 26px;
 }
 
@@ -3512,7 +3506,7 @@ textarea.form__input {
 .preview-footer__container {
   width: 100%;
   padding-top: 36px;
-  padding-bottom: 36px;
+  padding-bottom: 19px;
   border-radius: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(31, 28, 24, 0.98)), to(rgb(20, 18, 16)));
   background: -o-linear-gradient(top, rgba(31, 28, 24, 0.98) 0%, rgb(20, 18, 16) 100%);
@@ -3662,7 +3656,7 @@ textarea.form__input {
 }
 @media (max-width: 1024px) {
   .preview-hero {
-    padding-top: 56px;
+    padding-top: 16px;
   }
   .preview-subnav__container,
 .preview-hero__container,
@@ -3688,7 +3682,7 @@ textarea.form__input {
 }
 @media (max-width: 768px) {
   .preview-subnav {
-    padding-top: 82px;
+    padding-top: 60px;
   }
   .preview-subnav__catalog-panel {
     display: none;
@@ -3701,6 +3695,7 @@ textarea.form__input {
   }
   .preview-hero {
     padding: 32px 0 32px;
+    padding-top: 16px;
   }
   .preview-section-heading h2,
 .preview-hero__content h1 {
@@ -3753,7 +3748,7 @@ textarea.form__input {
 }
 @media (max-width: 576px) {
   .preview-subnav {
-    padding-top: 74px;
+    padding-top: 60px;
   }
   .preview-subnav__catalog-btn {
     min-height: 54px;
@@ -3762,6 +3757,7 @@ textarea.form__input {
   }
   .preview-hero {
     padding: 24px 0 24px;
+    padding-top: 16px;
   }
   .preview-hero__container {
     gap: 18px;
@@ -3778,7 +3774,7 @@ textarea.form__input {
   }
   .preview-cta__container,
 .preview-footer__container {
-    padding: 22px;
+    padding: 19px;
   }
   .preview-cta__content h2,
 .preview-footer__intro h2 {

@@ -23,22 +23,7 @@
             </div>
 
             <div class="tabs tabs--links">
-                <ul class="tabs__nav tabs__nav--links design-prod__nav">
-                    <li class="tabs__nav-item">
-                        <a class="tabs__nav-btn btn-main {{ !$isCategoryPage ? 'tabs__nav-btn--active' : '' }}"
-                            href="{{ route('gallery') }}">
-                            Все категории
-                        </a>
-                    </li>
-                    @foreach ($groups as $item)
-                        <li class="tabs__nav-item">
-                            <a class="tabs__nav-btn btn-main {{ !empty($selectedGroup) && $selectedGroup->id === $item->id ? 'tabs__nav-btn--active' : '' }}"
-                                href="{{ route('gallery.category', $item->slug) }}">
-                                {{ $item->display_title }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+
                 <div class="tabs__content">
                     @if (!$isCategoryPage)
                         <div class="tabs__panel tabs__panel--active">
@@ -87,6 +72,22 @@
                         </div>
                     @endforeach
                 </div>
+                <ul class="tabs__nav tabs__nav--links design-prod__nav">
+                    <li class="tabs__nav-item">
+                        <a class="tabs__nav-btn btn-main {{ !$isCategoryPage ? 'tabs__nav-btn--active' : '' }}"
+                            href="{{ route('gallery') }}">
+                            Все категории
+                        </a>
+                    </li>
+                    @foreach ($groups as $item)
+                        <li class="tabs__nav-item">
+                            <a class="tabs__nav-btn btn-main {{ !empty($selectedGroup) && $selectedGroup->id === $item->id ? 'tabs__nav-btn--active' : '' }}"
+                                href="{{ route('gallery.category', $item->slug) }}">
+                                {{ $item->display_title }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </section>
