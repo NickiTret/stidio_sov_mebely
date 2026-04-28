@@ -1,7 +1,8 @@
 @if (!$sliders->isEmpty())
     <section class="design-prod">
         <div class="design-prod-container container">
-            <h2>Наши <span class="mark">проекты</span></h2>
+            <h1>Галерея <span class="mark">наших проектов</span></h1>
+            <p>Фотографии выполненной мебели на заказ в Нальчике: кухни, шкафы-купе, гардеробные, спальни, детские, кабинеты и торговое оборудование.</p>
             <div class="tabs" data-tabs="tab">
                 <ul class="tabs__nav">
                     @foreach ($groups as $item)

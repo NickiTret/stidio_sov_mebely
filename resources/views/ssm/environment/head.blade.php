@@ -2,19 +2,47 @@
 <html lang="ru" class="page">
 
 <head>
+    @php
+        $routeName = request()->route()?->getName();
+        $defaultImage = $seting->getImage();
+        $defaultKeywords = $seting->keywords;
+
+        $seo = match ($routeName) {
+            'home' => [
+                'title' => 'Мебель на заказ в Нальчике | Кухни, шкафы, гардеробные | KBR Mebel',
+                'description' => 'Изготавливаем мебель на заказ в Нальчике: кухни, шкафы-купе, гардеробные, спальни и детские. Шпон, МДФ, эмаль, индивидуальные размеры, установка под ключ.',
+                'keywords' => 'мебель на заказ Нальчик, кухни на заказ Нальчик, шкафы купе Нальчик, гардеробные Нальчик, мебель из шпона Нальчик',
+            ],
+            'gallery' => [
+                'title' => 'Галерея мебели на заказ в Нальчике | Наши проекты | KBR Mebel',
+                'description' => 'Фотографии выполненных проектов мебели на заказ в Нальчике: кухни, шкафы-купе, гардеробные, спальни, детские и кабинеты.',
+                'keywords' => 'галерея мебели Нальчик, проекты мебели на заказ, кухни на заказ Нальчик фото, шкафы купе Нальчик фото',
+            ],
+            default => [
+                'title' => 'Мебель на заказ в Нальчике | ' . $seting->title,
+                'description' => $seting->descriptions,
+                'keywords' => $defaultKeywords,
+            ],
+        };
+    @endphp
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#111111" />
     <meta name="format-detection" content="telephone=no">
     <meta name="yandex-verification" content="40880704fc80f5a4" />
-    <link rel="icon" href="{{ $seting->getImage() }}" type="image/svg+xml">
-    <title>Заказать шпонированную мебель на заказ в г. Нальчик | {{ $seting->title }}</title>
-    <meta property="og:description"
-        content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
-    <meta name="description"
-        content="{{ $seting->descriptions }} - шпонированная мебель на заказ с настоящим натуральным материалом и высоким качеством. Дизайнерское решение для ваших интерьеров в г. Нальчик">
-    <meta name="keywords" content="{{ $seting->keywords }}" />
+    <link rel="icon" href="{{ $defaultImage }}" type="image/svg+xml">
+    <title>{{ $seo['title'] }}</title>
+    <meta name="description" content="{{ $seo['description'] }}">
+    <meta name="keywords" content="{{ $seo['keywords'] }}" />
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $seo['title'] }}">
+    <meta property="og:description" content="{{ $seo['description'] }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ $defaultImage }}">
+    <meta property="og:locale" content="ru_RU">
     <link rel="preload" href="fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin />
 
     <link rel="preload" href="fonts/Montserrat-Light.woff" as="font" type="font/woff" crossorigin />
