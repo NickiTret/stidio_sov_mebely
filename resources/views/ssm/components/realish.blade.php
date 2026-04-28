@@ -1,6 +1,6 @@
 <section class="realish">
     <div  data-aos="zoom-down" data-aos-dalay="50" data-aos-duration="1000" class="container realish-container">
-        <h2><span class="mark">От реализация дизайн-проекта</span> до <span>готовой сборки</span> </h2>
+        <h2><span class="mark">От реализации дизайн-проекта</span> до <span>готовой сборки</span></h2>
         <div class="realish__wrapper">
             <div class="realish__image">
                 <img src="/img/photo__main.jpg" alt="Фото">
@@ -11,10 +11,10 @@
                 <ul class="list-reset">
                     <li>Кухни</li>
                     <li>Спальни и детские</li>
-                    <li>Гостинные</li>
+                    <li>Гостиные</li>
                     <li>Гардеробные</li>
-                    <li>Кабинеты </li>
-                    <li>Торговое оборудовение</li>
+                    <li>Кабинеты</li>
+                    <li>Торговое оборудование</li>
                     <li>Ресепшены</li>
                 </ul>
                 <p>С дальнейшим обустройством офиса согласно дизайн-проекту.</p>
