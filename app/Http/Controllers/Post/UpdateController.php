@@ -8,16 +8,15 @@ use App\Models\Post;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Post $post) {
-
+    public function __invoke(UpdateRequest $request, Post $post)
+    {
         $data = $request->validated();
-
-        $data['image_src'] = Post::uploadImage($request);
+        $data['image_src'] = Post::uploadImage($request, $post->image_src) ?? $post->image_src;
 
         $post->update($data);
 
-        $posts = Post::all();
-
-        return view('slider.index', compact('post', 'posts'));
+        return redirect()
+            ->route('post.index')
+            ->with('success', 'Статья сохранена.');
     }
 }

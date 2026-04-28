@@ -529,6 +529,22 @@ const smoothScrool = () => {
   });
 };
 smoothScrool();
+const scrollToHashOnLoad = () => {
+  if (window.location.hash !== '#contact-form') {
+    return;
+  }
+  const target = document.querySelector(window.location.hash);
+  if (!target) {
+    return;
+  }
+  window.requestAnimationFrame(() => {
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+};
+scrollToHashOnLoad();
 
 if (document.querySelectorAll('.tabs')) {
   const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_0__["default"]('tab');
@@ -598,66 +614,87 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const validate = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"]("#form");
-const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7 (999) 999-99-99');
-const telSelector = document.querySelector('input[type="tel"]');
-const secret = document.querySelector('#secret');
-const btnSend = document.querySelector('.btn-send');
-inputMask.mask(telSelector);
-if (secret) {
-  btnSend.addEventListener('click', () => {
-    secret.value = 'secretkey';
+const contactForms = document.querySelectorAll(".js-contact-form");
+contactForms.forEach((form, index) => {
+  const nameInput = form.querySelector('[name="name"]');
+  const telInput = form.querySelector('[name="tel"]');
+  const emailInput = form.querySelector('[name="mail"]');
+  const contentInput = form.querySelector('[name="content"]');
+  const secretInput = form.querySelector('[name="secret"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (!nameInput || !telInput || !emailInput || !contentInput) {
+    return;
+  }
+  const uid = `contact-form-${index + 1}`;
+  const formId = form.id || uid;
+  form.id = formId;
+  form.setAttribute("novalidate", "novalidate");
+  nameInput.id = nameInput.id || `${uid}-name`;
+  telInput.id = telInput.id || `${uid}-tel`;
+  emailInput.id = emailInput.id || `${uid}-email`;
+  contentInput.id = contentInput.id || `${uid}-content`;
+  if (secretInput) {
+    secretInput.id = secretInput.id || `${uid}-secret`;
+  }
+  const inputMask = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())("+7 (999) 999-99-99");
+  inputMask.mask(telInput);
+  const validate = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"](`#${formId}`, {
+    errorFieldCssClass: "is-invalid",
+    errorLabelCssClass: "form-error-label",
+    focusInvalidField: true,
+    lockForm: true
   });
-}
-validate.addField("#name", [{
-  rule: "minLength",
-  value: 3,
-  errorMessage: "Имя должно быть не меньше 3 символов..."
-}, {
-  rule: "maxLength",
-  value: 30,
-  errorMessage: "Имя должно быть не больше 30 символов..."
-}, {
-  rule: "required",
-  errorMessage: "Имя обезательное поле..."
-}]).addField("#tel", [{
-  rule: "required",
-  value: true,
-  errorMessage: "Телефон обязателен"
-}, {
-  rule: "function",
-  validator: function () {
-    const phone = telSelector.inputmask.unmaskedvalue();
-    return phone.length === 10;
-  },
-  errorMessage: "Введите корректный телефон"
-}]).addField("#secret", [{
-  rule: "required",
-  value: true
-}]).addField("#email", [{
-  rule: "required",
-  errorMessage: "Email обезательное поле..."
-}, {
-  rule: "email",
-  errorMessage: "Email введен не парвильно..."
-}]).onSuccess(event => {
-  console.log("Validation passes and form submitted", event);
-  let formData = new FormData(event.target);
-  console.log(...formData);
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        console.log("Отправлено");
-      }
-    }
-  };
-
-  // xhr.open("POST", "tel.php", true);
-  // xhr.send(formData);
-  alert('Сообщение отправлено! Спасибо, мы с вами свяжемся.');
-  event.target.reset();
-  const close = document.querySelector('.btn-close').click();
+  if (secretInput && submitButton) {
+    submitButton.addEventListener("click", () => {
+      secretInput.value = "secretkey";
+    });
+  }
+  validate.addField(`#${nameInput.id}`, [{
+    rule: "required",
+    errorMessage: "Введите имя"
+  }, {
+    rule: "minLength",
+    value: 2,
+    errorMessage: "Минимум 2 символа"
+  }, {
+    rule: "maxLength",
+    value: 60,
+    errorMessage: "Слишком длинное имя"
+  }]).addField(`#${telInput.id}`, [{
+    rule: "required",
+    errorMessage: "Введите телефон"
+  }, {
+    rule: "function",
+    validator: function () {
+      var _telInput$inputmask;
+      const phone = ((_telInput$inputmask = telInput.inputmask) === null || _telInput$inputmask === void 0 ? void 0 : _telInput$inputmask.unmaskedvalue()) ?? "";
+      return phone.length === 10;
+    },
+    errorMessage: "Укажите телефон полностью"
+  }]).addField(`#${emailInput.id}`, [{
+    rule: "required",
+    errorMessage: "Введите email"
+  }, {
+    rule: "email",
+    errorMessage: "Проверьте формат email"
+  }]);
+  validate.addField(`#${contentInput.id}`, [{
+    rule: "function",
+    validator: function () {
+      const value = contentInput.value.trim();
+      return value.length === 0 || value.length >= 5;
+    },
+    errorMessage: "Если пишете сообщение, добавьте хотя бы 5 символов"
+  }]);
+  if (secretInput) {
+    validate.addField(`#${secretInput.id}`, [{
+      rule: "required",
+      value: true
+    }]);
+  }
+  validate.onSuccess(event => {
+    event.target.submit();
+  });
 });
 
 /***/ }),

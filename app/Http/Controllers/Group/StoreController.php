@@ -10,13 +10,13 @@ use App\Models\Group;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request) {
-
+    public function __invoke(StoreRequest $request)
+    {
         $data = $request->validated();
-        $group = Group::create($data);
+        Group::create($data);
 
-
-        return redirect()->route('group.index');
-
+        return redirect()
+            ->route('group.index')
+            ->with('success', 'Группа создана.');
     }
 }

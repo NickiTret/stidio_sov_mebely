@@ -10,15 +10,14 @@ use App\Models\Seting;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request) {
-
+    public function __invoke(StoreRequest $request)
+    {
         $data = $request->validated();
         $data['favicon'] = Seting::uploadImage($request);
+        Seting::create($data);
 
-        $seting = Seting::create($data);
-
-
-        return redirect()->route('seting.index');
-
+        return redirect()
+            ->route('seting.index')
+            ->with('success', 'Настройки страницы созданы.');
     }
 }

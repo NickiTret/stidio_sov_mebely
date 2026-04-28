@@ -7,35 +7,57 @@ use App\Models\Group;
 use App\Models\MainSet;
 use App\Models\Seting;
 use App\Models\Slider;
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Support\HomePreviewContent;
 use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
 {
     public function index()
     {
-        // Кэшируем MainSet
         $mainset = Cache::remember('mainset', 60, function () {
             return MainSet::first();
         });
 
-        // Кэшируем Seting для главной страницы
         $seting = Cache::remember('seting главная', 60, function () {
             return Seting::where('page', 'Главная')->first();
         });
 
-        // Кэшируем Sliders
-        $sliders = Cache::remember('sliders', 60, function () {
-            return Slider::all();
-        });
+        $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
+        $heroConfig = $previewContent['hero'] ?? HomePreviewContent::defaults()['hero'];
+        $showcaseConfig = $previewContent['showcase'] ?? HomePreviewContent::defaults()['showcase'];
+        $featuredGroups = $groups->take(4)->values();
+        $primaryGroups = collect($heroConfig['quick_category_slugs'] ?? [])
+            ->map(fn (string $slug) => $groups->firstWhere('slug', $slug))
+            ->filter()
+            ->values();
+        $showcaseGroups = collect($showcaseConfig['category_slugs'] ?? [])
+            ->map(fn (string $slug) => $groups->firstWhere('slug', $slug))
+            ->filter()
+            ->values();
 
-        // Кэшируем Posts, выбирая только нужные поля
-        $posts = Cache::remember('posts', 60, function () {
-            return Post::all();
-        });
+        if ($primaryGroups->isEmpty()) {
+            $primaryGroups = $groups->take(4)->values();
+        }
 
-        return view('welcome', compact('mainset', 'seting', 'sliders', 'posts'));
+        if ($showcaseGroups->isEmpty()) {
+            $showcaseGroups = $featuredGroups;
+        }
+
+        $highlightImage = optional($primaryGroups->first()?->slides->first())->getImage()
+            ?? optional($featuredGroups->first()?->slides->first())->getImage()
+            ?? $seting?->getImage();
+
+        return view('welcome', compact(
+            'mainset',
+            'seting',
+            'groups',
+            'featuredGroups',
+            'primaryGroups',
+            'showcaseGroups',
+            'highlightImage',
+            'previewContent'
+        ));
     }
 
     public function gallery()
@@ -53,8 +75,9 @@ class MainController extends Controller
         });
 
         $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
 
-        return view('gallery', compact('mainset', 'groups', 'seting', 'sliders'));
+        return view('gallery', compact('mainset', 'groups', 'seting', 'sliders', 'previewContent'));
     }
 
     public function galleryCategory(string $slug)
@@ -72,6 +95,7 @@ class MainController extends Controller
         });
 
         $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
         $selectedGroup = $groups->firstWhere('slug', $slug);
 
         abort_if(!$selectedGroup, 404);
@@ -83,7 +107,63 @@ class MainController extends Controller
             'image' => optional($selectedGroup->slides->first())->getImage() ?? $seting->getImage(),
         ];
 
-        return view('gallery', compact('mainset', 'groups', 'selectedGroup', 'seting', 'sliders', 'seoData'));
+        return view('gallery', compact('mainset', 'groups', 'selectedGroup', 'seting', 'sliders', 'seoData', 'previewContent'));
+    }
+
+    public function homePreview()
+    {
+        $mainset = Cache::remember('mainset_preview', 60, function () {
+            return MainSet::first();
+        });
+
+        $seting = Cache::remember('seting_preview', 60, function () {
+            return Seting::where('page', 'Главная')->first();
+        });
+
+        $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
+        $heroConfig = $previewContent['hero'] ?? HomePreviewContent::defaults()['hero'];
+        $showcaseConfig = $previewContent['showcase'] ?? HomePreviewContent::defaults()['showcase'];
+        $featuredGroups = $groups->take(4)->values();
+        $primaryGroups = collect($heroConfig['quick_category_slugs'] ?? [])
+            ->map(fn (string $slug) => $groups->firstWhere('slug', $slug))
+            ->filter()
+            ->values();
+        $showcaseGroups = collect($showcaseConfig['category_slugs'] ?? [])
+            ->map(fn (string $slug) => $groups->firstWhere('slug', $slug))
+            ->filter()
+            ->values();
+
+        if ($primaryGroups->isEmpty()) {
+            $primaryGroups = $groups->take(4)->values();
+        }
+
+        if ($showcaseGroups->isEmpty()) {
+            $showcaseGroups = $featuredGroups;
+        }
+
+        $highlightImage = optional($primaryGroups->first()?->slides->first())->getImage()
+            ?? optional($featuredGroups->first()?->slides->first())->getImage()
+            ?? $seting?->getImage();
+
+        $seoData = [
+            'title' => 'Preview: новая главная | KBR Mebel',
+            'description' => 'Закрытый preview-экран новой главной страницы KBR Mebel.',
+            'keywords' => 'preview, мебель на заказ, KBR Mebel',
+            'image' => $highlightImage,
+        ];
+
+        return view('preview.home', compact(
+            'mainset',
+            'seting',
+            'groups',
+            'featuredGroups',
+            'primaryGroups',
+            'showcaseGroups',
+            'highlightImage',
+            'seoData',
+            'previewContent'
+        ));
     }
 
     private function getGalleryGroups()

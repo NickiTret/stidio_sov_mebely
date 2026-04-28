@@ -29,7 +29,7 @@ class Seting extends Model
             return $request->file('favicon')->store("images/{$folder}", "public");
         }
 
-        return null;
+        return $favicon;
     }
 
     public function getImage()

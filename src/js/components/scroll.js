@@ -24,6 +24,27 @@ const smoothScrool = () =>
 
 smoothScrool();
 
+const scrollToHashOnLoad = () => {
+    if (window.location.hash !== '#contact-form') {
+        return;
+    }
+
+    const target = document.querySelector(window.location.hash);
+
+    if (!target) {
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    });
+};
+
+scrollToHashOnLoad();
+
 import GraphTabs from 'graph-tabs';
 if (document.querySelectorAll('.tabs')) {
     const tabs = new GraphTabs('tab');

@@ -18,12 +18,22 @@
                 </div>
             </div>
             @include('ssm.components.design', ['sliders' => $sliders, 'groups' => $groups, 'selectedGroup' => $selectedGroup ?? null])
-            @if (!empty($selectedGroup))
-                @include('ssm.components.category-benefits', ['group' => $selectedGroup, 'groups' => $groups, 'mainset' => $mainset])
-            @endif
+            @include('ssm.components.site-cta-new', [
+                'previewContent' => $previewContent,
+                'ctaPlaceholder' => !empty($selectedGroup)
+                    ? 'Например: шпонированная кухня, шкаф-купе или гардеробная из раздела ' . $selectedGroup->display_title
+                    : 'Например: шпонированная кухня, шкаф, гардеробная или кабинет',
+            ])
         </main>
 
-        @include('ssm.environment.footer', ['mainset' => $mainset, 'setting' => $seting])
+        @include('ssm.components.site-footer-new', [
+            'previewContent' => $previewContent,
+            'groups' => $groups,
+            'mainset' => $mainset,
+            'seting' => $seting,
+            'footerLinkHref' => route('home'),
+            'footerLinkLabel' => 'На главную',
+        ])
 
         @include('ssm.components.form')
     </div>

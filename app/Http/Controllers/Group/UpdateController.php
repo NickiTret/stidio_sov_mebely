@@ -8,14 +8,14 @@ use App\Models\Group;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Group $group) {
-
+    public function __invoke(UpdateRequest $request, Group $group)
+    {
         $data = $request->validated();
 
         $group->update($data);
 
-        $groups = Group::all();
-
-        return view('group.index', compact('group', 'groups'));
+        return redirect()
+            ->route('group.index')
+            ->with('success', 'Группа сохранена.');
     }
 }

@@ -9,10 +9,12 @@ use App\Models\Slider;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Slider $slider) {
-
+    public function __invoke(Slider $slider)
+    {
         $slider->delete();
 
-        return redirect()->route('slider.index');
+        return redirect()
+            ->route('slider.index')
+            ->with('success', 'Слайд удален.');
     }
 }

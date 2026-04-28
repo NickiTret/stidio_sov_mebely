@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $table = "posts";
     protected $primaryKey = 'id';
-    protected $fillable = ['title', 'descriptions', 'image_src'];
+    protected $fillable = ['title', 'description', 'image_src'];
     protected $guarded = [];
 
     public static function uploadImage(Request $request, $image_src = null)

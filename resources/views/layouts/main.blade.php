@@ -141,6 +141,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.home-preview') }}" class="nav-link">
+                                <i class="nav-icon fas fa-pencil-ruler"></i>
+                                <p>
+                                    Preview главной
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.home-preview.edit') }}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Редактировать preview hero
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('group.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>

@@ -9,10 +9,12 @@ use App\Models\Seting;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Seting $seting) {
-
+    public function __invoke(Seting $seting)
+    {
         $seting->delete();
 
-        return redirect()->route('seting.index');
+        return redirect()
+            ->route('seting.index')
+            ->with('success', 'Настройки страницы удалены.');
     }
 }

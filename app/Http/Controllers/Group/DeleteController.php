@@ -9,10 +9,12 @@ use App\Models\Group;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Group $group) {
-
+    public function __invoke(Group $group)
+    {
         $group->delete();
 
-        return redirect()->route('group.index');
+        return redirect()
+            ->route('group.index')
+            ->with('success', 'Группа удалена.');
     }
 }

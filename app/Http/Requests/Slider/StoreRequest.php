@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Slider;
 
-use App\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -22,13 +21,11 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        $group = Group::where('id', $this->group_id)->get();
-
         return [
             'title' => 'required|string',
             'description' => 'required|string',
             'image_src' => 'nullable|image',
-            'group_id' => $group,
+            'group_id' => 'nullable|exists:groups,id',
         ];
     }
 }

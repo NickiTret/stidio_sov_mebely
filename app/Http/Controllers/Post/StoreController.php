@@ -10,13 +10,14 @@ use App\Models\Post;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request) {
-
+    public function __invoke(StoreRequest $request)
+    {
         $data = $request->validated();
         $data['image_src'] = Post::uploadImage($request);
-        $post = Post::create($data);
+        Post::create($data);
 
-        return redirect()->route('post.index');
-
+        return redirect()
+            ->route('post.index')
+            ->with('success', 'Статья создана.');
     }
 }

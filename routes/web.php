@@ -9,8 +9,12 @@ Route::get('/gallery/{slug}', [App\Http\Controllers\MainController::class, 'gall
 
 // message ///////////////////
 Route::post('/', App\Http\Controllers\Message\StoreController::class)->name('message.store');
-Route::group(['prefix' => 'message'], function() {
-    Route::get('/', App\Http\Controllers\Message\IndexController::class)->name('message.index');
+Route::middleware(['admin'])->group(function () {
+    Route::group(['prefix' => 'message'], function () {
+        Route::get('/', App\Http\Controllers\Message\IndexController::class)->name('message.index');
+        Route::delete('/', App\Http\Controllers\Message\DeleteAllController::class)->name('message.delete-all');
+        Route::delete('/{message}', App\Http\Controllers\Message\DeleteController::class)->name('message.delete');
+    });
 });
 //////////////////////////////
 
@@ -28,6 +32,9 @@ Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->n
 Route::middleware(['admin'])->prefix('admin')->group(function () {
 
     Route::get('/', App\Http\Controllers\IndexController::class)->name('admin');
+    Route::get('/home-preview', [App\Http\Controllers\MainController::class, 'homePreview'])->name('admin.home-preview');
+    Route::get('/home-preview/edit', App\Http\Controllers\Preview\HomePreviewEditorController::class)->name('admin.home-preview.edit');
+    Route::patch('/home-preview/edit', App\Http\Controllers\Preview\HomePreviewEditorUpdateController::class)->name('admin.home-preview.update');
 
     Route::group(['prefix' => 'setings'], function() {
         Route::get('/', App\Http\Controllers\Seting\IndexController::class)->name('seting.index');
@@ -72,4 +79,3 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::patch('/edit', App\Http\Controllers\MainSet\MainSetEditController::class)->name('mainset.update');
     });
 });
-

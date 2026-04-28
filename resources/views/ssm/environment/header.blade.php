@@ -10,6 +10,7 @@
             Студия Современной Мебели
         </div>
         <div class="header-right__nav menu">
+            <p class="header_subtitle">Студия Современной Мебели</p>
             <a class="header__link {{ $routeName === 'home' ? 'is-active' : '' }}" href="{{ route('home') }}">
                 Главная
             </a>

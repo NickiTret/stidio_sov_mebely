@@ -10,7 +10,6 @@ class MainSetEditController extends Controller
 {
     public function __invoke(Request $request)
     {
-
         $mainset = MainSet::where('id', 1)->first();
 
         if (empty($mainset)) {
@@ -28,19 +27,21 @@ class MainSetEditController extends Controller
 
             $mainset = MainSet::create($data);
         } else {
-                $request->validate([
-                    'tel' => 'required',
-                    'email' => 'required',
-                    'telegram' => 'required',
-                    'watsap' => 'required',
-                    'map' => 'required',
-                    'footer' => 'required',
-                ]);
-                $mainset = MainSet::first();
-                $data = $request->all();
-                $mainset->update($data);
+            $request->validate([
+                'tel' => 'required',
+                'email' => 'required',
+                'telegram' => 'required',
+                'watsap' => 'required',
+                'map' => 'required',
+                'footer' => 'required',
+            ]);
+            $mainset = MainSet::first();
+            $data = $request->all();
+            $mainset->update($data);
         }
 
-        return view('main.mainset', compact('mainset'));
+        return redirect()
+            ->route('mainset.index')
+            ->with('success', 'Настройки сайта сохранены.');
     }
 }

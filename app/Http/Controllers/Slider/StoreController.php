@@ -10,18 +10,14 @@ use App\Models\Slider;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request) {
-
+    public function __invoke(StoreRequest $request)
+    {
         $data = $request->validated();
         $data['image_src'] = Slider::uploadImage($request);
-        // $group = $data['group_id'];
-        // unset($data['group_id']);
+        Slider::create($data);
 
-
-        $slider = Slider::create($data);
-
-
-        return redirect()->route('slider.index');
-
+        return redirect()
+            ->route('slider.index')
+            ->with('success', 'Слайд создан.');
     }
 }
