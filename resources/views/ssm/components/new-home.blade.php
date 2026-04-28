@@ -171,7 +171,7 @@
 
             <div class="preview-faq__list">
                 @foreach (($faq['items'] ?? []) as $item)
-                    <details class="preview-faq__item">
+                    <details class="preview-faq__item" open>
                         <summary>{{ $item['question'] }}</summary>
                         <div class="preview-faq__content">
                             <p>{{ $item['answer'] }}</p>
