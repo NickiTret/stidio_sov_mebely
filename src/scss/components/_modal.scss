@@ -92,7 +92,7 @@
 .form__input.is-invalid,
 .preview-cta__form .input-reset.is-invalid {
   border-color: #c74a3d;
-  background-color: rgba(199, 74, 61, 0.05);
+//   background-color: rgba(199, 74, 61, 0.05);
 }
 
 .form-error-label {
@@ -107,6 +107,8 @@
 
 .preview-cta__field .form-error-label {
   margin: 8px 0 0;
+  background-color: rgba($color: #fff, $alpha: 0.5);
+  padding: 2px;
 }
 
 .form-honeypot {
