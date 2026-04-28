@@ -3366,6 +3366,7 @@ textarea.form__input {
 
 .preview-cta {
   padding: 28px 0 72px;
+  background-image: url(../img/bg.jpg);
 }
 
 .preview-cta__container {
@@ -3395,7 +3396,7 @@ textarea.form__input {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(36, 36, 36, 0.58);
+  color: #ffffff;
 }
 
 .preview-cta__content h2,
@@ -3403,7 +3404,7 @@ textarea.form__input {
   margin: 0 0 16px;
   font-size: 42px;
   line-height: 1.12;
-  color: #242424;
+  color: #ffffff;
 }
 
 .preview-cta__content p,
@@ -3411,7 +3412,7 @@ textarea.form__input {
   margin: 0;
   font-size: 17px;
   line-height: 1.7;
-  color: rgba(36, 36, 36, 0.78);
+  color: #ffffff;
 }
 
 .preview-cta__benefits {
@@ -3425,7 +3426,7 @@ textarea.form__input {
   padding-left: 24px;
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(36, 36, 36, 0.82);
+  color: #ffffff;
 }
 .preview-cta__benefits li::before {
   content: "";
@@ -3457,7 +3458,7 @@ textarea.form__input {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(36, 36, 36, 0.58);
+  color: #ffffff;
 }
 .preview-cta__field input,
 .preview-cta__field textarea {
@@ -3496,11 +3497,11 @@ textarea.form__input {
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(36, 36, 36, 0.58);
+  color: #ffffff;
 }
 
 .preview-footer {
-  padding: 12px 0 0px;
+  padding: 0px 0 0px;
 }
 
 .preview-footer__container {

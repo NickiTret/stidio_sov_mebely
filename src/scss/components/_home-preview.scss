@@ -778,6 +778,7 @@
 
 .preview-cta {
     padding: 28px 0 72px;
+    background-image: url(../img/bg.jpg);
 }
 
 .preview-cta__container {
@@ -805,7 +806,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(36, 36, 36, 0.58);
+    color: $clr_white;
 }
 
 .preview-cta__content h2,
@@ -813,7 +814,7 @@
     margin: 0 0 16px;
     font-size: 42px;
     line-height: 1.12;
-    color: $clr_text;
+    color: $clr_white;
 }
 
 .preview-cta__content p,
@@ -821,7 +822,7 @@
     margin: 0;
     font-size: 17px;
     line-height: 1.7;
-    color: rgba(36, 36, 36, 0.78);
+    color: $clr_white;
 }
 
 .preview-cta__benefits {
@@ -834,7 +835,7 @@
         padding-left: 24px;
         font-size: 15px;
         line-height: 1.6;
-        color: rgba(36, 36, 36, 0.82);
+        color: $clr_white;
 
         &::before {
             content: "";
@@ -865,7 +866,7 @@
         font-weight: 700;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: rgba(36, 36, 36, 0.58);
+        color: $clr_white;
     }
 
     input,
@@ -904,11 +905,11 @@
     margin: 0;
     font-size: 13px;
     line-height: 1.6;
-    color: rgba(36, 36, 36, 0.58);
+    color: $clr_white;
 }
 
 .preview-footer {
-    padding: 12px 0 0px;
+    padding: 0px 0 0px;
 }
 
 .preview-footer__container {
