@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -8,34 +9,50 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Новая страница</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin') }}">Админка</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Статьи</a></li>
+                        <li class="breadcrumb-item active">Добавить</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
+
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <form action="{{ route('slider.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Наименование" name="title">
+                <div class="col-lg-10 col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Новая статья</h3>
                         </div>
-                        <div class="form-group">
-                            <textarea type="text" rows="50" class="form-control redactor" placeholder="Описание" name="description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image_src" id="image_src">
-                                <label class="custom-file-label" for="image_src">Выбрать</label>
+                        <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="title">Заголовок</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Название статьи" name="title" value="{{ old('title') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Описание</label>
+                                    <textarea rows="18" class="form-control redactor" id="description" placeholder="Описание статьи" name="description">{{ old('description') }}</textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="image_src">Изображение</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image_src" id="image_src">
+                                        <label class="custom-file-label" for="image_src">Выбрать файл</label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Добавить">
-                        </div>
-                    </form>
+                            <div class="card-footer">
+                                <a href="{{ route('post.index') }}" class="btn btn-default">Назад</a>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save mr-1"></i> Сохранить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

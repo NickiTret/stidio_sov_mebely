@@ -1,54 +1,70 @@
 @extends('layouts.main')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Редактировать настройки для "{{ $seting->title }}"</h1>
+                    <h1 class="m-0">Редактировать настройки страницы</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">{{ $seting->title }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin') }}">Админка</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('seting.index') }}">Настройки страниц</a></li>
+                        <li class="breadcrumb-item active">{{ $seting->page }}</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
+
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <form action="{{ route('seting.update', $seting->id) }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('PATCH')
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ $seting->page }}" placeholder="Страница"
-                                name="page">
+                <div class="col-lg-10 col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Параметры страницы</h3>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ $seting->title }}"
-                                placeholder="Наименование" name="title">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ $seting->descriptions }}"
-                                placeholder="Описание" name="descriptions">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ $seting->keywords }}"
-                                placeholder="Ключевые слова, через запятую" name="keywords">
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="favicon" id="favicon">
-                                <label class="custom-file-label" for="favicon">Выбрать</label>
+                        <form action="{{ route('seting.update', $seting->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PATCH')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="page">Страница</label>
+                                    <input type="text" class="form-control" id="page" value="{{ old('page', $seting->page) }}" placeholder="Страница" name="page">
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Заголовок</label>
+                                    <input type="text" class="form-control" id="title" value="{{ old('title', $seting->title) }}" placeholder="Title страницы" name="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descriptions">Описание</label>
+                                    <textarea class="form-control" id="descriptions" rows="4" placeholder="Meta description" name="descriptions">{{ old('descriptions', $seting->descriptions) }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="keywords">Ключевые слова</label>
+                                    <textarea class="form-control" id="keywords" rows="3" placeholder="Ключевые слова через запятую" name="keywords">{{ old('keywords', $seting->keywords) }}</textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="favicon">Иконка / изображение</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="favicon" id="favicon">
+                                        <label class="custom-file-label" for="favicon">Выбрать файл</label>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="{{ $seting->getImage() }}" alt="{{ $seting->title }}" class="img-thumbnail" width="120">
+                                    </div>
+                                </div>
                             </div>
-                            <div><img src="{{ $seting->getImage() }}" alt="" class="img-thumbnail mt-2"
-                                    width="200"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Сохранить">
-                        </div>
-                    </form>
+                            <div class="card-footer">
+                                <a href="{{ route('seting.index') }}" class="btn btn-default">Назад</a>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save mr-1"></i> Сохранить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

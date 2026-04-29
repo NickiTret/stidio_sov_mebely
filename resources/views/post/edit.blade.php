@@ -1,49 +1,62 @@
 @extends('layouts.main')
 
 @section('content')
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Редактировать пост "{{ $post->title }}"</h1>
-                </div><!-- /.col -->
+                    <h1 class="m-0">Редактировать статью</h1>
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('admin') }}">Админка</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Статьи</a></li>
                         <li class="breadcrumb-item active">{{ $post->title }}</li>
                     </ol>
-                </div><!-- /.col -->
+                </div>
             </div>
         </div>
     </div>
+
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('PATCH')
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ $post->title }}"
-                                placeholder="Наименование" name="title">
+                <div class="col-lg-10 col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Параметры статьи</h3>
                         </div>
-                        <div class="form-group">
-                            <textarea type="text" rows="50" class="form-control redactor" placeholder="Описание"
-                                name="description">{{ $post->description }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image_src" id="image_src">
-                                <label class="custom-file-label" for="image_src">Выбрать</label>
+                        <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PATCH')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="title">Заголовок</label>
+                                    <input type="text" class="form-control" id="title" value="{{ old('title', $post->title) }}" placeholder="Название статьи" name="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Описание</label>
+                                    <textarea rows="18" class="form-control redactor" id="description" placeholder="Описание статьи" name="description">{{ old('description', $post->description) }}</textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="image_src">Изображение</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image_src" id="image_src">
+                                        <label class="custom-file-label" for="image_src">Выбрать файл</label>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="{{ $post->getImage() }}" alt="{{ $post->title }}" class="img-thumbnail" width="220">
+                                    </div>
+                                </div>
                             </div>
-                            <div><img src="{{ $post->getImage() }}" alt="" class="img-thumbnail mt-2"
-                                    width="200">
+                            <div class="card-footer">
+                                <a href="{{ route('post.index') }}" class="btn btn-default">Назад</a>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save mr-1"></i> Сохранить
+                                </button>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Сохранить">
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
