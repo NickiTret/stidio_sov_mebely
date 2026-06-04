@@ -28,6 +28,7 @@
 
         $seoImage = $seo['image'] ?? $defaultImage;
         $schemaBusiness = null;
+        $extraSchemas = collect($extraSchemas ?? [])->filter()->values();
 
         if (!empty($mainset)) {
             $schemaBusiness = [
@@ -38,6 +39,26 @@
                 'image' => $seoImage,
                 'telephone' => $mainset->tel,
                 'email' => $mainset->email,
+                'priceRange' => '₽₽',
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => 'Нальчик',
+                    'addressRegion' => 'Кабардино-Балкарская Республика',
+                    'addressCountry' => 'RU',
+                ],
+                'openingHoursSpecification' => [[
+                    '@type' => 'OpeningHoursSpecification',
+                    'dayOfWeek' => [
+                        'Monday',
+                        'Tuesday',
+                        'Wednesday',
+                        'Thursday',
+                        'Friday',
+                        'Saturday',
+                    ],
+                    'opens' => '09:00',
+                    'closes' => '19:00',
+                ]],
                 'areaServed' => [
                     '@type' => 'City',
                     'name' => 'Нальчик',
@@ -119,4 +140,9 @@
             {!! json_encode($schemaBusiness, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
         </script>
     @endif
+    @foreach ($extraSchemas as $schema)
+        <script type="application/ld+json">
+            {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+        </script>
+    @endforeach
 </head>

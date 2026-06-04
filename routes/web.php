@@ -1,11 +1,17 @@
 <?php
 
+use App\Support\SeoLandingPages;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('home');
 
 Route::get('/gallery', [App\Http\Controllers\MainController::class, 'gallery'])->name('gallery');
 Route::get('/gallery/{slug}', [App\Http\Controllers\MainController::class, 'galleryCategory'])->name('gallery.category');
+Route::get('/contacts', [App\Http\Controllers\MainController::class, 'contacts'])->name('contacts');
+Route::get('/sitemap.xml', [App\Http\Controllers\MainController::class, 'sitemap'])->name('sitemap');
+Route::get('/{landingSlug}', [App\Http\Controllers\MainController::class, 'servicePage'])
+    ->where('landingSlug', implode('|', array_map('preg_quote', SeoLandingPages::slugs())))
+    ->name('service.page');
 
 // message ///////////////////
 Route::post('/', App\Http\Controllers\Message\StoreController::class)->name('message.store');

@@ -2,8 +2,11 @@
     @php
         $routeName = request()->route()?->getName();
         $isGalleryRoute = in_array($routeName, ['gallery', 'gallery.category'], true);
+        $isServiceRoute = $routeName === 'service.page';
         $galleryCategories = collect(\App\Models\Group::categoryDefinitions())->values();
+        $servicePages = collect(\App\Support\SeoLandingPages::all());
         $currentCategorySlug = request()->route('slug');
+        $currentLandingSlug = request()->route('landingSlug');
     @endphp
     <div class="container header-container">
         <div class="header__logo">
@@ -14,6 +17,18 @@
             <a class="header__link {{ $routeName === 'home' ? 'is-active' : '' }}" href="{{ route('home') }}">
                 Главная
             </a>
+            <div class="header__dropdown {{ $isServiceRoute ? 'is-active' : '' }}">
+                <a class="header__link header__dropdown-toggle" href="{{ route('service.page', $servicePages->first()['slug']) }}">
+                    Услуги
+                </a>
+                <div class="header__dropdown-menu">
+                    @foreach ($servicePages as $servicePage)
+                        <a class="header__dropdown-item {{ $currentLandingSlug === $servicePage['slug'] ? 'is-active' : '' }}" href="{{ route('service.page', $servicePage['slug']) }}">
+                            {{ $servicePage['eyebrow'] }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
             <div class="header__dropdown {{ $isGalleryRoute ? 'is-active' : '' }}">
                 <a class="header__link header__dropdown-toggle" href="{{ route('gallery') }}">
                     Галерея
@@ -29,7 +44,7 @@
                     @endforeach
                 </div>
             </div>
-            <a class="header__link fs" href="#footer">
+            <a class="header__link fs {{ $routeName === 'contacts' ? 'is-active' : '' }}" href="{{ route('contacts') }}">
                 Контакты
             </a>
             @if (auth()->check())
@@ -45,7 +60,7 @@
             <div class="header__mobile-contacts">
                 <span class="header__mobile-label">Контакты</span>
                 <a href="tel:+79280782894" class="header__number header__number--mobile">Позвонить: +7 (928) 078 28 94</a>
-                <a href="#footer" class="header__mobile-link">Открыть контакты и карту</a>
+                <a href="{{ route('contacts') }}" class="header__mobile-link">Открыть контакты и карту</a>
             </div>
             {{-- <button class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button> --}}
         </div>

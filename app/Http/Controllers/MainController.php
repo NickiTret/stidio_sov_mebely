@@ -8,6 +8,7 @@ use App\Models\MainSet;
 use App\Models\Seting;
 use App\Models\Slider;
 use App\Support\HomePreviewContent;
+use App\Support\SeoLandingPages;
 use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
@@ -108,6 +109,108 @@ class MainController extends Controller
         ];
 
         return view('gallery', compact('mainset', 'groups', 'selectedGroup', 'seting', 'sliders', 'seoData', 'previewContent'));
+    }
+
+    public function servicePage(string $landingSlug)
+    {
+        $landing = SeoLandingPages::find($landingSlug);
+
+        abort_if(!$landing, 404);
+
+        $mainset = Cache::remember('mainset_service', 60, function () {
+            return MainSet::first();
+        });
+
+        $seting = Cache::remember('seting_service', 60, function () {
+            return Seting::where('page', 'Главная')->first();
+        });
+
+        $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
+        $selectedGroup = $groups->firstWhere('slug', $landing['gallery_slug']);
+        $relatedGroups = $groups
+            ->reject(fn (Group $group) => $group->slug === $landing['gallery_slug'])
+            ->take(4)
+            ->values();
+        $seoImage = optional($selectedGroup?->slides->first())->getImage() ?? $seting?->getImage();
+
+        $seoData = [
+            'title' => $landing['seo_title'],
+            'description' => $landing['seo_description'],
+            'keywords' => $landing['seo_keywords'],
+            'image' => $seoImage,
+        ];
+
+        $schemaService = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            'name' => $landing['title'],
+            'description' => $landing['seo_description'],
+            'areaServed' => [
+                '@type' => 'City',
+                'name' => 'Нальчик',
+            ],
+            'provider' => [
+                '@type' => 'FurnitureStore',
+                'name' => 'Студия Современной Мебели',
+                'url' => url('/'),
+                'telephone' => $mainset?->tel,
+            ],
+        ];
+
+        return view('service-page', compact(
+            'mainset',
+            'seting',
+            'groups',
+            'previewContent',
+            'landing',
+            'selectedGroup',
+            'relatedGroups',
+            'seoData',
+            'schemaService'
+        ));
+    }
+
+    public function contacts()
+    {
+        $mainset = Cache::remember('mainset_contacts', 60, function () {
+            return MainSet::first();
+        });
+
+        $seting = Cache::remember('seting_contacts', 60, function () {
+            return Seting::where('page', 'Главная')->first();
+        });
+
+        $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
+        $seoData = [
+            'title' => 'Контакты мебельной студии в Нальчике | KBR Mebel',
+            'description' => 'Контакты KBR Mebel в Нальчике: телефон, WhatsApp, email, адрес, карта, замер и расчет мебели на заказ.',
+            'keywords' => 'контакты KBR Mebel, мебель на заказ Нальчик контакты, студия современной мебели Нальчик',
+        ];
+
+        return view('contacts', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData'));
+    }
+
+    public function sitemap()
+    {
+        $urls = collect([
+            route('home'),
+            route('gallery'),
+            route('contacts'),
+        ]);
+
+        foreach (SeoLandingPages::all() as $landing) {
+            $urls->push(route('service.page', $landing['slug']));
+        }
+
+        foreach (Group::categoryDefinitions() as $definition) {
+            $urls->push(route('gallery.category', $definition['slug']));
+        }
+
+        return response()
+            ->view('sitemap', ['urls' => $urls->unique()->values()])
+            ->header('Content-Type', 'application/xml');
     }
 
     public function homePreview()

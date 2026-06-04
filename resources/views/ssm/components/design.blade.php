@@ -8,6 +8,7 @@
                     ? $selectedGroup->getDefinition()['page_description']
                     : 'Выберите нужную категорию и посмотрите проекты мебели на заказ в Нальчике: кухни, шкафы-купе, детские, спальни, гостиные, гардеробные, кабинеты и торговое оборудование.';
                 $renderGroups = $isCategoryPage ? collect([$selectedGroup]) : collect();
+                $servicePages = collect(\App\Support\SeoLandingPages::all())->keyBy('gallery_slug');
             @endphp
 
             <div class="design-prod__hero">
@@ -29,9 +30,12 @@
                         <div class="tabs__panel tabs__panel--active">
                             <div class="tabs__panel__grid">
                                 @foreach ($groups as $group)
-                                    @php($previewSlide = $group->slides->first())
+                                    @php
+                                        $previewSlide = $group->slides->first();
+                                        $servicePage = $servicePages->get($group->slug);
+                                    @endphp
                                     <div class="tabs__panel__item">
-                                        <a class="tabs__panel__box" href="{{ route('gallery.category', $group->slug) }}">
+                                        <a class="tabs__panel__box" href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">
                                             <div class="tabs__panel__image">
                                                 <img src="{{ $previewSlide->getImage() }}" alt="{{ $group->display_title }}" />
                                             </div>
@@ -39,7 +43,7 @@
                                                 <span class="tabs__panel__meta">Категория</span>
                                                 <h2>{{ $group->display_title }}</h2>
                                                 <p>{{ $group->getDefinition()['page_description'] }}</p>
-                                                <span class="tabs__panel__link">Открыть раздел</span>
+                                                <span class="tabs__panel__link">Открыть услугу</span>
                                             </div>
                                         </a>
                                     </div>

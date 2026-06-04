@@ -2,6 +2,7 @@
     $footer = $previewContent['footer'] ?? [];
     $footerLinkHref = $footerLinkHref ?? route('gallery');
     $footerLinkLabel = $footerLinkLabel ?? 'Смотреть все проекты';
+    $servicePages = collect(\App\Support\SeoLandingPages::all())->keyBy('gallery_slug');
 @endphp
 
 <footer class="preview-footer" id="footer">
@@ -17,8 +18,12 @@
                 <h3>Направления</h3>
                 <div class="preview-footer__links">
                     @foreach ($groups as $group)
-                        <a href="{{ route('gallery.category', $group->slug) }}">{{ $group->display_title }}</a>
+                        @php
+                            $servicePage = $servicePages->get($group->slug);
+                        @endphp
+                        <a href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">{{ $group->display_title }}</a>
                     @endforeach
+                    <a href="{{ route('contacts') }}">Контакты</a>
                 </div>
             </div>
 
@@ -30,6 +35,7 @@
                     <a href="mailto:{{ $mainset->email }}">{{ $mainset->email }}</a>
                 </div>
                 <p class="preview-footer__city">{{ $footer['city'] ?? '' }}</p>
+                <p class="preview-footer__city">Нальчик, Кабардино-Балкарская Республика</p>
             </div>
         </div>
 

@@ -8,6 +8,7 @@
     $approach = $previewContent['approach'] ?? [];
     $showcase = $previewContent['showcase'] ?? [];
     $isPreview = $isPreview ?? false;
+    $servicePages = collect(\App\Support\SeoLandingPages::all())->keyBy('gallery_slug');
 @endphp
 
 <main class="main home-preview">
@@ -23,8 +24,9 @@
                         @foreach ($groups as $group)
                             @php
                                 $definition = $group->getDefinition();
+                                $servicePage = $servicePages->get($group->slug);
                             @endphp
-                            <a class="preview-subnav__catalog-card" href="{{ route('gallery.category', $group->slug) }}">
+                            <a class="preview-subnav__catalog-card" href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">
                                 <strong>{{ $group->display_title }}</strong>
                                 <span>{{ $definition['page_title'] }}</span>
                             </a>
@@ -35,7 +37,10 @@
 
             <div class="preview-subnav__links">
                 @foreach ($featuredGroups as $group)
-                    <a href="{{ route('gallery.category', $group->slug) }}">{{ $group->display_title }}</a>
+                    @php
+                        $servicePage = $servicePages->get($group->slug);
+                    @endphp
+                    <a href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">{{ $group->display_title }}</a>
                 @endforeach
                 <a href="{{ route('gallery') }}">Все категории</a>
             </div>
@@ -65,7 +70,10 @@
 
                 <div class="preview-hero__quick-links">
                     @foreach ($primaryGroups as $group)
-                        <a class="preview-hero__quick-link" href="{{ route('gallery.category', $group->slug) }}">
+                        @php
+                            $servicePage = $servicePages->get($group->slug);
+                        @endphp
+                        <a class="preview-hero__quick-link" href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">
                             <strong>{{ $group->display_title }}</strong>
                             <span>{{ $group->getDefinition()['benefits'][0] }}</span>
                         </a>
@@ -206,8 +214,9 @@
                     @php
                         $slide = $group->slides->first();
                         $definition = $group->getDefinition();
+                        $servicePage = $servicePages->get($group->slug);
                     @endphp
-                    <a class="preview-category-card" href="{{ route('gallery.category', $group->slug) }}">
+                    <a class="preview-category-card" href="{{ $servicePage ? route('service.page', $servicePage['slug']) : route('gallery.category', $group->slug) }}">
                         <span class="preview-category-card__image">
                             <img src="{{ $slide->getImage() }}" alt="{{ $group->display_title }}">
                         </span>

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /login
+Disallow: /register
+Disallow: /admin
+Allow: /
+
+Sitemap: https://www.kbr-mebel.ru/sitemap.xml
