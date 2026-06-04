@@ -39,10 +39,10 @@
             </div>
         </div>
 
-        <div class="preview-footer__map-wrap">
+        {{-- <div class="preview-footer__map-wrap">
             <div data-map="{{ $mainset->map }}" data-icon="{{ $seting->getImage() }}" id="map-test" class="map preview-footer__map"></div>
             <script src="https://api-maps.yandex.ru/2.1/?apikey=f7db7337-3ada-4e38-9eb9-336c076d79ba&lang=ru_RU"></script>
-        </div>
+        </div> --}}
 
         <div class="preview-footer__bottom">
             <p>© 2000 - {{ \Carbon\Carbon::now()->year }} | {{ $mainset->footer }}</p>
