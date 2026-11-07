@@ -28,6 +28,8 @@ class StoreRequest extends FormRequest
             'mail' => ['required', 'email:rfc', 'max:120'],
             'content' => ['nullable', 'string', 'min:5', 'max:2000'],
             'redirect_to' => ['nullable', 'string', 'max:2000'],
+            // Отдельное согласие на обработку ПД (галочка ssm/components/form-consent).
+            'consent' => ['accepted'],
             'website' => [
                 'nullable',
                 'string',
@@ -63,6 +65,7 @@ class StoreRequest extends FormRequest
             'mail.email' => 'Проверьте формат email.',
             'content.min' => 'Добавьте чуть больше деталей по проекту.',
             'content.max' => 'Сообщение получилось слишком длинным.',
+            'consent.accepted' => 'Подтвердите согласие на обработку персональных данных.',
         ];
     }
 }

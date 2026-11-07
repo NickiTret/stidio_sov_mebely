@@ -29,6 +29,7 @@ class ContactFormRedirectTest extends TestCase
             'content' => 'Нужна кухня',
             'website' => '',
             'form_started_at' => time() - 10,
+            'consent' => '1',
             'redirect_to' => $redirectTo,
         ]);
     }

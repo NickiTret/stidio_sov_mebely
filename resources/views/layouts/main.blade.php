@@ -140,14 +140,16 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.privacy.edit') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user-shield"></i>
-                                <p>
-                                    Политика конфиденциальности
-                                </p>
-                            </a>
-                        </li>
+                        @foreach (\App\Models\Page::ADMIN_LABELS as $pageSlug => $pageLabel)
+                            <li class="nav-item">
+                                <a href="{{ route('admin.page.edit', $pageSlug) }}" class="nav-link">
+                                    <i class="nav-icon fas fa-user-shield"></i>
+                                    <p>
+                                        {{ $pageLabel }}
+                                    </p>
+                                </a>
+                            </li>
+                        @endforeach
                         <li class="nav-item">
                             <a href="{{ route('slider.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-photo-video"></i>

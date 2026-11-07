@@ -34,7 +34,7 @@ class HomePreviewEditorUpdateController extends Controller
             'cta_description' => ['required', 'string', 'max:2000'],
             'cta_benefits' => ['required', 'string'],
             'cta_submit_text' => ['required', 'string', 'max:100'],
-            'cta_note' => ['required', 'string', 'max:500'],
+            'cta_note' => ['nullable', 'string', 'max:500'],
             'footer_eyebrow' => ['required', 'string', 'max:255'],
             'footer_title' => ['required', 'string', 'max:500'],
             'footer_description' => ['required', 'string', 'max:2000'],
@@ -106,7 +106,7 @@ class HomePreviewEditorUpdateController extends Controller
                 ->values()
                 ->all(),
             'submit_text' => $validated['cta_submit_text'],
-            'note' => $validated['cta_note'],
+            'note' => $validated['cta_note'] ?? '',
         ];
 
         $payload['footer'] = [

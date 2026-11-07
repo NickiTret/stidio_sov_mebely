@@ -43,13 +43,11 @@
                 <span>Что хотите заказать <em>(необязательно)</em></span>
                 <textarea name="content" class="input-reset" placeholder="{{ $ctaPlaceholder }}"></textarea>
             </label>
+            @include('ssm.components.form-consent', ['consentClass' => 'preview-cta__field--full'])
             <button class="btn btn-main preview-cta__submit" type="submit">{{ $cta['submit_text'] ?? 'Получить расчет' }}</button>
-            <p class="preview-cta__note">
-                {{ $cta['note'] ?? '' }}
-                @if (\App\Support\SiteCache::page(\App\Models\Page::PRIVACY))
-                    <a class="legal-link" href="{{ route('privacy') }}" target="_blank">Политика обработки персональных данных</a>
-                @endif
-            </p>
+            @if (!empty($cta['note']))
+                <p class="preview-cta__note">{{ $cta['note'] }}</p>
+            @endif
         </form>
     </div>
 </section>

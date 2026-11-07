@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Политика конфиденциальности</h1>
+                    <h1 class="m-0">{{ $adminLabel }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin') }}">Админка</a></li>
-                        <li class="breadcrumb-item active">Политика конфиденциальности</li>
+                        <li class="breadcrumb-item active">{{ $adminLabel }}</li>
                     </ol>
                 </div>
             </div>
@@ -21,23 +21,23 @@
                 <div class="col-12">
                     @if ($page->hasContent())
                         <div class="callout callout-success">
-                            Страница опубликована: <a href="{{ route('privacy') }}" target="_blank" rel="noopener">{{ route('privacy') }}</a>.
-                            Ссылка на неё стоит под формами заявки и в футере сайта.
+                            Страница опубликована: <a href="{{ route($page->slug) }}" target="_blank" rel="noopener">{{ route($page->slug) }}</a>.
+                            Ссылка на неё стоит у галочки согласия в формах заявки и в футере сайта.
                             @if ($page->updated_at)
                                 <span class="text-muted">Последнее изменение: {{ $page->updated_at->format('d.m.Y H:i') }}</span>
                             @endif
                         </div>
                     @else
                         <div class="callout callout-warning">
-                            Текст ещё не заполнен — страница <code>/privacy</code> не открывается, ссылок на неё на сайте нет.
+                            Текст ещё не заполнен — страница <code>/{{ $page->slug }}</code> не открывается, ссылок на неё на сайте нет.
                         </div>
                     @endif
 
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Текст политики обработки персональных данных</h3>
+                            <h3 class="card-title">{{ $page->title }}</h3>
                         </div>
-                        <form action="{{ route('admin.privacy.update') }}" method="post">
+                        <form action="{{ route('admin.page.update', $page->slug) }}" method="post">
                             @csrf
                             @method('PATCH')
                             <div class="card-body">
@@ -50,7 +50,7 @@
                                     <label for="content">Текст</label>
                                     <textarea class="form-control" id="content" name="content" rows="25"
                                         maxlength="{{ \App\Http\Requests\Page\UpdateRequest::CONTENT_MAX }}"
-                                        placeholder="Вставьте сюда текст политики">{{ old('content', $page->content) }}</textarea>
+                                        placeholder="Вставьте сюда текст документа">{{ old('content', $page->content) }}</textarea>
                                     <small class="form-text text-muted">
                                         Вставляйте обычный текст (например, из Word) — оформление подставится само:
                                         каждая строка станет абзацем, а короткая строка без точки в конце
@@ -62,7 +62,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Сохранить</button>
                                 @if ($page->hasContent())
-                                    <a href="{{ route('privacy') }}" target="_blank" rel="noopener" class="btn btn-outline-secondary ml-2">Открыть на сайте</a>
+                                    <a href="{{ route($page->slug) }}" target="_blank" rel="noopener" class="btn btn-outline-secondary ml-2">Открыть на сайте</a>
                                 @endif
                             </div>
                         </form>

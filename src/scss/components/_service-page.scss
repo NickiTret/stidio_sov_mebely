@@ -410,3 +410,27 @@
         text-decoration: none;
     }
 }
+
+// Галочка согласия на обработку ПД в формах заявки (ssm/components/form-consent).
+.form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 4px 0 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.form-consent__input {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    accent-color: currentColor;
+    cursor: pointer;
+}
+
+.form-consent__text {
+    flex: 1 1 auto;
+}

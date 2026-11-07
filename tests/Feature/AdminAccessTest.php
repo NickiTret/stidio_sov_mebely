@@ -46,6 +46,7 @@ class AdminAccessTest extends TestCase
             'post' => Post::create(['title' => 't', 'description' => 'd', 'image_src' => 'images/p.jpg'])->id,
             'seting' => Seting::create(['page' => 'Главная', 'title' => 't', 'descriptions' => 'd', 'keywords' => 'k', 'favicon' => 'images/f.png'])->id,
             'message' => Message::create(['name' => 'n', 'tel' => '+79280000000', 'mail' => 'm@example.com', 'content' => ''])->id,
+            'pageSlug' => 'privacy',
         ];
     }
 

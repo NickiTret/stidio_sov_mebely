@@ -158,6 +158,10 @@
                                     <label>Примечание под формой</label>
                                     <input type="text" class="form-control" name="cta_note"
                                         value="{{ old('cta_note', $content['cta']['note'] ?? '') }}">
+                                    <small class="form-text text-muted">
+                                        Необязательно. Согласие на обработку персональных данных — отдельная галочка в форме,
+                                        текст «Нажимая на кнопку, вы соглашаетесь…» сюда писать не нужно.
+                                    </small>
                                 </div>
 
                                 <h4 class="mb-3 mt-4">Footer preview</h4>

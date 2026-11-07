@@ -8,7 +8,9 @@ Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('ho
 Route::get('/gallery', [App\Http\Controllers\MainController::class, 'gallery'])->name('gallery');
 Route::get('/gallery/{slug}', [App\Http\Controllers\MainController::class, 'galleryCategory'])->name('gallery.category');
 Route::get('/contacts', [App\Http\Controllers\MainController::class, 'contacts'])->name('contacts');
-Route::get('/privacy', [App\Http\Controllers\MainController::class, 'privacy'])->name('privacy');
+// Документы из админки; имя маршрута = slug в App\Models\Page::DEFAULTS.
+Route::get('/privacy', [App\Http\Controllers\MainController::class, 'textPage'])->defaults('slug', 'privacy')->name('privacy');
+Route::get('/consent', [App\Http\Controllers\MainController::class, 'textPage'])->defaults('slug', 'consent')->name('consent');
 Route::get('/sitemap.xml', [App\Http\Controllers\MainController::class, 'sitemap'])->name('sitemap');
 Route::get('/{landingSlug}', [App\Http\Controllers\MainController::class, 'servicePage'])
     ->where('landingSlug', implode('|', array_map('preg_quote', SeoLandingPages::slugs())))
@@ -83,8 +85,12 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     });
 
 
-    Route::get('/privacy', App\Http\Controllers\Page\PrivacyEditController::class)->name('admin.privacy.edit');
-    Route::patch('/privacy', App\Http\Controllers\Page\PrivacyUpdateController::class)->name('admin.privacy.update');
+    // Текстовые страницы-документы (политика, согласие на обработку ПД) — список в Page::DEFAULTS.
+    Route::group(['prefix' => 'pages'], function() {
+        $pageSlugs = implode('|', array_map('preg_quote', array_keys(App\Models\Page::DEFAULTS)));
+        Route::get('/{pageSlug}', App\Http\Controllers\Page\EditController::class)->where('pageSlug', $pageSlugs)->name('admin.page.edit');
+        Route::patch('/{pageSlug}', App\Http\Controllers\Page\UpdateController::class)->where('pageSlug', $pageSlugs)->name('admin.page.update');
+    });
 
     Route::group(['prefix' => 'mainset'], function() {
         Route::get('/', App\Http\Controllers\MainSet\MainSetController::class)->name('mainset.index');

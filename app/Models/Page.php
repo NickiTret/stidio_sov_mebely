@@ -6,18 +6,30 @@ use App\Models\Concerns\FlushesSiteCache;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Текстовая страница сайта (сейчас одна — политика конфиденциальности).
+ * Текстовая страница сайта (документы: политика конфиденциальности, согласие на обработку ПД).
  * Текст хранится как обычный текст, вставленный в админке; HTML не принимается.
+ * slug = адрес страницы (/privacy) = имя публичного маршрута (route('privacy')).
  */
 class Page extends Model
 {
     use FlushesSiteCache;
 
     public const PRIVACY = 'privacy';
+    public const CONSENT = 'consent';
 
-    /** Известные страницы: slug => заголовок по умолчанию. */
+    /**
+     * Известные страницы: slug => заголовок по умолчанию. Новая страница добавляется сюда
+     * и публичным маршрутом в routes/web.php — админка и кеш подхватят её сами.
+     */
     public const DEFAULTS = [
         self::PRIVACY => 'Политика обработки персональных данных',
+        self::CONSENT => 'Согласие на обработку персональных данных',
+    ];
+
+    /** Подписи в меню админки. */
+    public const ADMIN_LABELS = [
+        self::PRIVACY => 'Политика конфиденциальности',
+        self::CONSENT => 'Согласие на обработку ПД',
     ];
 
     protected $fillable = ['slug', 'title', 'content'];

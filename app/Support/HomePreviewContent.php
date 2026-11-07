@@ -9,6 +9,12 @@ class HomePreviewContent
 {
     private const STORAGE_PATH = 'app/home-preview-content.json';
 
+    /**
+     * Старая подпись под формой. Согласие на обработку ПД теперь — отдельная галочка,
+     * поэтому этот текст (если он остался в сохранённом JSON) больше не выводим.
+     */
+    private const LEGACY_CTA_NOTE = 'Нажимая на кнопку, вы соглашаетесь на обработку персональных данных.';
+
     public static function load(): array
     {
         $path = storage_path(self::STORAGE_PATH);
@@ -23,7 +29,13 @@ class HomePreviewContent
             return self::defaults();
         }
 
-        return array_replace_recursive(self::defaults(), $decoded);
+        $content = array_replace_recursive(self::defaults(), $decoded);
+
+        if (trim((string) ($content['cta']['note'] ?? '')) === self::LEGACY_CTA_NOTE) {
+            $content['cta']['note'] = '';
+        }
+
+        return $content;
     }
 
     public static function save(array $payload): void
@@ -91,7 +103,8 @@ class HomePreviewContent
                     'Подготовим проект под квартиру, дом или коммерческое пространство',
                 ],
                 'submit_text' => 'Получить расчет',
-                'note' => 'Нажимая на кнопку, вы соглашаетесь на обработку персональных данных.',
+                // Согласие на обработку ПД — отдельная галочка (ssm/components/form-consent), не текст под кнопкой.
+                'note' => '',
             ],
             'footer' => [
                 'eyebrow' => 'Мебель на заказ в Нальчике',

@@ -9,6 +9,7 @@ contactForms.forEach((form, index) => {
   const emailInput = form.querySelector('[name="mail"]');
   const contentInput = form.querySelector('[name="content"]');
   const secretInput = form.querySelector('[name="secret"]');
+  const consentInput = form.querySelector('[name="consent"]');
   const submitButton = form.querySelector('button[type="submit"]');
 
   if (!nameInput || !telInput || !emailInput || !contentInput) {
@@ -97,6 +98,16 @@ contactForms.forEach((form, index) => {
       errorMessage: "Если пишете сообщение, добавьте хотя бы 5 символов",
     },
   ]);
+
+  if (consentInput) {
+    consentInput.id = consentInput.id || `${uid}-consent`;
+    validate.addField(`#${consentInput.id}`, [
+      {
+        rule: "required",
+        errorMessage: "Подтвердите согласие на обработку персональных данных",
+      },
+    ]);
+  }
 
   if (secretInput) {
     validate.addField(`#${secretInput.id}`, [

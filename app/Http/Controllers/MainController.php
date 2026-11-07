@@ -166,10 +166,11 @@ class MainController extends Controller
         return view('contacts', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData'));
     }
 
-    public function privacy()
+    /** /privacy, /consent — документы из админки; slug приходит из defaults() маршрута. */
+    public function textPage(string $slug)
     {
         // Пока текст не заполнен в админке, страницы нет (и ссылок на неё тоже).
-        $page = SiteCache::page(Page::PRIVACY);
+        $page = SiteCache::page($slug);
 
         abort_if(!$page, 404);
 
@@ -182,10 +183,10 @@ class MainController extends Controller
         $seoData = [
             'title' => $page->title . ' | KBR Mebel',
             'description' => $page->title . ' — как KBR Mebel (Нальчик) собирает, использует и защищает данные из заявок на сайте.',
-            'keywords' => 'политика конфиденциальности, персональные данные, KBR Mebel',
+            'keywords' => 'персональные данные, политика конфиденциальности, согласие на обработку, KBR Mebel',
         ];
 
-        return view('privacy', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData', 'page'));
+        return view('text-page', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData', 'page'));
     }
 
     public function sitemap()
@@ -196,8 +197,10 @@ class MainController extends Controller
             route('contacts'),
         ]);
 
-        if (SiteCache::page(Page::PRIVACY)) {
-            $urls->push(route('privacy'));
+        foreach (array_keys(Page::DEFAULTS) as $pageSlug) {
+            if (SiteCache::page($pageSlug)) {
+                $urls->push(route($pageSlug));
+            }
         }
 
         foreach (SeoLandingPages::all() as $landing) {

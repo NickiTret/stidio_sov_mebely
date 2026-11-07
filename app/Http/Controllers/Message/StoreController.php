@@ -19,7 +19,7 @@ class StoreController extends Controller
 
         $data = $request->validated();
         $data['content'] = $data['content'] ?? '';
-        unset($data['website'], $data['form_started_at'], $data['redirect_to']);
+        unset($data['website'], $data['form_started_at'], $data['redirect_to'], $data['consent']);
         Message::create($data);
         $this->sendTelegramNotification($data);
 
