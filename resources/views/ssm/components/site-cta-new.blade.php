@@ -43,7 +43,8 @@
                 <span>Что хотите заказать <em>(необязательно)</em></span>
                 <textarea name="content" class="input-reset" placeholder="{{ $ctaPlaceholder }}"></textarea>
             </label>
-            @include('ssm.components.form-consent', ['consentClass' => 'preview-cta__field--full'])
+            {{-- preview-cta__note: белый текст на тёмном фоне и вся ширина сетки — уже есть в собранном CSS --}}
+            @include('ssm.components.form-consent', ['consentClass' => 'preview-cta__note'])
             <button class="btn btn-main preview-cta__submit" type="submit">{{ $cta['submit_text'] ?? 'Получить расчет' }}</button>
             @if (!empty($cta['note']))
                 <p class="preview-cta__note">{{ $cta['note'] }}</p>

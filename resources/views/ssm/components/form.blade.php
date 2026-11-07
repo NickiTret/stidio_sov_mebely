@@ -27,7 +27,8 @@
             <label class="form__label">
                 <textarea type="text" name="content" class="input-reset form__input" placeholder="Например: шпонированная кухня, шкаф-купе, гардеробная или кабинет"></textarea>
             </label>
-            @include('ssm.components.form-consent')
+            {{-- modal__note: приглушённый тёмный текст на светлом фоне модалки --}}
+            @include('ssm.components.form-consent', ['consentClass' => 'modal__note'])
             <button class="btn-reset btn btn-main btn-send" type="submit">Отправить</button>
         </form>
     </div>

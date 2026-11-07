@@ -434,3 +434,12 @@
 .form-consent__text {
     flex: 1 1 auto;
 }
+
+// Цвет по фону формы: CTA — тёмная картинка, модалка — светлая.
+.preview-cta .form-consent {
+    color: $clr_white;
+}
+
+.modal .form-consent {
+    color: rgba($clr_text, 0.75);
+}
