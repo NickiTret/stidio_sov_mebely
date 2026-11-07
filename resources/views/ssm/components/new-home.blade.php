@@ -58,9 +58,13 @@
 
                 <div class="preview-hero__actions">
                     <a href="{{ route('gallery') }}" class="btn btn-main">{{ $hero['primary_button_text'] }}</a>
-                    <button type="button" class="btn btn-main preview-hero__ghost" data-custom-open="modal-contacts">
-                        {{ $hero['secondary_button_text'] }}
-                    </button>
+                    @if ($mainset->isContactFormEnabled())
+                        <button type="button" class="btn btn-main preview-hero__ghost" data-custom-open="modal-contacts">
+                            {{ $hero['secondary_button_text'] }}
+                        </button>
+                    @elseif ($mainset->tel)
+                        <a class="btn btn-main preview-hero__ghost" href="{{ $mainset->tel_href }}">Позвонить</a>
+                    @endif
                 </div>
 
                 <div class="preview-hero__quick-title">

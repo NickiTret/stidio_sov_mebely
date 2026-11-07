@@ -13,6 +13,7 @@ class UpdateRequest extends AdminFormRequest
         'watsap' => 'WhatsApp',
         'map' => 'Метка на карте',
         'footer' => 'Подпись в футере',
+        'contact_form_enabled' => 'Показывать форму заявки',
     ];
 
     /**
@@ -40,6 +41,8 @@ class UpdateRequest extends AdminFormRequest
             'email' => trim((string) $this->input('email')),
             'telegram' => self::addHttpsIfMissing($telegram),
             'watsap' => self::addHttpsIfMissing($watsap),
+            // Чекбокс: снятая галочка не приходит в запросе вовсе — это «выключено».
+            'contact_form_enabled' => $this->boolean('contact_form_enabled'),
         ]);
     }
 
@@ -63,6 +66,7 @@ class UpdateRequest extends AdminFormRequest
             'watsap' => $link,
             'map' => ['required', 'string', 'max:255'],
             'footer' => ['required', 'string', 'max:255'],
+            'contact_form_enabled' => ['boolean'],
         ];
     }
 

@@ -1,3 +1,5 @@
+{{-- Скрывается переключателем «Показывать форму заявки на сайте» в «Настройках сайта». --}}
+@if (\App\Support\SiteCache::mainset()->isContactFormEnabled())
 @php
     $cta = $previewContent['cta'] ?? [];
     $ctaPlaceholder = $ctaPlaceholder ?? 'Например: шпонированная кухня, шкаф, гардеробная или кабинет';
@@ -52,3 +54,4 @@
         </form>
     </div>
 </section>
+@endif

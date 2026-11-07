@@ -89,7 +89,7 @@ Laravel 10 (PHP 8.1) сайт `kbr-mebel.ru`, админка на AdminLTE (`/ad
 ## План работ по публичной части (аудит фронта 2026-11-07)
 
 Проверены: `routes/web.php`, `MainController`, `Message\StoreController` + `StoreRequest`, все шаблоны `resources/views/*.blade.php` и `ssm/**`, `src/js/components/{validate,ymap,modal}.js`, `public/robots.txt`.
-Пункты 12–13 подтверждены временным тестом (на тестовой БД), остальное — по коду. Тесты на момент аудита: 53 шт., после п.12–14 — 58, после п.15 — 64, все проходят.
+Пункты 12–13 подтверждены временным тестом (на тестовой БД), остальное — по коду. Тесты на момент аудита: 53 шт., после п.12–14 — 58, после п.15 — 64, после п.24 — 66, все проходят.
 
 Где что лежит (для ориентира):
 - Страницы: `welcome` (главная → `ssm/components/new-home`), `gallery` (галерея и `/gallery/{slug}` → `ssm/components/design`), `service-page` (8 SEO-лендингов из `App\Support\SeoLandingPages`), `contacts`, `text-page` (документы `/privacy` и `/consent` из админки, п.15), `sitemap`
@@ -134,12 +134,22 @@ Laravel 10 (PHP 8.1) сайт `kbr-mebel.ru`, админка на AdminLTE (`/ad
 - [ ] **22. Sitemap**: `lastmod` всегда «сегодня» (поисковики такое игнорируют) — убрать или ставить реальную дату. В `robots.txt` sitemap указан на `www.kbr-mebel.ru` — проверить, что `APP_URL` на проде тот же хост, иначе адреса в sitemap и canonical будут без `www`
 - [ ] **23. Ключ Яндекс.Карт** прописан в шаблонах — это нормально для JS API, но в кабинете разработчика Яндекса стоит ограничить его по HTTP Referer (`kbr-mebel.ru`)
 
+### Доработки по запросу
+
+- [x] **24. Переключатель «Показывать форму заявки на сайте»** в «Настройках сайта»
+  - [x] Колонка `main_sets.contact_form_enabled` (boolean, по умолчанию `true`; миграция `2026_11_07_000200_add_contact_form_enabled_to_main_sets_table`), `MainSet::isContactFormEnabled()` — `true`, если записи/значения нет
+  - [x] В форме настроек — переключатель (custom-switch); `MainSet\UpdateRequest` превращает отсутствующий чекбокс в `false`
+  - [x] Выключено → на всех страницах скрыты блок формы внизу (`ssm/components/site-cta-new`, вместе с сообщениями об отправке), модалка (`ssm/components/form`) и кнопки `data-custom-open="modal-contacts"` в hero главной и страниц услуг — вместо них кнопка «Позвонить» (`tel_href`), если телефон задан
+  - [x] `Message\StoreController` при выключенной форме отвечает 404 — заявки (и боты) не проходят
+  - [x] Тесты: `tests/Feature/ContactFormToggleTest.php` (2 шт., проходят)
+  - Новые кнопки, открывающие модалку, оборачивать в `@if ($mainset->isContactFormEnabled())`
+
 Что проверено и в порядке: форма заявки (валидация на сервере и в JS согласованы, антиспам, редирект после п.7), экранирование вывода `{{ }}` во всех публичных шаблонах, canonical без query-параметров, 404 на несуществующую категорию, `/admin` и `/login` закрыты в `robots.txt`.
 
 ## Чек-лист выкладки на прод
 
 1. `composer install --no-dev --optimize-autoloader`
-2. `php artisan migrate` — добавляет `messages.deleted_at` (корзина заявок, п.8) и таблицу `pages` (п.15). **Без этого упадут страница заявок и все публичные страницы**
+2. `php artisan migrate` — добавляет `messages.deleted_at` (корзина заявок, п.8) , таблицу `pages` (п.15) и `main_sets.contact_form_enabled` (п.24). **Без этого упадут страница заявок и все публичные страницы**
 3. `php artisan admin:create` — если администратора ещё нет (регистрация закрыта, п.1)
 4. Проверить в `.env`: `APP_DEBUG=false`, `APP_ENV=production` (п.3)
 5. `php artisan view:clear && php artisan cache:clear`

@@ -17,9 +17,13 @@
                         <h1>{{ $landing['title'] }}</h1>
                         <p>{{ $landing['lead'] }}</p>
                         <div class="service-hero__actions">
-                            <button type="button" class="btn btn-main" data-custom-open="modal-contacts">
-                                Получить расчет
-                            </button>
+                            @if ($mainset->isContactFormEnabled())
+                                <button type="button" class="btn btn-main" data-custom-open="modal-contacts">
+                                    Получить расчет
+                                </button>
+                            @elseif ($mainset->tel)
+                                <a class="btn btn-main" href="{{ $mainset->tel_href }}">Позвонить</a>
+                            @endif
                             @if ($selectedGroup)
                                 <a class="btn btn-main service-hero__secondary" href="{{ route('gallery.category', $selectedGroup->slug) }}">
                                     Смотреть проекты

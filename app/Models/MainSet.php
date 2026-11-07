@@ -11,7 +11,20 @@ class MainSet extends Model
     use HasFactory, FlushesSiteCache;
     protected $table = "main_sets";
     protected $primaryKey = 'id';
-    protected $fillable = ['tel', 'email', 'telegram', 'watsap', 'map', 'footer'];
+    protected $fillable = ['tel', 'email', 'telegram', 'watsap', 'map', 'footer', 'contact_form_enabled'];
+
+    protected $casts = [
+        'contact_form_enabled' => 'boolean',
+    ];
+
+    /**
+     * Показывать ли формы заявки (блок внизу страниц, модалку и кнопки, которые её открывают).
+     * Если записи настроек ещё нет или колонка пустая — форма включена.
+     */
+    public function isContactFormEnabled(): bool
+    {
+        return $this->contact_form_enabled ?? true;
+    }
     protected $guarded = [];
 
     /**

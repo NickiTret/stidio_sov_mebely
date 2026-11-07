@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Message;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Message\StoreRequest;
 use App\Models\Message;
+use App\Support\SiteCache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
@@ -14,6 +15,9 @@ class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request)
     {
+        // Форма выключена в «Настройках сайта» — заявки с сайта не принимаем (в т.ч. от ботов).
+        abort_unless(SiteCache::mainset()->isContactFormEnabled(), 404);
+
         $this->ensureRequestIsNotRateLimited($request->ip());
         $redirectTo = $this->resolveRedirectUrl($request->input('redirect_to'), $request->getHost());
 

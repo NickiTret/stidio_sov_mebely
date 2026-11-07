@@ -96,6 +96,20 @@
                                             <input type="text" class="form-control" id="footer" value="{{ old('footer', $mainset->footer ?? '') }}" required maxlength="255" placeholder="Подпись в подвале" name="footer">
                                         </div>
                                     </div>
+                                    <div class="col-12 mt-3">
+                                        <div class="form-group mb-0">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="contact_form_enabled" name="contact_form_enabled" value="1"
+                                                    @checked(old('contact_form_enabled', $mainset?->isContactFormEnabled() ?? true))>
+                                                <label class="custom-control-label" for="contact_form_enabled">Показывать форму заявки на сайте</label>
+                                            </div>
+                                            <small class="form-text text-muted">
+                                                Если выключить, на всех страницах скроются блок с формой внизу, всплывающая форма и кнопки,
+                                                которые её открывают («Получить расчёт» и т.п.). Заявки с сайта приниматься не будут —
+                                                останутся телефон, WhatsApp и email.
+                                            </small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">

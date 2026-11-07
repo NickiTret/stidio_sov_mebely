@@ -1,3 +1,5 @@
+{{-- Скрывается переключателем «Показывать форму заявки на сайте» в «Настройках сайта». --}}
+@if (\App\Support\SiteCache::mainset()->isContactFormEnabled())
 <div class="modal overlay" id="modal-contacts">
     <div class="modal__wrapper">
         <span class="modal__eyebrow">Обсудить проект</span>
@@ -33,3 +35,4 @@
         </form>
     </div>
 </div>
+@endif
