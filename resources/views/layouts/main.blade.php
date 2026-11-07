@@ -141,6 +141,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.privacy.edit') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>
+                                    Политика конфиденциальности
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('slider.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-photo-video"></i>
                                 <p>

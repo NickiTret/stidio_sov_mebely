@@ -3,7 +3,7 @@
         $routeName = request()->route()?->getName();
         $isGalleryRoute = in_array($routeName, ['gallery', 'gallery.category'], true);
         $isServiceRoute = $routeName === 'service.page';
-        $galleryCategories = collect(\App\Models\Group::categoryDefinitions())->values();
+        $galleryGroups = \App\Support\SiteCache::galleryGroups();
         $servicePages = collect(\App\Support\SeoLandingPages::all());
         $currentCategorySlug = request()->route('slug');
         $currentLandingSlug = request()->route('landingSlug');
@@ -37,9 +37,9 @@
                     <a class="header__dropdown-item {{ $routeName === 'gallery' ? 'is-active' : '' }}" href="{{ route('gallery') }}">
                         Все категории
                     </a>
-                    @foreach ($galleryCategories as $category)
-                        <a class="header__dropdown-item {{ $currentCategorySlug === $category['slug'] ? 'is-active' : '' }}" href="{{ route('gallery.category', $category['slug']) }}">
-                            {{ $category['name'] }}
+                    @foreach ($galleryGroups as $galleryGroup)
+                        <a class="header__dropdown-item {{ $currentCategorySlug === $galleryGroup->slug ? 'is-active' : '' }}" href="{{ route('gallery.category', $galleryGroup->slug) }}">
+                            {{ $galleryGroup->display_title }}
                         </a>
                     @endforeach
                 </div>
@@ -50,10 +50,14 @@
             @if (auth()->check() && auth()->user()->is_admin)
                 <a href="{{ route('admin') }}" class="header__number">Настроить сайт</a>
             @endif
-            <a href="tel:+79280782894" class="header__number header__number--desktop">+7 (928) 078 28 94</a>
+            @if (!empty($mainset?->tel))
+                <a href="{{ $mainset->tel_href }}" class="header__number header__number--desktop">{{ $mainset->tel }}</a>
+            @endif
             <div class="header__mobile-contacts">
                 <span class="header__mobile-label">Контакты</span>
-                <a href="tel:+79280782894" class="header__number header__number--mobile">Позвонить: +7 (928) 078 28 94</a>
+                @if (!empty($mainset?->tel))
+                    <a href="{{ $mainset->tel_href }}" class="header__number header__number--mobile">Позвонить: {{ $mainset->tel }}</a>
+                @endif
                 <a href="{{ route('contacts') }}" class="header__mobile-link">Открыть контакты и карту</a>
             </div>
             {{-- <button class="btn btn-main" data-custom-open="modal-contacts">Заказать звонок</button> --}}

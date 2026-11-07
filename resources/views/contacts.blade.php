@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="service-map">
-                        <div data-map="{{ $mainset->map }}" data-icon="{{ $seting->getImage() }}" id="map-test" class="map service-map__frame"></div>
+                        <div data-map="{{ $mainset->map }}" data-icon="{{ $seting?->getImage() }}" id="map-test" class="map service-map__frame"></div>
                         <script src="https://api-maps.yandex.ru/2.1/?apikey=f7db7337-3ada-4e38-9eb9-336c076d79ba&lang=ru_RU"></script>
                     </div>
                 </div>

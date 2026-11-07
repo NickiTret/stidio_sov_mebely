@@ -4,8 +4,10 @@
 <head>
     @php
         $routeName = request()->route()?->getName();
-        $defaultImage = $seting->getImage();
-        $defaultKeywords = $seting->keywords;
+        // Запись SEO-настроек страницы может отсутствовать — тогда работают запасные значения.
+        $seting = $seting ?? null;
+        $defaultImage = $seting?->getImage();
+        $defaultKeywords = $seting?->keywords ?? 'мебель на заказ Нальчик, KBR Mebel';
         $customSeoData = $seoData ?? null;
 
         $seo = $customSeoData ?? match ($routeName) {
@@ -20,8 +22,8 @@
                 'keywords' => 'галерея мебели Нальчик, проекты мебели на заказ, кухни на заказ Нальчик фото, шкафы купе Нальчик фото',
             ],
             default => [
-                'title' => 'Мебель на заказ в Нальчике | ' . $seting->title,
-                'description' => $seting->descriptions,
+                'title' => 'Мебель на заказ в Нальчике | ' . ($seting?->title ?: 'KBR Mebel'),
+                'description' => $seting?->descriptions ?: 'Мебель на заказ в Нальчике: кухни, шкафы-купе, гардеробные, спальни и детские по индивидуальным размерам.',
                 'keywords' => $defaultKeywords,
             ],
         };
@@ -30,7 +32,7 @@
         $schemaBusiness = null;
         $extraSchemas = collect($extraSchemas ?? [])->filter()->values();
 
-        if (!empty($mainset)) {
+        if (!empty($mainset?->exists)) {
             $schemaBusiness = [
                 '@context' => 'https://schema.org',
                 '@type' => 'FurnitureStore',
@@ -84,7 +86,9 @@
     <meta name="theme-color" content="#111111" />
     <meta name="format-detection" content="telephone=no">
     <meta name="yandex-verification" content="40880704fc80f5a4" />
-    <link rel="icon" href="{{ $defaultImage }}" type="image/svg+xml">
+    @if ($defaultImage)
+        <link rel="icon" href="{{ $defaultImage }}" type="image/svg+xml">
+    @endif
     <title>{{ $seo['title'] }}</title>
     <meta name="description" content="{{ $seo['description'] }}">
     <meta name="keywords" content="{{ $seo['keywords'] }}" />
@@ -94,7 +98,9 @@
     <meta property="og:description" content="{{ $seo['description'] }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ $seoImage }}">
+    @if ($seoImage)
+        <meta property="og:image" content="{{ $seoImage }}">
+    @endif
     <meta property="og:locale" content="ru_RU">
     <link rel="preload" href="fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin />
 

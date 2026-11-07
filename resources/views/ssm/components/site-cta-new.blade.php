@@ -44,7 +44,12 @@
                 <textarea name="content" class="input-reset" placeholder="{{ $ctaPlaceholder }}"></textarea>
             </label>
             <button class="btn btn-main preview-cta__submit" type="submit">{{ $cta['submit_text'] ?? 'Получить расчет' }}</button>
-            <p class="preview-cta__note">{{ $cta['note'] ?? '' }}</p>
+            <p class="preview-cta__note">
+                {{ $cta['note'] ?? '' }}
+                @if (\App\Support\SiteCache::page(\App\Models\Page::PRIVACY))
+                    <a class="legal-link" href="{{ route('privacy') }}" target="_blank">Политика обработки персональных данных</a>
+                @endif
+            </p>
         </form>
     </div>
 </section>

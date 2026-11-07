@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Group;
+use App\Models\Page;
 use App\Support\HomePreviewContent;
 use App\Support\SeoLandingPages;
 use App\Support\SiteCache;
@@ -86,7 +87,7 @@ class MainController extends Controller
             'title' => $selectedGroup->getDefinition()['seo_title'],
             'description' => $selectedGroup->getDefinition()['seo_description'],
             'keywords' => $selectedGroup->getDefinition()['seo_keywords'],
-            'image' => optional($selectedGroup->slides->first())->getImage() ?? $seting->getImage(),
+            'image' => optional($selectedGroup->slides->first())->getImage() ?? $seting?->getImage(),
         ];
 
         return view('gallery', compact('mainset', 'groups', 'selectedGroup', 'seting', 'sliders', 'seoData', 'previewContent'));
@@ -165,6 +166,28 @@ class MainController extends Controller
         return view('contacts', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData'));
     }
 
+    public function privacy()
+    {
+        // Пока текст не заполнен в админке, страницы нет (и ссылок на неё тоже).
+        $page = SiteCache::page(Page::PRIVACY);
+
+        abort_if(!$page, 404);
+
+        $mainset = SiteCache::mainset();
+
+        $seting = SiteCache::seting('Главная');
+
+        $groups = $this->getGalleryGroups();
+        $previewContent = HomePreviewContent::load();
+        $seoData = [
+            'title' => $page->title . ' | KBR Mebel',
+            'description' => $page->title . ' — как KBR Mebel (Нальчик) собирает, использует и защищает данные из заявок на сайте.',
+            'keywords' => 'политика конфиденциальности, персональные данные, KBR Mebel',
+        ];
+
+        return view('privacy', compact('mainset', 'seting', 'groups', 'previewContent', 'seoData', 'page'));
+    }
+
     public function sitemap()
     {
         $urls = collect([
@@ -173,12 +196,16 @@ class MainController extends Controller
             route('contacts'),
         ]);
 
+        if (SiteCache::page(Page::PRIVACY)) {
+            $urls->push(route('privacy'));
+        }
+
         foreach (SeoLandingPages::all() as $landing) {
             $urls->push(route('service.page', $landing['slug']));
         }
 
-        foreach (Group::categoryDefinitions() as $definition) {
-            $urls->push(route('gallery.category', $definition['slug']));
+        foreach ($this->getGalleryGroups() as $group) {
+            $urls->push(route('gallery.category', $group->slug));
         }
 
         return response()
@@ -240,17 +267,6 @@ class MainController extends Controller
 
     private function getGalleryGroups()
     {
-        $groups = SiteCache::groupsWithSlides();
-
-        $orderedSlugs = collect(Group::categoryDefinitions())->pluck('slug')->all();
-
-        return $groups
-            ->filter(fn (Group $group) => $group->slides->isNotEmpty())
-            ->sortBy(function (Group $group) use ($orderedSlugs) {
-                $position = array_search($group->slug, $orderedSlugs, true);
-
-                return $position === false ? PHP_INT_MAX : $position;
-            })
-            ->values();
+        return SiteCache::galleryGroups();
     }
 }

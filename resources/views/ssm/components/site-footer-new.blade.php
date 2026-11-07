@@ -45,7 +45,12 @@
         </div> --}}
 
         <div class="preview-footer__bottom">
-            <p>© 2000 - {{ \Carbon\Carbon::now()->year }} | {{ $mainset->footer }}</p>
+            <p>
+                © 2000 - {{ \Carbon\Carbon::now()->year }} | {{ $mainset->footer }}
+                @if (\App\Support\SiteCache::page(\App\Models\Page::PRIVACY))
+                    | <a class="legal-link" href="{{ route('privacy') }}">Политика конфиденциальности</a>
+                @endif
+            </p>
             <a href="{{ $footerLinkHref }}">{{ $footerLinkLabel }}</a>
         </div>
     </div>

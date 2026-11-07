@@ -153,13 +153,21 @@
                                                         <a href="{{ route('seting.edit', $seting->id) }}" class="btn btn-sm btn-outline-primary">
                                                             <i class="fas fa-edit mr-1"></i> Редактировать
                                                         </a>
-                                                        <form action="{{ route('seting.delete', $seting->id) }}" method="post" data-confirm="Удалить настройки страницы «{{ $seting->page }}»?" onsubmit="return confirm(this.dataset.confirm);">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn btn-sm btn-outline-danger" type="submit">
-                                                                <i class="fas fa-trash-alt mr-1"></i> Удалить
-                                                            </button>
-                                                        </form>
+                                                        @if ($seting->isUsedOnSite())
+                                                            <span class="d-inline-block" title="Эти настройки используются на сайте — их можно только изменить">
+                                                                <button class="btn btn-sm btn-outline-secondary" type="button" disabled style="pointer-events: none;">
+                                                                    <i class="fas fa-trash-alt mr-1"></i> Удалить
+                                                                </button>
+                                                            </span>
+                                                        @else
+                                                            <form action="{{ route('seting.delete', $seting->id) }}" method="post" data-confirm="Удалить настройки страницы «{{ $seting->page }}»?" onsubmit="return confirm(this.dataset.confirm);">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                                    <i class="fas fa-trash-alt mr-1"></i> Удалить
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>

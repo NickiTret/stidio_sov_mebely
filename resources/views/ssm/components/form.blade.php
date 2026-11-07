@@ -28,7 +28,12 @@
                 <textarea type="text" name="content" class="input-reset form__input" placeholder="Например: шпонированная кухня, шкаф-купе, гардеробная или кабинет"></textarea>
             </label>
             <button class="btn-reset btn btn-main btn-send" type="submit">Отправить</button>
-            <p class="modal__note">Нажимая на кнопку, вы соглашаетесь на обработку персональных данных.</p>
+            <p class="modal__note">
+                Нажимая на кнопку, вы соглашаетесь на обработку персональных данных.
+                @if (\App\Support\SiteCache::page(\App\Models\Page::PRIVACY))
+                    <a class="legal-link" href="{{ route('privacy') }}" target="_blank">Политика обработки персональных данных</a>
+                @endif
+            </p>
         </form>
     </div>
 </div>
