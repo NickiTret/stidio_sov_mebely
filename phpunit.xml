@@ -25,10 +25,6 @@
         <!-- Тесты с RefreshDatabase — только на sqlite в памяти, чтобы не стереть рабочую MySQL. -->
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
-        <!-- Не слать уведомления о заявках в настоящий Telegram. -->
-        <env name="TELEGRAM_BOT_TOKEN" value=""/>
-        <env name="TELEGRAM_TOKEN" value=""/>
-        <env name="TELEGRAM_CHAT_ID" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>

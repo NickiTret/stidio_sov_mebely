@@ -140,6 +140,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notification.edit') }}" class="nav-link">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>
+                                    Уведомления о заявках
+                                </p>
+                            </a>
+                        </li>
                         @foreach (\App\Models\Page::ADMIN_LABELS as $pageSlug => $pageLabel)
                             <li class="nav-item">
                                 <a href="{{ route('admin.page.edit', $pageSlug) }}" class="nav-link">

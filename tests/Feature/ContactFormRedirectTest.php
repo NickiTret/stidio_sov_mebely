@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Tests\TestCase;
 
@@ -14,7 +14,7 @@ class ContactFormRedirectTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Http::fake(); // не отправлять уведомления в настоящий Telegram
+        Mail::fake(); // письма о заявках не уходят наружу
         RateLimiter::clear('contact-form:127.0.0.1');
     }
 

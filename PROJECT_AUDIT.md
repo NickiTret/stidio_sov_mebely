@@ -85,8 +85,7 @@
 - Preview `admin/home-preview` и реальная главная теперь используют один и тот же контентный каркас; preview отличается только наличием hero-lab для внутренних тестов.
 - Галерея и category pages начали переводиться под новый визуальный язык без добавления новых текстовых SEO-блоков.
 - Из `gallery.blade.php` убран нижний `category-benefits`, а сама `design.blade.php` теперь отвечает за hero-шапку раздела, chip-навигацию, новые карточки и нижнюю навигацию по разделам.
-- Отправка заявок теперь идет через Laravel-контроллер `Message\StoreController` не только в БД, но и в Telegram, если заданы `TELEGRAM_TOKEN`/`TELEGRAM_CHATID` или `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` в `.env`.
-- Старый `public/tel.php` найден как исторический хвост; новая логика форм на него больше не опирается.
+- Заявки сохраняются в БД через `Message\StoreController` и приходят письмом (настройки — админка «Уведомления о заявках»). Telegram и старый `public/tel.php` удалены — см. п.25 в `CLAUDE.md`.
 - На формах уже стоят 3 антиспам-слоя: honeypot (`website`), минимальное время заполнения (`form_started_at`) и rate limit по IP в `Message\StoreController` (5 заявок за 10 минут).
 - Админская страница заявок `/message` переведена из простой таблицы в рабочий inbox-интерфейс: поиск, сортировка по колонкам, пагинация, выбор количества записей, статистика и удаление заявок.
 - Для удаления заявок используется отдельный `Message\DeleteController`, а список собирается через `Message\IndexController` с query-параметрами `search`, `sort`, `direction`, `per_page`.

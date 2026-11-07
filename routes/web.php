@@ -85,6 +85,13 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     });
 
 
+    // Письма о новых заявках: получатели и SMTP (App\Models\NotificationSetting).
+    Route::group(['prefix' => 'notifications'], function() {
+        Route::get('/', App\Http\Controllers\Notification\EditController::class)->name('notification.edit');
+        Route::patch('/', App\Http\Controllers\Notification\UpdateController::class)->name('notification.update');
+        Route::post('/test', App\Http\Controllers\Notification\SendTestController::class)->name('notification.test');
+    });
+
     // Текстовые страницы-документы (политика, согласие на обработку ПД) — список в Page::DEFAULTS.
     Route::group(['prefix' => 'pages'], function() {
         $pageSlugs = implode('|', array_map('preg_quote', array_keys(App\Models\Page::DEFAULTS)));
