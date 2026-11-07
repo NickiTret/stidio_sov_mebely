@@ -63,37 +63,37 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="tel">Телефон</label>
-                                            <input type="text" class="form-control" id="tel" @if (!empty($mainset)) value="{{ $mainset->tel }}" @endif placeholder="Телефон" name="tel">
+                                            <input type="tel" class="form-control" id="tel" value="{{ old('tel', $mainset->tel ?? '') }}" required maxlength="30" placeholder="Телефон" name="tel">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Электронная почта</label>
-                                            <input type="text" class="form-control" id="email" @if (!empty($mainset)) value="{{ $mainset->email }}" @endif placeholder="Электронная почта" name="email">
+                                            <input type="email" class="form-control" id="email" value="{{ old('email', $mainset->email ?? '') }}" required maxlength="255" placeholder="Электронная почта" name="email">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="telegram">Telegram</label>
-                                            <input type="text" class="form-control" id="telegram" @if (!empty($mainset)) value="{{ $mainset->telegram }}" @endif placeholder="Ссылка или username Telegram" name="telegram">
+                                            <input type="text" class="form-control" id="telegram" value="{{ old('telegram', $mainset->telegram ?? '') }}" required maxlength="255" placeholder="https://t.me/username или @username" name="telegram">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="watsap">WhatsApp</label>
-                                            <input type="text" class="form-control" id="watsap" @if (!empty($mainset)) value="{{ $mainset->watsap }}" @endif placeholder="Ссылка WhatsApp" name="watsap">
+                                            <input type="text" class="form-control" id="watsap" value="{{ old('watsap', $mainset->watsap ?? '') }}" required maxlength="255" placeholder="https://wa.me/79... или номер телефона" name="watsap">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="map">Код карты / iframe</label>
-                                            <input type="text" class="form-control" id="map" @if (!empty($mainset)) value="{{ $mainset->map }}" @endif placeholder="Метка на карте или iframe" name="map">
+                                            <label for="map">Метка на карте</label>
+                                            <input type="text" class="form-control" id="map" value="{{ old('map', $mainset->map ?? '') }}" required maxlength="255" placeholder="Подпись метки" name="map">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group mb-0">
                                             <label for="footer">Подпись в футере</label>
-                                            <input type="text" class="form-control" id="footer" @if (!empty($mainset)) value="{{ $mainset->footer }}" @endif placeholder="Подпись в подвале" name="footer">
+                                            <input type="text" class="form-control" id="footer" value="{{ old('footer', $mainset->footer ?? '') }}" required maxlength="255" placeholder="Подпись в подвале" name="footer">
                                         </div>
                                     </div>
                                 </div>

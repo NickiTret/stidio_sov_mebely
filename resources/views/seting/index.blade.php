@@ -136,7 +136,14 @@
                                         @forelse ($setings as $seting)
                                             <tr>
                                                 <td><span class="badge badge-light">#{{ $seting->id }}</span></td>
-                                                <td><code>{{ $seting->page }}</code></td>
+                                                <td>
+                                                    <code>{{ $seting->page }}</code>
+                                                    @if ($seting->isUsedOnSite())
+                                                        <div><small class="text-muted">{{ \App\Models\Seting::PAGES[$seting->page] }}</small></div>
+                                                    @else
+                                                        <div><span class="badge badge-danger" title="Сайт ищет настройки только для страниц из списка — откройте и выберите страницу">не используется на сайте</span></div>
+                                                    @endif
+                                                </td>
                                                 <td><div class="font-weight-bold">{{ $seting->title }}</div></td>
                                                 <td>{{ \Illuminate\Support\Str::limit($seting->descriptions, 100) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($seting->keywords, 80) }}</td>
@@ -146,7 +153,7 @@
                                                         <a href="{{ route('seting.edit', $seting->id) }}" class="btn btn-sm btn-outline-primary">
                                                             <i class="fas fa-edit mr-1"></i> Редактировать
                                                         </a>
-                                                        <form action="{{ route('seting.delete', $seting->id) }}" method="post" onsubmit="return confirm('Удалить настройки страницы «{{ $seting->page }}»?');">
+                                                        <form action="{{ route('seting.delete', $seting->id) }}" method="post" data-confirm="Удалить настройки страницы «{{ $seting->page }}»?" onsubmit="return confirm(this.dataset.confirm);">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-sm btn-outline-danger" type="submit">

@@ -106,6 +106,14 @@
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
                 </li> --}}
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="post" class="mb-0">
+                        @csrf
+                        <button type="submit" class="btn btn-link nav-link">
+                            <i class="fas fa-sign-out-alt mr-1"></i> Выйти
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">

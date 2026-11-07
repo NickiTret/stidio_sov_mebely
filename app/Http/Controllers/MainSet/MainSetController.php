@@ -11,7 +11,7 @@ class MainSetController extends Controller
     public function __invoke()
     {
 
-        $mainset = MainSet::where('id', 1)->first();
+        $mainset = MainSet::first();
 
         return view('main.mainset', compact('mainset'));
     }

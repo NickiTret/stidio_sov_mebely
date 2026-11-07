@@ -11,7 +11,7 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Slider $slider)
     {
         $data = $request->validated();
-        $data['image_src'] = Slider::uploadImage($request, $slider->image_src) ?? $slider->image_src;
+        $data['image_src'] = Slider::uploadImage($request, $slider->image_src);
 
         $slider->update($data);
 

@@ -49,9 +49,10 @@
                                 <div class="form-group mb-0">
                                     <label for="image_src">Изображение</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="image_src" id="image_src">
+                                        <input type="file" class="custom-file-input" name="image_src" id="image_src" accept="image/jpeg,image/png,image/webp" required>
                                         <label class="custom-file-label" for="image_src">Выбрать файл</label>
                                     </div>
+                                    <small class="form-text text-muted">JPG, PNG или WebP, до {{ \App\Http\Requests\AdminFormRequest::IMAGE_MAX_KB / 1024 }} МБ.</small>
                                 </div>
                             </div>
                             <div class="card-footer">

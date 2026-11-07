@@ -31,7 +31,10 @@ class IndexController extends Controller
             $perPage = 15;
         }
 
+        $trash = $request->boolean('trash');
+
         $query = Message::query()
+            ->when($trash, fn ($builder) => $builder->onlyTrashed())
             ->when($search !== '', function ($builder) use ($search) {
                 $builder->where(function ($inner) use ($search) {
                     $inner->where('name', 'like', '%' . $search . '%')
@@ -50,6 +53,7 @@ class IndexController extends Controller
             'total' => Message::count(),
             'today' => Message::whereDate('created_at', now()->toDateString())->count(),
             'with_content' => Message::where('content', '!=', '')->count(),
+            'trashed' => Message::onlyTrashed()->count(),
         ];
 
         return view('message.index', compact(
@@ -58,7 +62,8 @@ class IndexController extends Controller
             'sort',
             'direction',
             'perPage',
-            'stats'
+            'stats',
+            'trash'
         ));
     }
 }

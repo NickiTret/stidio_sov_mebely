@@ -13,6 +13,6 @@ class DeleteController extends Controller
 
         return redirect()
             ->route('message.index', request()->query())
-            ->with('success', 'Заявка удалена.');
+            ->with('success', 'Заявка перемещена в корзину.');
     }
 }

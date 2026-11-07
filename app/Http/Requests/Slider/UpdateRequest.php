@@ -1,30 +1,25 @@
 <?php
 
 namespace App\Http\Requests\Slider;
-use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+use App\Http\Requests\AdminFormRequest;
+
+class UpdateRequest extends AdminFormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
+    protected array $labels = [
+        'title' => 'Название',
+        'description' => 'Описание',
+        'image_src' => 'Изображение',
+        'group_id' => 'Группа',
+    ];
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'image_src' => 'nullable|image',
-            'group_id' => 'nullable|exists:groups,id',
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:2000'],
+            'image_src' => static::imageRules(false),
+            'group_id' => ['nullable', 'exists:groups,id'],
         ];
     }
 }

@@ -169,13 +169,21 @@
                                                         <a href="{{ route('group.edit', $item->id) }}" class="btn btn-sm btn-outline-primary">
                                                             <i class="fas fa-edit mr-1"></i> Редактировать
                                                         </a>
-                                                        <form action="{{ route('group.delete', $item->id) }}" method="post" onsubmit="return confirm('Удалить группу «{{ $item->title }}»?');">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn btn-sm btn-outline-danger" type="submit">
-                                                                <i class="fas fa-trash-alt mr-1"></i> Удалить
-                                                            </button>
-                                                        </form>
+                                                        @if ($item->slides_count > 0)
+                                                            <span class="d-inline-block" title="В группе {{ $item->slides_count }} фото — сначала перенесите или удалите их">
+                                                                <button class="btn btn-sm btn-outline-secondary" type="button" disabled style="pointer-events: none;">
+                                                                    <i class="fas fa-trash-alt mr-1"></i> Удалить
+                                                                </button>
+                                                            </span>
+                                                        @else
+                                                            <form action="{{ route('group.delete', $item->id) }}" method="post" data-confirm="Удалить группу «{{ $item->title }}»?" onsubmit="return confirm(this.dataset.confirm);">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                                    <i class="fas fa-trash-alt mr-1"></i> Удалить
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>

@@ -47,7 +47,7 @@
                     @csrf
 
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" autocomplete="username" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="current-password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -68,14 +68,6 @@
                         <!-- /.col -->
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Войти</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-12 mt-4">
-                            <a href="{{ route('register.create') }}"
-                                class="btn btn-primary btn-block">Зарегистрироваться</a>
                         </div>
                         <!-- /.col -->
                     </div>

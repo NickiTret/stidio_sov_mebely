@@ -76,7 +76,25 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+                            <ul class="nav nav-pills mb-3">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $trash ? '' : 'active' }}" href="{{ route('message.index') }}">
+                                        <i class="fas fa-inbox mr-1"></i> Заявки
+                                        <span class="badge badge-light ml-1">{{ $stats['total'] }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $trash ? 'active' : '' }}" href="{{ route('message.index', ['trash' => 1]) }}">
+                                        <i class="fas fa-trash-restore mr-1"></i> Корзина
+                                        <span class="badge badge-light ml-1">{{ $stats['trashed'] }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+
                             <form action="{{ route('message.index') }}" method="get">
+                                @if ($trash)
+                                    <input type="hidden" name="trash" value="1">
+                                @endif
                                 <div class="row">
                                     <div class="col-lg-5 col-md-12 mb-3 mb-lg-0">
                                         <label for="search" class="mb-1">Поиск по заявкам</label>
@@ -110,16 +128,16 @@
                                     <input type="hidden" name="direction" value="{{ $direction }}">
                                     <div class="col-lg-5 col-md-8 col-sm-6 d-flex align-items-end justify-content-lg-end">
                                         <div class="btn-group mr-2">
-                                            <a href="{{ route('message.index') }}" class="btn btn-default">
+                                            <a href="{{ route('message.index', $trash ? ['trash' => 1] : []) }}" class="btn btn-default">
                                                 <i class="fas fa-sync-alt mr-1"></i> Сбросить
                                             </a>
                                         </div>
-                                        @if ($messages->total() > 0)
-                                            <button
-                                                class="btn btn-danger"
-                                                type="submit"
-                                                form="delete-all-messages-form"
-                                            >
+                                        @if ($trash && $stats['trashed'] > 0)
+                                            <button class="btn btn-success" type="submit" form="restore-all-messages-form">
+                                                <i class="fas fa-undo mr-1"></i> Восстановить все
+                                            </button>
+                                        @elseif (!$trash && $stats['total'] > 0)
+                                            <button class="btn btn-danger" type="submit" form="delete-all-messages-form">
                                                 <i class="fas fa-trash mr-1"></i> Удалить все заявки
                                             </button>
                                         @endif
@@ -127,16 +145,24 @@
                                 </div>
                             </form>
 
-                            @if ($messages->total() > 0)
+                            @if ($trash && $stats['trashed'] > 0)
+                                <form id="restore-all-messages-form" action="{{ route('message.restore-all') }}" method="post" class="d-none">
+                                    @csrf
+                                    @method('patch')
+                                </form>
+                            @elseif (!$trash && $stats['total'] > 0)
+                                @php($confirmationWord = \App\Http\Controllers\Message\DeleteAllController::CONFIRMATION_WORD)
                                 <form
                                     id="delete-all-messages-form"
                                     action="{{ route('message.delete-all') }}"
                                     method="post"
                                     class="d-none"
-                                    onsubmit="return confirm('Удалить все заявки? Это действие нельзя отменить.');"
+                                    data-prompt="Все заявки ({{ $stats['total'] }}) будут перемещены в корзину. Чтобы подтвердить, введите слово {{ $confirmationWord }}"
+                                    onsubmit="var v = prompt(this.dataset.prompt); if (v === null) { return false; } this.elements.confirmation.value = v; return true;"
                                 >
                                     @csrf
                                     @method('delete')
+                                    <input type="hidden" name="confirmation" value="">
                                 </form>
                             @endif
                         </div>
@@ -204,17 +230,29 @@
                                                 <small class="text-muted">{{ optional($message->created_at)->format('H:i') }}</small>
                                             </td>
                                             <td class="text-right">
-                                                <form
-                                                    action="{{ route('message.delete', ['message' => $message->id] + request()->query()) }}"
-                                                    method="post"
-                                                    onsubmit="return confirm('Удалить заявку от {{ $message->name }}?');"
-                                                >
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-sm btn-outline-danger" type="submit">
-                                                        <i class="fas fa-trash-alt mr-1"></i> Удалить
-                                                    </button>
-                                                </form>
+                                                @if ($trash)
+                                                    <form action="{{ route('message.restore', ['message' => $message->id] + request()->query()) }}" method="post">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <button class="btn btn-sm btn-outline-success" type="submit">
+                                                            <i class="fas fa-undo mr-1"></i> Восстановить
+                                                        </button>
+                                                    </form>
+                                                    <small class="text-muted d-block mt-1">удалена {{ optional($message->deleted_at)->format('d.m.Y H:i') }}</small>
+                                                @else
+                                                    <form
+                                                        action="{{ route('message.delete', ['message' => $message->id] + request()->query()) }}"
+                                                        method="post"
+                                                        data-confirm="Переместить в корзину заявку от {{ $message->name }}?"
+                                                        onsubmit="return confirm(this.dataset.confirm);"
+                                                    >
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                            <i class="fas fa-trash-alt mr-1"></i> Удалить
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @empty
@@ -223,8 +261,12 @@
                                                 <div class="text-muted mb-2">
                                                     <i class="fas fa-search fa-2x"></i>
                                                 </div>
-                                                <div class="font-weight-bold">Заявки не найдены</div>
-                                                <div class="text-muted">Попробуй изменить поиск или сбросить фильтры.</div>
+                                                @if ($trash && $search === '')
+                                                    <div class="font-weight-bold">Корзина пуста</div>
+                                                @else
+                                                    <div class="font-weight-bold">Заявки не найдены</div>
+                                                    <div class="text-muted">Попробуй изменить поиск или сбросить фильтры.</div>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforelse

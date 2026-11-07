@@ -11,7 +11,7 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Seting $seting)
     {
         $data = $request->validated();
-        $data['favicon'] = Seting::uploadImage($request, $seting->favicon) ?? $seting->favicon;
+        $data['favicon'] = Seting::uploadImage($request, $seting->favicon);
 
         $seting->update($data);
 

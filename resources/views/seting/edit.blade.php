@@ -32,7 +32,21 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="page">Страница</label>
-                                    <input type="text" class="form-control" id="page" value="{{ old('page', $seting->page) }}" placeholder="Страница" name="page">
+                                    @php($currentPage = old('page', $seting->page))
+                                    <select class="form-control" id="page" name="page" required>
+                                        @unless ($seting->isUsedOnSite())
+                                            {{-- Старое значение, которое сайт не ищет: показываем, чтобы было видно, что выбрать заново. --}}
+                                            <option value="{{ $seting->page }}" @selected($currentPage === $seting->page)>
+                                                {{ $seting->page }} — не используется на сайте, выберите страницу
+                                            </option>
+                                        @endunless
+                                        @foreach (\App\Models\Seting::PAGES as $value => $label)
+                                            <option value="{{ $value }}" @selected($currentPage === $value)>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @unless ($seting->isUsedOnSite())
+                                        <small class="form-text text-danger">Сейчас эти настройки на сайте не применяются: значение «{{ $seting->page }}» не соответствует ни одной странице.</small>
+                                    @endunless
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Заголовок</label>
@@ -49,9 +63,10 @@
                                 <div class="form-group mb-0">
                                     <label for="favicon">Иконка / изображение</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="favicon" id="favicon">
+                                        <input type="file" class="custom-file-input" name="favicon" id="favicon" accept="image/jpeg,image/png,image/webp">
                                         <label class="custom-file-label" for="favicon">Выбрать файл</label>
                                     </div>
+                                    <small class="form-text text-muted">JPG, PNG или WebP, до {{ \App\Http\Requests\AdminFormRequest::IMAGE_MAX_KB / 1024 }} МБ. Оставьте пустым, чтобы не менять картинку.</small>
                                     <div class="mt-3">
                                         <img src="{{ $seting->getImage() }}" alt="{{ $seting->title }}" class="img-thumbnail" width="120">
                                     </div>

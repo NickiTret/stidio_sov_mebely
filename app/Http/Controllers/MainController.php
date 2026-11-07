@@ -4,24 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Group;
-use App\Models\MainSet;
-use App\Models\Seting;
-use App\Models\Slider;
 use App\Support\HomePreviewContent;
 use App\Support\SeoLandingPages;
-use Illuminate\Support\Facades\Cache;
+use App\Support\SiteCache;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $mainset = Cache::remember('mainset', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting главная', 60, function () {
-            return Seting::where('page', 'Главная')->first();
-        });
+        $seting = SiteCache::seting('Главная');
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -63,17 +56,11 @@ class MainController extends Controller
 
     public function gallery()
     {
-        $mainset = Cache::remember('mainset_gallery', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting галерея', 60, function () {
-            return Seting::where('page', 'Галерея')->first();
-        });
+        $seting = SiteCache::seting('Галерея');
 
-        $sliders = Cache::remember('sliders_gallery', 60, function () {
-            return Slider::all();
-        });
+        $sliders = SiteCache::sliders();
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -83,17 +70,11 @@ class MainController extends Controller
 
     public function galleryCategory(string $slug)
     {
-        $mainset = Cache::remember('mainset_gallery', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting галерея', 60, function () {
-            return Seting::where('page', 'Галерея')->first();
-        });
+        $seting = SiteCache::seting('Галерея');
 
-        $sliders = Cache::remember('sliders_gallery', 60, function () {
-            return Slider::all();
-        });
+        $sliders = SiteCache::sliders();
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -117,13 +98,9 @@ class MainController extends Controller
 
         abort_if(!$landing, 404);
 
-        $mainset = Cache::remember('mainset_service', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting_service', 60, function () {
-            return Seting::where('page', 'Главная')->first();
-        });
+        $seting = SiteCache::seting('Главная');
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -173,13 +150,9 @@ class MainController extends Controller
 
     public function contacts()
     {
-        $mainset = Cache::remember('mainset_contacts', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting_contacts', 60, function () {
-            return Seting::where('page', 'Главная')->first();
-        });
+        $seting = SiteCache::seting('Главная');
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -215,13 +188,9 @@ class MainController extends Controller
 
     public function homePreview()
     {
-        $mainset = Cache::remember('mainset_preview', 60, function () {
-            return MainSet::first();
-        });
+        $mainset = SiteCache::mainset();
 
-        $seting = Cache::remember('seting_preview', 60, function () {
-            return Seting::where('page', 'Главная')->first();
-        });
+        $seting = SiteCache::seting('Главная');
 
         $groups = $this->getGalleryGroups();
         $previewContent = HomePreviewContent::load();
@@ -271,9 +240,7 @@ class MainController extends Controller
 
     private function getGalleryGroups()
     {
-        $groups = Cache::remember('groups', 60, function () {
-            return Group::with('slides')->get();
-        });
+        $groups = SiteCache::groupsWithSlides();
 
         $orderedSlugs = collect(Group::categoryDefinitions())->pluck('slug')->all();
 

@@ -19,20 +19,23 @@ Route::middleware(['admin'])->group(function () {
     Route::group(['prefix' => 'message'], function () {
         Route::get('/', App\Http\Controllers\Message\IndexController::class)->name('message.index');
         Route::delete('/', App\Http\Controllers\Message\DeleteAllController::class)->name('message.delete-all');
+        Route::patch('/restore', App\Http\Controllers\Message\RestoreAllController::class)->name('message.restore-all');
         Route::delete('/{message}', App\Http\Controllers\Message\DeleteController::class)->name('message.delete');
+        Route::patch('/{message}/restore', App\Http\Controllers\Message\RestoreController::class)
+            ->withTrashed()
+            ->name('message.restore');
     });
 });
 //////////////////////////////
 
+// Публичной регистрации нет: администратор создаётся командой `php artisan admin:create`.
 Route::middleware(['guest'])->group(function () {
-    Route::get('/register', [App\Http\Controllers\UserController::class, 'create'])->name('register.create');
-    Route::post('/register', [App\Http\Controllers\UserController::class, 'store'])->name('register.store');
     Route::get('/login', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login.create');
     Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 });
 
 
-Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 Route::middleware(['admin'])->prefix('admin')->group(function () {

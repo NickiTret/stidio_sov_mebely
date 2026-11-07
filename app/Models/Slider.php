@@ -2,47 +2,21 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\FlushesSiteCache;
+use App\Models\Concerns\HasPublicImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use illuminate\Http\Request;
 
 class Slider extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPublicImage, FlushesSiteCache;
+
+    protected static string $imageColumn = 'image_src';
 
     protected $table = "sliders";
     protected $primaryKey = 'id';
     protected $fillable = ['title', 'description', 'image_src', 'group_id'];
     protected $guarded = [];
-
-    public static function uploadImage(Request $request, $image_src = null)
-    {
-        // dd($image_src);
-        if ($request->hasFile('image_src')) {
-
-            if ($image_src) {
-                Storage::delete($image_src);
-            }
-            $folder = date('Y-m-d');
-
-            return $request->file('image_src')->store("images/{$folder}", "public");
-        }
-
-        return $image_src;
-    }
-
-    public function getImage()
-    {
-        if (!$this->image_src) {
-            return asset("assets/admin/image/no_photo.png");
-        }
-
-        return asset('storage/' . $this->image_src);
-    }
-
-
-
 
     //связь один ко многим с таблицей группы
     public function group()

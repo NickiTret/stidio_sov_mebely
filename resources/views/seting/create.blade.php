@@ -31,7 +31,13 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="page">Страница</label>
-                                    <input type="text" class="form-control" id="page" placeholder="/gallery/kuhni или /" name="page" value="{{ old('page') }}">
+                                    <select class="form-control" id="page" name="page" required>
+                                        <option value="" disabled @selected(old('page') === null)>Выберите страницу</option>
+                                        @foreach (\App\Models\Seting::PAGES as $value => $label)
+                                            <option value="{{ $value }}" @selected(old('page') === $value)>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    <small class="form-text text-muted">Для каждой страницы — одна запись настроек.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Заголовок</label>
@@ -48,9 +54,10 @@
                                 <div class="form-group mb-0">
                                     <label for="favicon">Иконка / изображение</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="favicon" id="favicon">
+                                        <input type="file" class="custom-file-input" name="favicon" id="favicon" accept="image/jpeg,image/png,image/webp" required>
                                         <label class="custom-file-label" for="favicon">Выбрать файл</label>
                                     </div>
+                                    <small class="form-text text-muted">JPG, PNG или WebP, до {{ \App\Http\Requests\AdminFormRequest::IMAGE_MAX_KB / 1024 }} МБ.</small>
                                 </div>
                             </div>
                             <div class="card-footer">

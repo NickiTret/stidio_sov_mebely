@@ -2,40 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-use Hash;
-use Session;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function create()
-    {
-        return view('User.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request['password'])
-        ]);
-
-        session()->flash('success', 'Регистрация прошла успешно!');
-
-        Auth::login($user);
-
-        return redirect()->route('home');
-    }
+    private const MAX_LOGIN_ATTEMPTS = 5;
+    private const LOGIN_DECAY_SECONDS = 300;
 
     public function loginForm()
     {
@@ -44,32 +20,52 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ]))
-        {
-            session()->flash('success', 'Вы авторизированы');
+        $throttleKey = 'login:' . Str::lower($credentials['email']) . '|' . $request->ip();
 
-            if (Auth::user()->is_admin) {
-                return redirect()->route('admin');
-            } else {
-                return redirect()->route('home');
-            }
+        if (RateLimiter::tooManyAttempts($throttleKey, self::MAX_LOGIN_ATTEMPTS)) {
+            $minutes = (int) ceil(RateLimiter::availableIn($throttleKey) / 60);
+
+            throw ValidationException::withMessages([
+                'email' => "Слишком много попыток входа. Попробуйте через {$minutes} мин.",
+            ]);
         }
 
-        return redirect()->back()->with('error', 'Ошибка авторизации');
+        if (!Auth::attempt($credentials)) {
+            RateLimiter::hit($throttleKey, self::LOGIN_DECAY_SECONDS);
+
+            return redirect()->back()
+                ->withInput($request->only('email'))
+                ->with('error', 'Ошибка авторизации');
+        }
+
+        RateLimiter::clear($throttleKey);
+        $request->session()->regenerate();
+
+        if (!Auth::user()->is_admin) {
+            // Вход нужен только администраторам — остальных не держим в сессии.
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect()->route('login.create')->with('error', 'Ошибка авторизации');
+        }
+
+        session()->flash('success', 'Вы авторизированы');
+
+        return redirect()->intended(route('admin'));
     }
 
-
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('login.create');
     }
 }

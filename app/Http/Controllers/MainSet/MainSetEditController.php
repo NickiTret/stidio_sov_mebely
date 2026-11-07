@@ -2,43 +2,17 @@
 
 namespace App\Http\Controllers\MainSet;
 
-use App\Models\MainSet;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\MainSet\UpdateRequest;
+use App\Models\MainSet;
 
 class MainSetEditController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(UpdateRequest $request)
     {
-        $mainset = MainSet::where('id', 1)->first();
-
-        if (empty($mainset)) {
-            $request->validate([
-                'tel' => 'required',
-                'email' => 'required',
-                'telegram' => 'required',
-                'watsap' => 'required',
-                'map' => 'required',
-                'footer' => 'required',
-
-            ]);
-
-            $data = $request->all();
-
-            $mainset = MainSet::create($data);
-        } else {
-            $request->validate([
-                'tel' => 'required',
-                'email' => 'required',
-                'telegram' => 'required',
-                'watsap' => 'required',
-                'map' => 'required',
-                'footer' => 'required',
-            ]);
-            $mainset = MainSet::first();
-            $data = $request->all();
-            $mainset->update($data);
-        }
+        // Настройки сайта — одна запись; создаём её при первом сохранении.
+        $mainset = MainSet::first() ?? new MainSet();
+        $mainset->fill($request->validated())->save();
 
         return redirect()
             ->route('mainset.index')

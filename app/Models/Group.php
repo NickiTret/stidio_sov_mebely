@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\FlushesSiteCache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Group extends Model
 {
-    use HasFactory;
+    use HasFactory, FlushesSiteCache;
     protected $table = "groups";
     protected $primaryKey = 'id';
     protected $fillable = ['title'];

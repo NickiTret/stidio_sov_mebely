@@ -47,14 +47,8 @@
             <a class="header__link fs {{ $routeName === 'contacts' ? 'is-active' : '' }}" href="{{ route('contacts') }}">
                 Контакты
             </a>
-            @if (auth()->check())
-                <a href="@if (auth()->user()->is_admin) {{ route('admin') }}
-            @else
-                {{ route('logout') }} @endif"
-                    class="header__number">Настроить сайт</a>
-            @else
-                {{-- <a href="{{ route('login') }}" class="header__number">Войти</a> --}}
-
+            @if (auth()->check() && auth()->user()->is_admin)
+                <a href="{{ route('admin') }}" class="header__number">Настроить сайт</a>
             @endif
             <a href="tel:+79280782894" class="header__number header__number--desktop">+7 (928) 078 28 94</a>
             <div class="header__mobile-contacts">

@@ -2,43 +2,33 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\FlushesSiteCache;
+use App\Models\Concerns\HasPublicImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use illuminate\Http\Request;
 
 class Seting extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPublicImage, FlushesSiteCache;
+
+    protected static string $imageColumn = 'favicon';
+
+    /**
+     * Значения колонки `page`, которые сайт реально ищет (MainController через SiteCache),
+     * и подписи для выпадающего списка в админке.
+     */
+    public const PAGES = [
+        'Главная' => 'Главная, контакты и страницы услуг',
+        'Галерея' => 'Галерея и категории галереи',
+    ];
+
+    public function isUsedOnSite(): bool
+    {
+        return array_key_exists((string) $this->page, self::PAGES);
+    }
 
     protected $table = "setings";
     protected $primaryKey = 'id';
     protected $fillable = ['page', 'title', 'descriptions', 'keywords', 'favicon'];
     protected $guarded = [];
-
-    public static function uploadImage(Request $request, $favicon = null)
-    {
-        if ($request->hasFile('favicon')) {
-
-            if ($favicon)
-            {
-                Storage::delete($favicon);
-            }
-            $folder = date('Y-m-d');
-
-            return $request->file('favicon')->store("images/{$folder}", "public");
-        }
-
-        return $favicon;
-    }
-
-    public function getImage()
-    {
-        if(!$this->favicon)
-        {
-            return asset("assets/admin/image/no_photo.png");
-        }
-
-        return asset( 'storage/' . $this->favicon);
-    }
 }

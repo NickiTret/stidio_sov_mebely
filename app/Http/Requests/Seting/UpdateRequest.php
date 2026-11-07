@@ -2,31 +2,14 @@
 
 namespace App\Http\Requests\Seting;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Seting;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends StoreRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
+    protected bool $imageRequired = false;
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
-    public function rules(): array
+    protected function currentSeting(): ?Seting
     {
-        return [
-            'page' => 'required|string',
-            'title' => 'required|string',
-            'descriptions' => 'required|string',
-            'keywords' => 'required|string',
-            'favicon' => 'nullable|image'
-        ];
+        return $this->route('seting');
     }
 }
